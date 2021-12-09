@@ -1,0 +1,70 @@
+{
+    "informasi": {
+        "kode_emiten": "KBLI",
+        "nama_emiten": "PT KMI Wire and Cable Tbk",
+        "jumlah_saham_beredar": "4.007.235.107 miliar",
+        "harga_penawaran": "3.500",
+        "pembulatan": "ribuan",
+        "tanggal_pencatatan": "7 juni 1992",
+        "sektor": "aneka industri",
+        "subsektor": "kabel",
+        "kegiatan_usaha": "pembuatan kabel dan kawat aluminium dan tembaga",
+        "struktur_perusahaan": {
+        },
+        "anak_perusahaan": [
+            {
+                "nama_perusahaan": "PT.LANGGENG BAJAPRATAMA",
+                "kegiatan_usaha": "Industri pembuatan kawat baja",
+                "lokasi": "Bekasi",
+                "tahun_komersil": 1997,
+                "status_operasi": "operasi",
+                "jumlah_aset": "78.661.765.000 miliar",
+                "kepemilikan": "60%"
+            },
+            {
+                "nama_perusahaan": "PT KMI ELECTRIC SOLUTION",
+                "kegiatan_usaha": "Industri pembuatan aksesoris dan perlengkapan kabel",
+                "lokasi": "Jakarta",
+                "tahun_komersil": 2019,
+                "status_operasi": "operasi",
+                "jumlah_aset": "7.428.957.000 miliar",
+                "kepemilikan": "99.6%"
+            }
+        ]
+    },
+    "laporan_keuangan": {
+        "laporan_kuartal": [
+            {
+                
+                "tanggal": "30 maret 2021",
+                "rasio": {
+                    "profitabilitas": {},
+                    "valuasi": {},
+                    "solvabilitas": {}
+                }
+            }
+        ],
+        "laporan_tahunan": [
+            {
+                
+            }s
+        ]
+    }
+    // "laporan_keuangan": [
+    //     {
+    //         "jenis_laporan": "Q2",
+    //         "tanggal": "30 juni 2021",
+    //         "rasio": {
+    //             "performa": {
+    //                 "ROE": "17%"
+    //             },
+    //             "valuasi": {
+    //                 "EPS": "35"
+    //             },
+    //             "solvabilitas": {
+    //                 "CR": "200%"
+    //             }
+    //         }
+    //     }
+    // ]
+}

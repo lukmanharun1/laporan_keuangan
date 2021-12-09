@@ -1,0 +1,25 @@
+{
+   "saham_beredar": 4007235107,
+   "harga_saham": 380,
+   "neraca": {
+      "ekuitas": 2241037812000,
+      "liabilitas": 449176772000,
+      "aset_lancar": 2289174000000,
+      "liabilitas_lancar": 260400683000,
+      "persediaan": 665535302000,
+      "aset": 2690214584000
+   },
+   "laba_rugi": {
+      "pendapatan": 322950381000,
+      "laba_kotor": 23722166000,
+      "laba_operasional": 4367468000,
+      "laba_bersih": 10522727000
+   },
+   "arus_kas": {
+      "aktivitas_operasi": 60111685000,
+      "aktivitas_investasi": 84229027000,
+      "aktivitas_pendanaan": -161700288000,
+      "kas_dan_setara_kas": 263186841000
+      
+   }
+}

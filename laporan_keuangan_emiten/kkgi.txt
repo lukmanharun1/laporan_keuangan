@@ -1,0 +1,21 @@
+laporan Keuangan PT RESOURCE ALAM INDONESIA Tbk (KKGI)
+
+30 september 2021 (Laporan Keuangan dalam US dollar)(14.000)
+
+jumlah lembar saham 5.000.000.000 (5 miliar)
+harga saham 290 
+liabilitas 28.428.035
+ekuitas 90.862.439
+aset 119.290474
+pendapatan usaha 80.145.307
+laba kotor 17.722.952
+laba bersih 9.202.515
+
+
+Rasio
+
+BVPS 254
+PBV 1.14
+
+Solvency
+DE 31%
