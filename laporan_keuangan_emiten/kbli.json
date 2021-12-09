@@ -17,7 +17,7 @@
 				"lokasi": "Bekasi",
 				"tahun_komersil": 1997,
 				"status_operasi": "operasi",
-				"jumlah_aset": "78.661.765.000 miliar",
+				"jumlah_aset": "74.990.860.000 miliar",
 				"kepemilikan": "60%"
 			},
 			{
@@ -26,7 +26,7 @@
 				"lokasi": "Jakarta",
 				"tahun_komersil": 2019,
 				"status_operasi": "operasi",
-				"jumlah_aset": "7.428.957.000 miliar",
+				"jumlah_aset": "8.655.956.000 miliar",
 				"kepemilikan": "99.6%"
 			}
 		]
@@ -82,7 +82,111 @@
 					"likuiditas": {
 						"CR": "879.10%",
 						"QR": "623.52%",
-						"KR": "94.40%"
+						"KR": "101.07%"
+					}
+				}
+			},
+			{
+				"tanggal": "30 juni 2021",
+				"harga_saham": 362,
+				"neraca": {
+						"ekuitas": 2255026285000,
+						"liabilitas": 499231397000,
+						"aset_lancar": 2358668845000,
+						"liabilitas_lancar": 341645078000,
+						"persediaan": 782460534000,
+						"aset": 2754257682000
+				},
+				"laba_rugi": {
+						"pendapatan": 392243963000,
+						"laba_kotor": 40143129000,
+						"laba_operasional": 16317217000,
+						"laba_bersih": 13988726000
+				},
+				"arus_kas": {
+						"aktivitas_operasi": -194279481000,
+						"aktivitas_investasi": 149143468000,
+						"aktivitas_pendanaan": -2742651000,
+						"kas_dan_setara_kas": 214590072000
+				},
+				"dividen": 0,
+				"rasio": {
+					"profitabilitas": {
+					  "ROA": "0.51%",
+					  "ROE": "0.62%",
+					  "GPM": "10.23%",
+					  "OPM": "4.16%",
+					  "NPM": "3.57%"
+					},
+					"valuasi": {
+					  "BVPS": "562.74",
+					  "PBV": "0.64x",
+					  "RPS": "97.88",
+					  "CFPS": "-11.95",
+					  "PCF": "-30.29x",
+					  "EPS": "3.49",
+					  "PER": "103.72x"
+					},
+					"solvabilitas": {
+					  "DER": "22.14%",
+					  "DAR": "18.13%"
+					},
+					"likuiditas": {
+					  "CR": "690.39%",
+					  "QR": "461.36%",
+					  "KR": "62.81%"
+					}
+				}				
+			},
+			{
+				"tanggal": "30 semptember 2021",
+				"harga_saham": 302,
+				"neraca": {
+					 "ekuitas": 2251435032000,
+					 "liabilitas": 383999564000,
+					 "aset_lancar": 2254425768000,
+					 "liabilitas_lancar": 225040995000,
+					 "persediaan": 689827496000,
+					 "aset": 2635434596000
+				},
+				"laba_rugi": {
+					 "pendapatan": 389928603000,
+					 "laba_kotor": 14136709000,
+					 "laba_operasional": -4937269000,
+					 "laba_bersih": -3590890000
+				},
+				"arus_kas": {
+					 "aktivitas_operasi": 161588557000,
+					 "aktivitas_investasi": 35265068000,
+					 "aktivitas_pendanaan": 49527323000,
+					 "kas_dan_setara_kas": 459387318000
+				},
+				"dividen": 0,
+				"rasio": {
+					"profitabilitas": {
+						"ROA": "-0.14%",
+						"ROE": "-0.16%",
+						"GPM": "3.63%",
+						"OPM": "-1.27%",
+						"NPM": "-0.92%"
+					},
+					"valuasi": {
+						"BVPS": "561.84",
+						"PBV": "0.54x",
+						"RPS": "97.31",
+						"CFPS": "61.48",
+						"PCF": "4.91x",
+						"EPS": "-0.90",
+						"PER": "-335.56x"
+					},
+					"solvabilitas": {
+						"DER": "17.06%",
+						"DAR": "14.57%"
+					},
+					"likuiditas": {
+						"CR": "1001.78%",
+						"QR": "695.25%",
+						"KR": "204.13%"
 					}
 				}
 			}

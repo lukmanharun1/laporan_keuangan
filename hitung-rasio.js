@@ -72,7 +72,7 @@ result.solvabilitas = {
 // likuiditas
 const CR = ratio(aset_lancar, liabilitas_lancar);
 const QR = ratio(aset_lancar - persediaan, liabilitas_lancar);
-const KR = ratio(cashflow + kas_dan_setara_kas, liabilitas_lancar);
+const KR = ratio(kas_dan_setara_kas, liabilitas_lancar);
 
 result.likuiditas = {
     CR,

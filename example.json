@@ -1,0 +1,26 @@
+{
+    "saham_beredar": 0,
+    "harga_saham": 0,
+    "neraca": {
+       "ekuitas": 0,
+       "liabilitas": 0,
+       "aset_lancar": 0,
+       "liabilitas_lancar": 0,
+       "persediaan": 0,
+       "aset": 0
+    },
+    "laba_rugi": {
+       "pendapatan": 0,
+       "laba_kotor": 0,
+       "laba_operasional": 0,
+       "laba_bersih": 0
+    },
+    "arus_kas": {
+       "aktivitas_operasi": 0,
+       "aktivitas_investasi": 0,
+       "aktivitas_pendanaan": 0,
+       "kas_dan_setara_kas": 0
+       
+    },
+    "dividen": 0
+ }
