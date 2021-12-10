@@ -191,6 +191,58 @@
 				}
 			},
 			{
+				"tanggal":"30 semptember 2020",
+				"harga_saham": 320,
+				"neraca": {
+					"ekuitas": 2145120276000,
+					"liabilitas": 590316260000,
+					"aset_lancar": 1922452099000,
+					"liabilitas_lancar": 360592534000,
+					"persediaan": 631981627000,
+					"aset": 2735436536000
+				},
+				"laba_rugi": {
+					"pendapatan": 426477024000,
+					"laba_kotor": 34800426000,
+					"laba_operasional": 9956155000,
+					"laba_bersih": -898053000
+				},
+				"arus_kas": {
+					"aktivitas_operasi": 393202930000,
+					"aktivitas_investasi": -315700658000,
+					"aktivitas_pendanaan": -13332901000,
+					"kas_dan_setara_kas": 237035870000
+				},
+				"dividen": 0,
+				"rasio": {
+					"profitabilitas": {
+						"ROA": "-0.03%",
+						"ROE": "-0.04%",
+						"GPM": "8.16%",
+						"OPM": "2.33%",
+						"NPM": "-0.21%"
+					},
+					"valuasi": {
+						"BVPS": "535.31",
+						"PBV": "0.60x",
+						"RPS": "106.43",
+						"CFPS": "16.01",
+						"PCF": "19.99x",
+						"EPS": "-0.22",
+						"PER": "-1454.55x"
+					},
+					"solvabilitas": {
+						"DER": "27.52%",
+						"DAR": "21.58%"
+					},
+					"likuiditas": {
+						"CR": "533.14%",
+						"QR": "357.87%",
+						"KR": "65.74%"
+					}
+				}
+			},
+			{
 				"tanggal":"30 juni 2020",
 				"harga_saham": 396,
 				"neraca": {
@@ -203,9 +255,9 @@
 				},
 				"laba_rugi": {
 					"pendapatan": 388259531000,
-					"laba_kotor": -1924607000,
-					"laba_operasional": -79706082000,
-					"laba_bersih": -89765422000
+					"laba_kotor": -26656855000,
+					"laba_operasional": -71606504000,
+					"laba_bersih": -103423142000
 				},
 				"arus_kas": {
 					"aktivitas_operasi": 68418870000,
@@ -217,11 +269,11 @@
 				"dividen": 0,
 				"rasio": {
 					"profitabilitas": {
-						"ROA": "-3.14%",
-						"ROE": "-4.18%",
-						"GPM": "-0.50%",
-						"OPM": "-20.53%",
-						"NPM": "-23.12%"
+						"ROA": "-3.62%",
+						"ROE": "-4.81%",
+						"GPM": "-6.87%",
+						"OPM": "-18.44%",
+						"NPM": "-26.64%"
 					},
 					"valuasi": {
 						"BVPS": "536.07",
@@ -229,8 +281,8 @@
 						"RPS": "96.89",
 						"CFPS": "11.77",
 						"PCF": "33.64x",
-						"EPS": "-22.40",
-						"PER": "-17.68x"
+						"EPS": "-25.81",
+						"PER": "-15.34x"
 					},
 					"solvabilitas": {
 						"DER": "33.05%",
