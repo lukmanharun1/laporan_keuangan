@@ -1,21 +1,94 @@
 {
 	"informasi": {
-		"kode_emiten": "KBLI",
-		"nama_emiten": "PT KMI Wire and Cable Tbk",
+		"kode_saham": "KBLI",
+		"nama_saham": "PT KMI Wire and Cable Tbk",
+		"alamat": "Jl. Raya Bekasi KM 23,1 Cakung, Jakarta 13910",
 		"jumlah_saham_beredar": "4.007.235.107 miliar",
 		"harga_penawaran": "3.500",
 		"pembulatan": "ribuan",
-		"tanggal_pencatatan": "7 juni 1992",
+		"tanggal_pencatatan": "8 juni 1992",
+		"tanggal_berdiri": "19 Januari 1972",
 		"sektor": "aneka industri",
 		"subsektor": "kabel",
 		"kegiatan_usaha": "pembuatan kabel dan kawat aluminium dan tembaga",
-		"struktur_perusahaan": {},
+		"jumlah_karyawan": {
+			"laki_laki": 647,
+			"perempuan": 27
+		},
+		"pemegang_saham": [
+			{
+				"nama": "Denham Pte Ltd Singapore",
+				"kepemilikan": "49,47%"
+			},
+			{
+				"nama": "publik",
+				"kepemilikan": "50,53%"
+			}
+		],
+		"telepon": "62214601733",
+		"website": "www.kmi.co.id",
+		"email": "kmi@kmi.co.id",
+		"struktur_perusahaan": {
+			"presiden_komisaris": {
+				"nama": "Herman Nursalim",
+				"periode_jabatan": "2020 – 2022",
+				"taggal_lahir": "Jakarta, 13 Juli 1956",
+				"domisili": "Jakarta, Indonesia"
+			},
+			"wakil_presiden_komisaris": {
+				"nama": "Todo Sihombing",
+				"periode_jabatan": "2020 – 2022",
+				"tanggal_lahir": "Pematang Siantar, 23 Februari 1941",
+				"domisili": "Jakarta, Indonesia"
+			},
+			"komisaris_independen": [
+				{
+					"nama": "Sang Nyoman Suwisma",
+					"periode_jabatan": "2020 – 2022",
+					"tanggal_lahir": "Bali, 10 Mei 1949",
+					"domisili": "Jakarta, Indonesia"
+				},
+				{
+					"nama": "Rasidi",
+					"periode_jabatan": "2020 – 2022",
+					"tanggal_lahir": "Sumedang, 7 Agustus 1933",
+					"domisili": "Jakarta, Indonesia"
+				}
+			],
+			"presiden_direktur": {
+				"nama": "Marcello Theodone Taufik",
+				"periode_jabatan": "2020 – 2022",
+				"tanggal_lahir": "Bogor, 7 Desember 1968",
+				"domisili": "Bogor, Jawa Barat"
+			},
+			"wakil_presiden_direktur": {
+				"nama": "Gabriela Lili",
+				"periode_jabatan": "2020 – 2022",
+				"tanggal_lahir": "Kisaran, 2 November 1967",
+				"domisili": "Tangerang Selatan, Banten"
+			},
+			"direktur": [
+				{
+					"nama": "Lim Fui Liong",
+					"periode_jabatan": "2020 – 2022",
+					"tanggal_lahir": "Jakarta, 15 Januari 1964",
+					"domisili": "Bekasi, Jawa Barat"
+				},
+				{
+					"nama": "Dede Suhendra",
+					"periode_jabatan": "2020 – 2022",
+					"tanggal_lahir": "Jakarta, 30 Oktober 1970",
+					"domisili": "Depok, Jawa Barat"
+				}
+			]
+		},
 		"anak_perusahaan": [
 			{
 				"nama_perusahaan": "PT.LANGGENG BAJAPRATAMA",
 				"kegiatan_usaha": "Industri pembuatan kawat baja",
 				"lokasi": "Bekasi",
-				"tahun_komersil": 1997,
+				"tahun_berdiri": 1991,
+				"tahun_beroperasi": 1997,
 				"status_operasi": "operasi",
 				"jumlah_aset": "74.990.860.000 miliar",
 				"kepemilikan": "60%"
@@ -24,11 +97,33 @@
 				"nama_perusahaan": "PT KMI ELECTRIC SOLUTION",
 				"kegiatan_usaha": "Industri pembuatan aksesoris dan perlengkapan kabel",
 				"lokasi": "Jakarta",
-				"tahun_komersil": 2019,
+				"tahun_berdiri": 2019,
+				"tahun_beroperasi": 2019,
 				"status_operasi": "operasi",
 				"jumlah_aset": "8.655.956.000 miliar",
 				"kepemilikan": "99.6%"
 			}
+		],
+		"visi": "Memantapkan posisi PT KMI Wire and Cable Tbk sebagai produsen kabel yang maju, tangguh, dan terpercaya",
+		"misi": [
+			"Memberikan kualitas produk dan pelayanan terbaik untuk pelanggan",
+			"Menjaga hubungan kemitraan yang saling menghargai",
+			"Memberdayakan karyawan dengan memajukan budaya kerja profesional",
+			"Meningkatkan daya saing melalui inovasi berkelanjutan",
+			"Meningkatkan nilai perusahaan dalam jangka panjang"
+		],
+		"jaringan_usaha": {
+			"asia": "Singapore, Philipines, Bangladesh, Malaysia, Cambodia, Vietnam, Brunei, Myanmar, Nepal, Srilanka, Thailand, Hong Kong, Maldives, Pakistan, South Korea",
+			"eropa": "Cyprus, England, UK, Spain, Germany, Netherlands, France, Swiss",
+			"timur tengah": "Yamen, Afghanistan, Saudi Arabia, Dubai, Qatar, Jordan, Iran, Irak, Palestine, Oman",
+			"afrika": "Tanzania, Mozambique, Malawa, Ghana, Ethiopia, Namibia, Uganda, Rwanda, Congo, Sudan, Somalia, Nigeria, Egypt, Guinea, South Africa",
+			"pasifik": "Australia, Fiji, New Zealand, Samoa, Tonga",
+			"amerika selatan": "Trinidad, Brazil"
+		},
+		"operasi_segmen": [
+			"Kabel Listrik Tegangan Rendah",
+			"Kabel Listrik Tegangan Menengah",
+			"Kabel Listrik Tegangan Tinggi"
 		]
 	},
 	"laporan_keuangan": {
@@ -350,7 +445,57 @@
 		],
 		"laporan_tahunan": [
 			{
-					
+				"tanggal": "31 desember 2020",
+				"harga_saham": 384,
+				"neraca": {
+					"ekuitas": 2230514427048,
+					"liabilitas": 659558093623,
+					"aset_lancar": 2504430163660,
+					"liabilitas_lancar": 473292558195,
+					"persediaan": 574767677107,
+					"aset": 2890072520671
+				},
+				"laba_rugi": {
+					"pendapatan": 1968859464809,
+					"laba_kotor": 87833837923,
+					"laba_operasional": -43891126566,
+					"laba_bersih": -56914203873
+				},
+				"arus_kas": {
+					"aktivitas_operasi": 757417628860,
+					"aktivitas_investasi": 448352356152,
+					"aktivitas_pendanaan": -86988987828,
+					"kas_dan_setara_kas": 275827092477
+						
+				},
+				"dividen": 0,
+				"rasio": {
+					"profitabilitas": {
+						"ROA": "-1.97%",
+						"ROE": "-2.55%",
+						"GPM": "4.46%",
+						"OPM": "-2.23%",
+						"NPM": "-2.89%"
+					},
+					"valuasi": {
+						"BVPS": "556.62",
+						"PBV": "0.69x",
+						"RPS": "491.33",
+						"CFPS": "279.19",
+						"PCF": "1.38x",
+						"EPS": "-14.20",
+						"PER": "-27.04x"
+					},
+					"solvabilitas": {
+						"DER": "29.57%",
+						"DAR": "22.82%"
+					},
+					"likuiditas": {
+						"CR": "529.15%",
+						"QR": "407.71%",
+						"KR": "58.28%"
+					}
+				}
 			}
 		]
 	}
