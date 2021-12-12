@@ -10,15 +10,15 @@
       "aset": 2890072520671
    },
    "laba_rugi": {
-      "pendapatan": 1968859464809,
-      "laba_kotor": 87833837923,
-      "laba_operasional": -43891126566,
-      "laba_bersih": -56914203873
+      "pendapatan": 863736517809,
+      "laba_kotor": 9831833923,
+      "laba_operasional": -59638542566,
+      "laba_bersih": -77834807873
    },
    "arus_kas": {
-      "aktivitas_operasi": 757417628860,
-      "aktivitas_investasi": 448352356152,
-      "aktivitas_pendanaan": -86988987828,
+      "aktivitas_operasi": 729996867860,
+      "aktivitas_investasi": 179714793152,
+      "aktivitas_pendanaan": 27926628172,
       "kas_dan_setara_kas": 275827092477
       
    },

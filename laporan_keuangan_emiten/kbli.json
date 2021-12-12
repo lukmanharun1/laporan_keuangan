@@ -286,6 +286,59 @@
 				}
 			},
 			{
+				"tanggal":"31 desember 2020",
+				"harga_saham": 384,
+				"neraca": {
+					 "ekuitas": 2230514427048,
+					 "liabilitas": 659558093623,
+					 "aset_lancar": 2504430163660,
+					 "liabilitas_lancar": 473292558195,
+					 "persediaan": 574767677107,
+					 "aset": 2890072520671
+				},
+				"laba_rugi": {
+					 "pendapatan": 863736517809,
+					 "laba_kotor": 9831833923,
+					 "laba_operasional": -59638542566,
+					 "laba_bersih": -77834807873
+				},
+				"arus_kas": {
+					 "aktivitas_operasi": 729996867860,
+					 "aktivitas_investasi": 179714793152,
+					 "aktivitas_pendanaan": 27926628172,
+					 "kas_dan_setara_kas": 275827092477
+					 
+				},
+				"dividen": 0,
+				"rasio": {
+					"profitabilitas": {
+						"ROA": "-2.69%",
+						"ROE": "-3.49%",
+						"GPM": "1.14%",
+						"OPM": "-6.90%",
+						"NPM": "-9.01%"
+					},
+					"valuasi": {
+						"BVPS": "556.62",
+						"PBV": "0.69x",
+						"RPS": "215.54",
+						"CFPS": "233.99",
+						"PCF": "1.64x",
+						"EPS": "-19.42",
+						"PER": "-19.77x"
+					},
+					"solvabilitas": {
+						"DER": "29.57%",
+						"DAR": "22.82%"
+					},
+					"likuiditas": {
+						"CR": "529.15%",
+						"QR": "407.71%",
+						"KR": "58.28%"
+					}
+				}
+			},
+			{
 				"tanggal":"30 semptember 2020",
 				"harga_saham": 320,
 				"neraca": {
