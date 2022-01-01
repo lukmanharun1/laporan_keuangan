@@ -1,8 +1,9 @@
 {
    "saham_beredar": 0,
    "harga_saham": 0,
-   "pembulatan": 0,
+   "satuan": 0,
    "pembagian": 0,
+   "tanggal": "",
    "neraca": {
       "ekuitas": 0,
       "total_liabilitas": 0,

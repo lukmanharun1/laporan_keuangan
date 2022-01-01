@@ -1,4 +1,4 @@
-const { saham_beredar, harga_saham, neraca, laba_rugi, arus_kas, pembulatan, pembagian, dividen } = require('./data.json')
+const { saham_beredar, harga_saham, tanggal, neraca, laba_rugi, arus_kas, satuan, pembagian, dividen } = require('./data.json')
 
 
 function divide(number1, number2) {
@@ -6,7 +6,7 @@ function divide(number1, number2) {
 }
 
 function ratio(number1, number2) {
-    return format(number1 / number2) + '%';
+    return format((number1 / number2) * 100) + '%';
 }
 
 function format(number) {
@@ -17,31 +17,32 @@ function format(number) {
 
 let { ekuitas, total_liabilitas, aset_lancar, liabilitas_lancar, persediaan, liabilitas_berbunga, kas_dan_setara_kas } = neraca;
 
-ekuitas *= pembulatan;
-total_liabilitas *= pembulatan;
-liabilitas_lancar *= pembulatan;
-persediaan *= pembulatan;
-liabilitas_berbunga *= pembulatan;
-kas_dan_setara_kas *= pembulatan;
+ekuitas *= satuan;
+total_liabilitas *= satuan;
+liabilitas_lancar *= satuan;
+persediaan *= satuan;
+liabilitas_berbunga *= satuan;
+kas_dan_setara_kas *= satuan;
 
 const aset = ekuitas + total_liabilitas;
 let { pendapatan, laba_kotor, laba_operasional, laba_bersih } = laba_rugi;
 
-pendapatan *= pembulatan * pembagian;
-laba_kotor *= pembulatan * pembagian;
-laba_operasional *= pembulatan * pembagian;
-laba_bersih *= pembulatan * pembagian;
+pendapatan *= satuan * pembagian;
+laba_kotor *= satuan * pembagian;
+laba_operasional *= satuan * pembagian;
+laba_bersih *= satuan * pembagian;
 
 let { aktivitas_operasi, aktivitas_investasi, aktivitas_pendanaan } = arus_kas;
 
-aktivitas_operasi *= pembulatan * pembagian;
-aktivitas_investasi *= pembulatan * pembagian;
-aktivitas_pendanaan *= pembulatan * pembagian;
+aktivitas_operasi *= satuan * pembagian;
+aktivitas_investasi *= satuan * pembagian;
+aktivitas_pendanaan *= satuan * pembagian;
 
 const cashflow = aktivitas_operasi + aktivitas_investasi + aktivitas_pendanaan;
 
 const result = {
     harga_saham,
+    tanggal,
     neraca: {
         kas_dan_setara_kas,
         aset_lancar,
@@ -61,15 +62,16 @@ const result = {
         aktivitas_operasi,
         aktivitas_investasi,
         aktivitas_pendanaan
+    },
+    rasio: {
+        profitabilitas: {},
+        valuasi: {},
+        solvabilitas: {},
+        likuiditas: {}
     }
 }
 
-const resultRatio = {
-    profitabilitas: {},
-    valuasi: {},
-    solvabilitas: {},
-    likuiditas: {}
-}
+
 
 // profitabilitas
 const ROA = ratio(laba_bersih, aset);
@@ -78,7 +80,7 @@ const GPM = ratio(laba_kotor, pendapatan);
 const OPM = ratio(laba_operasional, pendapatan);
 const NPM = ratio(laba_bersih, pendapatan);
 
-resultRatio.profitabilitas = {
+result.rasio.profitabilitas = {
     ROA,
     ROE,
     GPM,
@@ -98,7 +100,7 @@ const PCF = divide(harga_saham, CFPS) + 'x';
 const EPS = divide(laba_bersih, saham_beredar);
 const PER = divide(harga_saham, EPS) + 'x';
 
-resultRatio.valuasi = {
+result.rasio.valuasi = {
     BVPS,
     PBV,
     RPS,
@@ -113,7 +115,7 @@ resultRatio.valuasi = {
 const DER = `${ratio(total_liabilitas, ekuitas)} | ${ratio(liabilitas_berbunga, ekuitas)}`;
 const DAR = ratio(total_liabilitas, aset);
 
-resultRatio.solvabilitas = {
+result.rasio.solvabilitas = {
     DER,
     DAR
 }
@@ -123,7 +125,7 @@ const CRR = ratio(aset_lancar, liabilitas_lancar);
 const QR = ratio(aset_lancar - persediaan, liabilitas_lancar);
 const CR = ratio(kas_dan_setara_kas, liabilitas_lancar);
 
-resultRatio.likuiditas = {
+result.rasio.likuiditas = {
     CRR,
     QR,
     CR
@@ -141,7 +143,7 @@ if (dividen) {
         recording_date,
         payment_date
     }
-    resultRatio.dividen = {
+    result.rasio.dividen = {
         DPS,
         DY,
         DPR
@@ -149,5 +151,3 @@ if (dividen) {
 }
 
 console.log(JSON.stringify(result, null, 2));
-
-console.log(JSON.stringify(resultRatio, null, 2));
