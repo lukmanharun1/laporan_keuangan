@@ -1,26 +1,27 @@
 {
    "saham_beredar": 4007235107,
-   "harga_saham": 384,
+   "harga_saham": 0,
+   "pembulatan": 1,
+   "pembagian": 0.5,
    "neraca": {
-      "ekuitas": 2230514427048,
-      "liabilitas": 659558093623,
-      "aset_lancar": 2504430163660,
-      "liabilitas_lancar": 473292558195,
-      "persediaan": 574767677107,
-      "aset": 2890072520671
+      "ekuitas": 2242917658539,
+      "total_liabilitas": 1174014083315,
+      "aset_lancar": 2558063940045,
+      "liabilitas_berbunga": 2000,
+      "liabilitas_lancar": 879315149074,
+      "persediaan": 720534079514,
+      "kas_dan_setara_kas": 56687875962
    },
    "laba_rugi": {
-      "pendapatan": 863736517809,
-      "laba_kotor": 9831833923,
-      "laba_operasional": -59638542566,
-      "laba_bersih": -77834807873
+      "pendapatan": 4500555248155,
+      "laba_kotor": 771922875078,
+      "laba_operasional": 588451197690,
+      "laba_bersih": 417951984115
    },
    "arus_kas": {
-      "aktivitas_operasi": 729996867860,
-      "aktivitas_investasi": 179714793152,
-      "aktivitas_pendanaan": 27926628172,
-      "kas_dan_setara_kas": 275827092477
-      
+      "aktivitas_operasi": -35053662077,
+      "aktivitas_investasi": -33878572834,
+      "aktivitas_pendanaan": 31301245468
    },
-   "dividen": 0
+   "dividen": 3
 }

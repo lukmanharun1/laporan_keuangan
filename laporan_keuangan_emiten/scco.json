@@ -1,0 +1,148 @@
+{
+  "informasi": {
+    "kode_emiten": "SCCO",
+		"nama_emiten": "PT SUPREME CABLE MANUFACTURING & COMMERCE TBK",
+    "jumlah_saham_beredar": "205.583.400 juta",
+    "pembulatan": "rupiah",
+    "tanggal_pencatatan": "20 juli 1982",
+    "sektor": "aneka industri",
+		"subsektor": "kabel",
+    "kegiatan_usaha": "pembuatan kabel dan kawat aluminium dan tembaga",
+    "anak_perusahaan": [
+      {
+        "nama_perusahaan": "PT Supreme Decoluxe",
+        "kegiatan_usaha": "Pembuatan Melamin, Resin dan Lembar Melamin",
+        "lokasi": "Jakarta",
+				"tahun_beroperasi": 1997,
+        "status_operasi": "operasi",
+        "jumlah_aset": "234.130.538 juta",
+				"kepemilikan": "93.28%"
+      },
+      {
+        "nama_perusahaan": "PT Setia Pratama Pelletizing Industries",
+        "kegiatan_usaha": "Pellet Cross Linked Polyethylen and Poly-Vinyl Chloride (PVC) manufacturer",
+        "lokasi": "Tangerang",
+				"tahun_beroperasi": 1984,
+        "status_operasi": "operasi",
+        "jumlah_aset": "286.238.236.047 miliar",
+				"kepemilikan": "99%"
+      }
+    ]
+  },
+
+  "laporan_keuangan": {
+    "laporan_kuatal": [
+      {
+        "tanggal": "30 maret 2021",
+        "harga_saham": 11200,
+        "neraca": {
+           "ekuitas": 3348009271791,
+           "liabilitas": 272387876380,
+           "aset_lancar": 1715471832701,
+           "liabilitas_lancar": 224322926827,
+           "persediaan": 373167076506,
+           "aset": 3620397148171
+        },
+        "laba_rugi": {
+           "pendapatan": 1306075195116,
+           "laba_kotor": 87518080174,
+           "laba_operasional": 42593209225,
+           "laba_bersih": 59189024629
+        },
+        "arus_kas": {
+           "aktivitas_operasi": -198788360210,
+           "aktivitas_investasi":  -2773975951,
+           "aktivitas_pendanaan": -12636000,
+           "kas_dan_setara_kas": 822853809415
+           
+        },
+        "dividen": 0,
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "1.63%",
+            "ROE": "1.77%",
+            "GPM": "6.70%",
+            "OPM": "3.26%",
+            "NPM": "4.53%"
+          },
+          "valuasi": {
+            "BVPS": "16285.41",
+            "PBV": "0.69x",
+            "RPS": "6353.02",
+            "CFPS": "-980.50",
+            "PCF": "-11.42x",
+            "EPS": "287.91",
+            "PER": "38.90x"
+          },
+          "solvabilitas": {
+            "DER": "8.14%",
+            "DAR": "7.52%"
+          },
+          "likuiditas": {
+            "CR": "764.73%",
+            "QR": "598.38%",
+            "KR": "366.82%"
+          }
+        }
+      },
+      {
+        "tanggal":"30 juni 2021",
+        "harga_saham": 10975,
+        "neraca": {
+          "ekuitas": 3376222073146,
+          "liabilitas": 257505248865,
+          "aset_lancar": 1721526040828,
+          "liabilitas_lancar": 209440299312,
+          "persediaan": 402323202421,
+          "aset": 3633727322011
+        },
+        "laba_rugi": {
+          "pendapatan": 1188782817533,
+          "laba_kotor": 64872258697,
+          "laba_operasional": 10844533004,
+          "laba_bersih": 28212801355
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 49712247371,
+          "aktivitas_investasi": -10044917061,
+          "aktivitas_pendanaan": -21675000,
+          "kas_dan_setara_kas": 865690733262
+        },
+        "dividen": 0,
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "0.78%",
+            "ROE": "0.84%",
+            "GPM": "5.46%",
+            "OPM": "0.91%",
+            "NPM": "2.37%"
+          },
+          "valuasi": {
+            "BVPS": "16422.64",
+            "PBV": "0.67x",
+            "RPS": "5782.48",
+            "CFPS": "192.84",
+            "PCF": "56.91x",
+            "EPS": "137.23",
+            "PER": "79.98x"
+          },
+          "solvabilitas": {
+            "DER": "7.63%",
+            "DAR": "7.09%"
+          },
+          "likuiditas": {
+            "CR": "821.97%",
+            "QR": "629.87%",
+            "KR": "413.34%"
+          }
+        }
+      }
+    ],
+    "laporan_tahunan": [
+      {
+
+      }
+    ]
+  }
+
+}

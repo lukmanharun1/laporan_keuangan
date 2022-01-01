@@ -1,7 +1,7 @@
 {
 	"informasi": {
-		"kode_saham": "KBLI",
-		"nama_saham": "PT KMI Wire and Cable Tbk",
+		"kode_emiten": "KBLI",
+		"nama_emiten": "PT KMI Wire and Cable Tbk",
 		"alamat": "Jl. Raya Bekasi KM 23,1 Cakung, Jakarta 13910",
 		"jumlah_saham_beredar": "4.007.235.107 miliar",
 		"harga_penawaran": "3.500",
@@ -521,7 +521,12 @@
 					"kas_dan_setara_kas": 275827092477
 						
 				},
-				"dividen": 0,
+				"dividen": {
+					"cum_date": "",
+					"ex_date": "",
+					"rec_date": "",
+					"payment_date": ""
+				},
 				"rasio": {
 					"profitabilitas": {
 						"ROA": "-1.97%",

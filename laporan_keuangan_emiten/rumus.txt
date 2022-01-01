@@ -22,7 +22,7 @@ CFPS (Cash Flow Per Share) (arus kas - dividen pilihan) / jumlah saham beredar
 P/CF (Price to Cash Flow) harga saham / CFPS
 EPS (Earning Per Share) laba bersih / jumlah saham beredar
 PE (Price To Earning) harga saham / EPS
-PS (Price To Sales) Harga Saham / Total Penjualan
+PS (Price To Sales) Harga Saham / (Total Penjualan / jumlah saham beredar) atau RPS
 Market Cap (Kapitalisasi Pasar) harga saham X jumlah saham beredar
 
 Solvency
@@ -32,12 +32,19 @@ DER (Dept To Equity Rasio) liabilitas (hutang yang berbunga) / ekuitas X 100%
 DAR (Dept To Aset Rasio) liabilitas / aset X 100%
 
 likuiditas
-CR (Current Rasio) = current assets (aktiva lancar) / current liabilities (utang lancar) X 100%
+CRR (Current Rasio) = current assets (aktiva lancar) / current liabilities (utang lancar) X 100%
 QR (Quick Rasio) = Aktiva lancar – persediaan / utang lancar  X 100%
-KR (Cash Rasio) = kas + setara kas / utang lancar X 100%
+CR (Cash Rasio) = kas + setara kas / utang lancar X 100%
 
 aktivitas
 TATO (Total Asset Turnover) pendapatan / Total Asset
 
 dividen
-DPR (dividen payout Rasio)= Dividend / Net Profit (Laba Bersih) * 100%
+
+DPR (dividen payout Rasio) = jumlah Dividend / Net Profit (Laba Bersih) * 100%
+
+Dividend per Share (DPS) = Jumlah Dividen yang dibayarkan / Jumlah Lembar Saham
+Jumlah dividen yang dibayarkan sendiri memiliki rumus :
+Laba Bersih x Dividen Payout Ratio
+
+Dividen Yield (DY) = Dividen per saham / Nilai pasar per saham
