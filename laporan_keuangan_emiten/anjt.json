@@ -1,0 +1,227 @@
+{
+  "informasi": {
+    "kode_emiten": "ANJT",
+     "nama_emiten": "Austindo Nusantara Jaya Tbk",
+    "jumlah_saham_beredar": "3.354.175.000 miliar"
+  },
+  "laporan_keuangan": {
+    "laporan_kuartal1": [],
+    "laporan_kuartal2": [],
+    "laporan_kuartal3": [
+      {
+        "harga_saham": 735,
+        "tanggal": "30 september 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 349584610304,
+          "aset_lancar": 1020695385136,
+          "aset": 9145424676720,
+          "liabilitas_berbunga": 2464982248352,
+          "persediaan": 262316978288,
+          "liabilitas_lancar": 521387608672,
+          "total_liabilitas": 3209510725280,
+          "ekuitas": 5935913951440
+        },
+        "labar_rugi": {
+          "pendapatan": 2728036687472,
+          "laba_kotor": 968069923552,
+          "laba_operasional": 586900331888,
+          "laba_bersih": 372084138224
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 882056992256,
+          "aktivitas_investasi": -419952838848,
+          "aktivitas_pendanaan": -339514799392
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "4.07%",
+            "ROE": "6.27%",
+            "GPM": "35.49%",
+            "OPM": "21.51%",
+            "NPM": "13.64%"
+          },
+          "valuasi": {
+            "BVPS": "1769.71",
+            "PBV": "0.42x",
+            "RPS": "813.33",
+            "PS": "0.90x",
+            "CFPS": "36.55",
+            "PCF": "20.11x",
+            "EPS": "110.93",
+            "PER": "6.63x"
+          },
+          "solvabilitas": {
+            "DER": "54.07% | 41.53%",
+            "DAR": "35.09%"
+          },
+          "likuiditas": {
+            "CRR": "195.77%",
+            "QR": "145.45%",
+            "CR": "67.05%"
+          }
+        }
+      }
+    ],
+    "laporan_tahunan": [
+      {
+        "harga_saham": 735,
+        "tanggal": "31 desember 2020",
+        "neraca": {
+          "kas_dan_setara_kas": 222801055024,
+          "aset_lancar": 932716325920,
+          "aset": 8893329248512,
+          "liabilitas_berbunga": 2747619552128,
+          "persediaan": 240261720368,
+          "liabilitas_lancar": 398367553096,
+          "total_liabilitas": 3371179672968,
+          "ekuitas": 5522149575544
+        },
+        "labar_rugi": {
+          "pendapatan": 2301333407456,
+          "laba_kotor": 562209917048,
+          "laba_operasional": 246587119352,
+          "laba_bersih": 32927202032
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 491600830048,
+          "aktivitas_investasi": -711305890736,
+          "aktivitas_pendanaan": -183277243872
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "0.37%",
+            "ROE": "0.60%",
+            "GPM": "24.43%",
+            "OPM": "10.71%",
+            "NPM": "1.43%"
+          },
+          "valuasi": {
+            "BVPS": "1646.35",
+            "PBV": "0.45x",
+            "RPS": "686.11",
+            "PS": "1.07x",
+            "CFPS": "-120.14",
+            "PCF": "-6.12x",
+            "EPS": "9.82",
+            "PER": "74.85x"
+          },
+          "solvabilitas": {
+            "DER": "61.05% | 49.76%",
+            "DAR": "37.91%"
+          },
+          "likuiditas": {
+            "CRR": "234.13%",
+            "QR": "173.82%",
+            "CR": "55.93%"
+          }
+        }
+      },
+      {
+        "harga_saham": 870,
+        "tanggal": "31 desember 2019",
+        "neraca": {
+          "kas_dan_setara_kas": 255938602360,
+          "aset_lancar": 925425226614,
+          "aset": 8652632697030,
+          "liabilitas_berbunga": 2623786428032,
+          "persediaan": 162472093196,
+          "liabilitas_lancar": 435331227548,
+          "total_liabilitas": 3281502595378,
+          "ekuitas": 5371130101652
+        },
+        "labar_rugi": {
+          "pendapatan": 1804899123804,
+          "laba_kotor": 329050494612,
+          "laba_operasional": 94225671498,
+          "laba_bersih": -58109432794
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 120364053376,
+          "aktivitas_investasi": -423156093598,
+          "aktivitas_pendanaan": -153954407838
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "-0.67%",
+            "ROE": "-1.08%",
+            "GPM": "18.23%",
+            "OPM": "5.22%",
+            "NPM": "-3.22%"
+          },
+          "valuasi": {
+            "BVPS": "1601.33",
+            "PBV": "0.54x",
+            "RPS": "538.11",
+            "PS": "1.62x",
+            "CFPS": "-136.17",
+            "PCF": "-6.39x",
+            "EPS": "-17.32",
+            "PER": "-50.23x"
+          },
+          "solvabilitas": {
+            "DER": "61.10% | 48.85%",
+            "DAR": "37.92%"
+          },
+          "likuiditas": {
+            "CRR": "212.58%",
+            "QR": "175.26%",
+            "CR": "58.79%"
+          }
+        }
+      },
+      {
+        "harga_saham": 1150,
+        "tanggal": "31 desember 2018",
+        "neraca": {
+          "kas_dan_setara_kas": 423339928884,
+          "aset_lancar": 1353578878269,
+          "aset": 8706274132905,
+          "liabilitas_berbunga": 2482276283442,
+          "persediaan": 145864636749,
+          "liabilitas_lancar": 811941415830,
+          "total_liabilitas": 3125227195143,
+          "ekuitas": 5581046937762
+        },
+        "labar_rugi": {
+          "pendapatan": 2196787394160,
+          "laba_kotor": 592494213123,
+          "laba_operasional": 72289571949,
+          "laba_bersih": -4495438197
+        },
+        "arus_kas": {
+          "aktivitas_operasi": -92465471376,
+          "aktivitas_investasi": -1019683133883,
+          "aktivitas_pendanaan": 863498583522
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "-0.05%",
+            "ROE": "-0.08%",
+            "GPM": "26.97%",
+            "OPM": "3.29%",
+            "NPM": "-0.20%"
+          },
+          "valuasi": {
+            "BVPS": "1663.91",
+            "PBV": "0.69x",
+            "RPS": "654.94",
+            "PS": "1.76x",
+            "CFPS": "-74.13",
+            "PCF": "-15.51x",
+            "EPS": "-1.34",
+            "PER": "-858.21x"
+          },
+          "solvabilitas": {
+            "DER": "56.00% | 44.48%",
+            "DAR": "35.90%"
+          },
+          "likuiditas": {
+            "CRR": "166.71%",
+            "QR": "148.74%",
+            "CR": "52.14%"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -19,6 +19,7 @@ let { ekuitas, total_liabilitas, aset_lancar, liabilitas_lancar, persediaan, lia
 
 ekuitas *= satuan;
 total_liabilitas *= satuan;
+aset_lancar *= satuan;
 liabilitas_lancar *= satuan;
 persediaan *= satuan;
 liabilitas_berbunga *= satuan;
@@ -38,7 +39,6 @@ aktivitas_operasi *= satuan * pembagian;
 aktivitas_investasi *= satuan * pembagian;
 aktivitas_pendanaan *= satuan * pembagian;
 
-const cashflow = aktivitas_operasi + aktivitas_investasi + aktivitas_pendanaan;
 
 const result = {
     harga_saham,
@@ -50,7 +50,8 @@ const result = {
         liabilitas_berbunga,
         persediaan,
         liabilitas_lancar,
-        total_liabilitas
+        total_liabilitas,
+        ekuitas
     },
     labar_rugi: {
         pendapatan,
@@ -94,7 +95,7 @@ const PBV = divide(harga_saham, BVPS) + 'x';
 const RPS = divide(pendapatan, saham_beredar);
 const PS = divide(harga_saham, RPS) + 'x';
 
-const CFPS = divide(cashflow, saham_beredar);
+const CFPS = divide(aktivitas_operasi, saham_beredar);
 const PCF = divide(harga_saham, CFPS) + 'x';
 
 const EPS = divide(laba_bersih, saham_beredar);

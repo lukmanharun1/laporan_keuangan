@@ -1,0 +1,67 @@
+{
+  "informasi": {
+    "kode_emiten": "INKP",
+    "nama_emiten": "PT INDAH KIAT PULP & PAPER Tbk",
+    "jumlah_saham_beredar": "5.470.982.941 miliar"
+  },
+  "laporan_keuangan": {
+    "laporan_kuartal1": [],
+    "laporan_kuartal2": [],
+    "laporan_kuartal3": [
+      {
+        "harga_saham": 8575,
+        "tanggal": "31 desember 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 13906438960000,
+          "aset_lancar": 62685985296000,
+          "aset": 123128125920000,
+          "liabilitas_berbunga": 19487860416000,
+          "persediaan": 6981416848000,
+          "liabilitas_lancar": 32526374816000,
+          "total_liabilitas": 57124581328000,
+          "ekuitas": 66003544592000
+        },
+        "labar_rugi": {
+          "pendapatan": 35817529888000,
+          "laba_kotor": 12250202576000,
+          "laba_operasional": 8415603424000,
+          "laba_bersih": 5584493376000
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 9665003296000,
+          "aktivitas_investasi": -4035502720000,
+          "aktivitas_pendanaan": 4191713424000
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "4.54%",
+            "ROE": "8.46%",
+            "GPM": "34.20%",
+            "OPM": "23.50%",
+            "NPM": "15.59%"
+          },
+          "valuasi": {
+            "BVPS": "12064.29",
+            "PBV": "0.71x",
+            "RPS": "6546.82",
+            "PS": "1.31x",
+            "CFPS": "1795.15",
+            "PCF": "4.78x",
+            "EPS": "1020.75",
+            "PER": "8.40x"
+          },
+          "solvabilitas": {
+            "DER": "86.55% | 29.53%",
+            "DAR": "46.39%"
+          },
+          "likuiditas": {
+            "CRR": "192.72%",
+            "QR": "171.26%",
+            "CR": "42.75%"
+          }
+        }
+      }
+    ],
+    "laporan_tahunan": []
+  }
+}

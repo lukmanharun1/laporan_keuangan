@@ -1,0 +1,42 @@
+
+
+aset
+kas dan setara kas
+total piutang
+Persediaan
+Aset Lancars
+Aset Tidak Lancar
+Liabilitas
+Liabilitas Jangka Pendek
+Liabilitas Jangka Panjang
+Liabilitas berbunga
+Equitas
+
+
+Pendapatan
+Laba Kotor
+Laba Operasi
+Laba sebelum pajak
+Laba Bersih
+
+Arus Kas Operasi
+Arus Kas Investasi
+Arus Kas Pendanaan
+
+
+GPM (Gross Profit Margin)
+OPM (Operating Profit Margin)
+NPM (Net Profit Margin)
+
+ROA (Return on Equitas)
+ROE (Return on Equity)
+
+DER
+DAR
+
+CRR
+QR
+CR
+
+DPS
+DPR

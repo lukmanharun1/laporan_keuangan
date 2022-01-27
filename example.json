@@ -5,13 +5,13 @@
    "pembagian": 0,
    "tanggal": "",
    "neraca": {
-      "ekuitas": 0,
-      "total_liabilitas": 0,
+      "kas_dan_setara_kas": 0,
+      "persediaan": 0,
       "aset_lancar": 0,
       "liabilitas_berbunga": 0,
       "liabilitas_lancar": 0,
-      "persediaan": 0,
-      "kas_dan_setara_kas": 0
+      "total_liabilitas": 0,
+      "ekuitas": 0
    },
    "laba_rugi": {
       "pendapatan": 0,

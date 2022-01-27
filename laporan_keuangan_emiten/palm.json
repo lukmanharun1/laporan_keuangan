@@ -1,0 +1,68 @@
+{
+  "informasi": {
+    "kode_emiten": "PALM",
+    "nama_emiten": "PT PROVIDENT AGRO Tbk",
+    "jumlah_saham_beredar": "7.119.540.356 miliar",
+    "satuan": "ribuan"
+  },
+  "laporan_keuangan": {
+    "laporan_kuartal1": [],
+    "laporan_kuartal2": [],
+    "laporan_kuartal3": [
+      {
+        "harga_saham": 498,
+        "tanggal": "30 september 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 86095157000,
+          "aset_lancar": 131074364000,
+          "aset": 4145602479000,
+          "liabilitas_berbunga": 0,
+          "persediaan": 12688242000,
+          "liabilitas_lancar": 66019578000,
+          "total_liabilitas": 144840967000,
+          "ekuitas": 4000761512000
+        },
+        "labar_rugi": {
+          "pendapatan": 260937571000,
+          "laba_kotor": 125587185000,
+          "laba_operasional": 94415351000,
+          "laba_bersih": 209024437000
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 104278549000,
+          "aktivitas_investasi": -16286902000,
+          "aktivitas_pendanaan": -54740000000
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "5.04%",
+            "ROE": "5.22%",
+            "GPM": "48.13%",
+            "OPM": "36.18%",
+            "NPM": "80.11%"
+          },
+          "valuasi": {
+            "BVPS": "561.94",
+            "PBV": "0.89x",
+            "RPS": "36.65",
+            "PS": "13.59x",
+            "CFPS": "4.67",
+            "PCF": "106.64x",
+            "EPS": "29.36",
+            "PER": "16.96x"
+          },
+          "solvabilitas": {
+            "DER": "3.62% | 0.00%",
+            "DAR": "3.49%"
+          },
+          "likuiditas": {
+            "CRR": "198.54%",
+            "QR": "179.32%",
+            "CR": "130.41%"
+          }
+        }
+      }
+    ],
+    "laporan_tahunan": []
+  }
+}

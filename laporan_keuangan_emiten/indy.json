@@ -1,0 +1,67 @@
+{
+  "informasi": {
+    "kode_emiten": "INDY",
+		"nama_emiten": "PT. INDIKA ENERGY Tbk",
+    "jumlah_saham_beredar": "5.210.192.000 miliar",
+    "satuan": "USD"
+  },
+  "laporan_keuangan": {
+    "laporan_kuartal1": [],
+    "laporan_kuartal2": [],
+    "laporan_kuartal3": [
+      {
+        "harga_saham": 1900,
+        "tanggal": "30 september 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 10179113154704,
+          "aset_lancar": 25379192549776,
+          "aset": 50151175547280,
+          "liabilitas_berbunga": 17548902989584,
+          "persediaan": 429472961824,
+          "liabilitas_lancar": 14254598085120,
+          "total_liabilitas": 40433371004432
+        },
+        "labar_rugi": {
+          "pendapatan": 30799324960800,
+          "laba_kotor": 8033424685184,
+          "laba_operasional": 6397226906848,
+          "laba_bersih": -85046476688
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 4516753636400,
+          "aktivitas_investasi": -1251894613952,
+          "aktivitas_pendanaan": -1851153980112
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "-0.17%",
+            "ROE": "-0.88%",
+            "GPM": "26.08%",
+            "OPM": "20.77%",
+            "NPM": "-0.28%"
+          },
+          "valuasi": {
+            "BVPS": "1865.15",
+            "PBV": "1.02x",
+            "RPS": "5911.36",
+            "PS": "0.32x",
+            "CFPS": "271.33",
+            "PCF": "7.00x",
+            "EPS": "-16.32",
+            "PER": "-116.42x"
+          },
+          "solvabilitas": {
+            "DER": "416.08% | 180.59%",
+            "DAR": "80.62%"
+          },
+          "likuiditas": {
+            "CRR": "178.04%",
+            "QR": "175.03%",
+            "CR": "71.41%"
+          }
+        }
+      }
+    ],
+    "laporan_tahunan": []
+  }
+}

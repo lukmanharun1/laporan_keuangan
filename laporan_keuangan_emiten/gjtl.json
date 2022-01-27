@@ -1,0 +1,121 @@
+{
+  "informasi": {
+    "kode_emiten": "GJTL",
+		"nama_emiten": " PT. GAJAH TUNGGAL Tbk",
+    "jumlah_saham_beredar": "3.484.800.000 miliar"
+  },
+  "laporan_keuangan": {
+    "laporan_kuartal1": [],
+    "laporan_kuartal2": [],
+    "laporan_kuartal3": [
+      {
+        "harga_saham": 715,
+        "tanggal": "31 september 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 816029000000,
+          "aset_lancar": 9286986000000,
+          "aset": 19275171000000,
+          "liabilitas_berbunga": 5748067000000,
+          "persediaan": 3009093000000,
+          "liabilitas_lancar": 5615414000000,
+          "total_liabilitas": 12268724000000,
+          "ekuitas": 7006447000000
+        },
+        "labar_rugi": {
+          "pendapatan": 11199340000000,
+          "laba_kotor": 1656524000000,
+          "laba_operasional": 595010000000,
+          "laba_bersih": 19340000000
+        },
+        "arus_kas": {
+          "aktivitas_operasi": -715324000000,
+          "aktivitas_investasi": -239791000000,
+          "aktivitas_pendanaan": 673125000000
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "0.10%",
+            "ROE": "0.28%",
+            "GPM": "14.79%",
+            "OPM": "5.31%",
+            "NPM": "0.17%"
+          },
+          "valuasi": {
+            "BVPS": "2010.57",
+            "PBV": "0.36x",
+            "RPS": "3213.77",
+            "PS": "0.22x",
+            "CFPS": "-80.92",
+            "PCF": "-8.84x",
+            "EPS": "5.55",
+            "PER": "128.83x"
+          },
+          "solvabilitas": {
+            "DER": "175.11% | 82.04%",
+            "DAR": "63.65%"
+          },
+          "likuiditas": {
+            "CRR": "165.38%",
+            "QR": "111.80%",
+            "CR": "14.53%"
+          }
+        }
+      }
+    ],
+    "laporan_tahunan": [
+      {
+        "harga_saham": 655,
+        "tanggal": "31 desember 2020",
+        "neraca": {
+          "kas_dan_setara_kas": 1045237000000,
+          "aset_lancar": 7624956000000,
+          "aset": 17778467000000,
+          "liabilitas_berbunga": 4526788000000,
+          "persediaan": 1879898000000,
+          "liabilitas_lancar": 4749681000000,
+          "total_liabilitas": 10926513000000,
+          "ekuitas": 6851954000000
+        },
+        "labar_rugi": {
+          "pendapatan": 13434592000000,
+          "laba_kotor": 2673993000000,
+          "laba_operasional": 1337244000000,
+          "laba_bersih": 320376000000
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 2598595000000,
+          "aktivitas_investasi": -394608000000,
+          "aktivitas_pendanaan": -1779015000000
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "1.80%",
+            "ROE": "4.68%",
+            "GPM": "19.90%",
+            "OPM": "9.95%",
+            "NPM": "2.38%"
+          },
+          "valuasi": {
+            "BVPS": "1966.24",
+            "PBV": "0.33x",
+            "RPS": "3855.20",
+            "PS": "0.17x",
+            "CFPS": "121.95",
+            "PCF": "5.37x",
+            "EPS": "91.94",
+            "PER": "7.12x"
+          },
+          "solvabilitas": {
+            "DER": "159.47% | 66.07%",
+            "DAR": "61.46%"
+          },
+          "likuiditas": {
+            "CRR": "160.54%",
+            "QR": "120.96%",
+            "CR": "22.01%"
+          }
+        }
+      }
+    ]
+  }
+}
