@@ -1,17 +1,14 @@
-
-
-aset
+total aset
 kas dan setara kas
 total piutang
 Persediaan
-Aset Lancars
+Aset Lancar
 Aset Tidak Lancar
-Liabilitas
+Total Liabilitas
 Liabilitas Jangka Pendek
 Liabilitas Jangka Panjang
-Liabilitas berbunga
+Total Liabilitas berbunga
 Equitas
-
 
 Pendapatan
 Laba Kotor
@@ -23,6 +20,11 @@ Arus Kas Operasi
 Arus Kas Investasi
 Arus Kas Pendanaan
 
+Cash Dividen
+Cumulative Date
+Ex Date
+Recording Date
+Payment Date
 
 GPM (Gross Profit Margin)
 OPM (Operating Profit Margin)
@@ -32,11 +34,63 @@ ROA (Return on Equitas)
 ROE (Return on Equity)
 
 DER
-DAR
 
 CRR
 QR
 CR
+ICR
 
 DPS
 DPR
+
+permasalahan ada di jika perusahaan stock split atau reverse stock
+
+database: laporan_emiten
+table: neraca_keuangan, laba_rugi, arus_kas, emiten, dividen, laporan_keuangan
+
+kolom neraca_keuangan :
+    aset
+    kas_dan_setara_kas
+    piutang
+    persediaan
+    aset_lancar
+    aset_tidak_lancar
+    liabilitas
+    liabilitas_jangka_pendek
+    liabilitas_jangka_panjang
+    liabilitas_berbunga
+    equitas
+
+kolom laba_rugi :
+    pendapatan
+    laba_kotor
+    laba_operasi
+    laba_sebelum_pajak
+    laba_bersih
+
+arus_kas :
+  operasi
+  investasi
+  pendanaan
+
+emiten :
+  kode_emiten
+  nama_emiten
+  jumlah_saham
+
+dividen :
+  cash_dividen
+  cumulative_date
+  ex_date
+  recording_date
+  payment_date
+
+
+laporan_keuangan :
+  jenis_laporan
+  tanggal
+  harga_saham
+  nama_file
+
+
+catatan: ambil laporan sampai laporan kuartal 1 2012 jika ada

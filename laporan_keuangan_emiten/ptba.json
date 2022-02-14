@@ -1,0 +1,121 @@
+{
+  "informasi": {
+    "kode_emiten": "PTBA",
+    "nama_emiten": "PT BUKIT ASAM Tbk",
+    "jumlah_saham_beredar": "11.520.659.250 miliar"
+  },
+  "laporan_keuangan": {
+    "laporan_kuartal1": [
+      {
+        "harga_saham": 2620,
+        "tanggal": "31 maret 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 4433451000000,
+          "aset_lancar": 8151865000000,
+          "aset": 24340385000000,
+          "liabilitas_berbunga": 8560000000,
+          "persediaan": 559788000000,
+          "liabilitas_lancar": 3720235000000,
+          "total_liabilitas": 6960390000000,
+          "ekuitas": 17379995000000
+        },
+        "labar_rugi": {
+          "pendapatan": 3994925000000,
+          "laba_kotor": 1017649000000,
+          "laba_operasional": 514539000000,
+          "laba_bersih": 500518000000
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 475646000000,
+          "aktivitas_investasi": -167623000000,
+          "aktivitas_pendanaan": -226486000000
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "2.06%",
+            "ROE": "2.88%",
+            "GPM": "25.47%",
+            "OPM": "12.88%",
+            "NPM": "12.53%"
+          },
+          "valuasi": {
+            "BVPS": "1508.59",
+            "PBV": "1.74x",
+            "RPS": "346.76",
+            "PS": "7.56x",
+            "CFPS": "41.29",
+            "PCF": "63.45x",
+            "EPS": "43.45",
+            "PER": "60.30x"
+          },
+          "solvabilitas": {
+            "DER": "40.05% | 0.05%",
+            "DAR": "28.60%"
+          },
+          "likuiditas": {
+            "CRR": "219.12%",
+            "QR": "204.08%",
+            "CR": "119.17%"
+          }
+        }
+      }
+    ],
+    "laporan_kuartal2": [],
+    "laporan_kuartal3": [
+      {
+        "harga_saham": 2760,
+        "tanggal": "31 september 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 4818597000000,
+          "aset_lancar": 14883833000000,
+          "aset": 31949228000000,
+          "liabilitas_berbunga": 6840000000,
+          "persediaan": 1145195000000,
+          "liabilitas_lancar": 6373969000000,
+          "total_liabilitas": 11167411000000,
+          "ekuitas": 20781817000000
+        },
+        "labar_rugi": {
+          "pendapatan": 19381819000000,
+          "laba_kotor": 8250906000000,
+          "laba_operasional": 6316186000000,
+          "laba_bersih": 4768009000000
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 6142946000000,
+          "aktivitas_investasi": -5064641000000,
+          "aktivitas_pendanaan": -600357000000
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "14.92%",
+            "ROE": "22.94%",
+            "GPM": "42.57%",
+            "OPM": "32.59%",
+            "NPM": "24.60%"
+          },
+          "valuasi": {
+            "BVPS": "1803.87",
+            "PBV": "1.53x",
+            "RPS": "1682.35",
+            "PS": "1.64x",
+            "CFPS": "533.21",
+            "PCF": "5.18x",
+            "EPS": "413.87",
+            "PER": "6.67x"
+          },
+          "solvabilitas": {
+            "DER": "53.74% | 0.03%",
+            "DAR": "34.95%"
+          },
+          "likuiditas": {
+            "CRR": "233.51%",
+            "QR": "215.54%",
+            "CR": "75.60%"
+          }
+        }
+      }
+    ],
+    "laporan_tahunan": []
+  }
+}

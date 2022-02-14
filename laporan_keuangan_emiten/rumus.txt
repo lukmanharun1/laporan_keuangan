@@ -48,3 +48,7 @@ Jumlah dividen yang dibayarkan sendiri memiliki rumus :
 Laba Bersih x Dividen Payout Ratio
 
 Dividen Yield (DY) = Dividen per saham / Nilai pasar per saham
+
+Rumus Working Capital (Net Working Capital) = Total Aset Lancar – Total Utang Lancar
+
+Margin of Safety = selisih value dan price per total value dikali 100%
