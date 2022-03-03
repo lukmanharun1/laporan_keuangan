@@ -14,7 +14,7 @@ module.exports = {
       },
       nama_emiten: {
         type: Sequelize.STRING(255),
-        primaryKey: false
+        allowNull: false
       },
       ...constantColumn(Sequelize)
     })

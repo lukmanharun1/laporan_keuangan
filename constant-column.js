@@ -2,7 +2,8 @@ module.exports = (Sequelize) => {
   return {
     id: {
       type: Sequelize.UUID,
-      primaryKey: true
+      primaryKey: true,
+      allowNull: false
     },
     created_at: {
       type: Sequelize.DATE,
