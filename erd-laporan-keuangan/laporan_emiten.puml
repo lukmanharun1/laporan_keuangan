@@ -1,4 +1,5 @@
 @startuml laporan_emiten
+!theme blueprint
   entity neraca_keuangan {
     ** id: <<PK>> <<UUID>> **
     ** aset: bigint **
