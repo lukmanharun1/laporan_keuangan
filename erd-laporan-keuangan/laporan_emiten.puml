@@ -1,0 +1,73 @@
+@startuml laporan_emiten
+  entity neraca_keuangan {
+    ** id: <<PK>> <<UUID>> **
+    ** aset: bigint **
+    ** kas_dan_setara_kas: bigint **
+    ** piutang: bigint **
+    ** persediaan: bigint **
+    ** aset_lancar: bigint **
+    ** aset_tidak_lancar: bigint **
+    ** liabilitas: bigint **
+    ** liabilitas_jangka_pendek: bigint **
+    ** liabilitas_jangka_panjang: bigint **
+    ** liabilitas_berbunga: bigint **
+    ** equitas: bigint **
+    ** created_at: date **
+    ** updated_at: date **
+    ** deleted_at: date **
+  }
+
+  entity laba_rugi {
+    ** id: <<PK>> <<UUID>> **
+    ** pendapatan: bigint **
+    ** laba_kotor: bigint **
+    ** laba_operasi: bigint **
+    ** laba_sebelum_pajak: bigint **
+    ** laba_bersih: bigint **
+    ** created_at: date **
+    ** updated_at: date **
+    ** deleted_at: date **
+  }
+
+  entity arus_kas {
+    ** id: <<PK>> <<UUID>> **
+    ** operasi: bigint **
+    ** investasi: bigint **
+    ** pendanaan: bigint **
+    ** created_at: date **
+    ** updated_at: date **
+    ** deleted_at: date **
+  }
+
+  entity emiten {
+    ** id: <<PK>> <<UUID>> **
+    ** kode_emiten: varchar(4) **
+    ** nama_emiten: varchar(255) **
+    ** jumlah_saham: bigint **
+    ** created_at: date **
+    ** updated_at: date **
+    ** deleted_at: date **
+  }
+
+  entity dividen {
+    ** id: <<PK>> <<UUID>> **
+    ** cash_dividen: integer(6) **
+    ** cumulative_date: date **
+    ** ex_date: date **
+    ** recording_date: date **
+    ** payment_date: date **
+    ** created_at: date **
+    ** updated_at: date **
+    ** deleted_at: date **
+  }
+  entity laporan_keuangan {
+    ** id: <<PK>> <<UUID>> **
+    ** jenis_laporan: enum('Q1', 'Q2', 'Q3', 'TAHUNAN') **
+    ** tanggal: date **
+    ** harga_saham: integer(6) **
+    ** nama_file: varchar(255) **
+    ** created_at: date **
+    ** updated_at: date **
+    ** deleted_at: date **
+  }
+@enduml
