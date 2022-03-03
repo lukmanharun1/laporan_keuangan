@@ -1,0 +1,120 @@
+{
+  "kode_emiten": "LSIP",
+  "nama_emiten": "PT Perusahaan Perkebunan London Sumatra Indonesia Tbk",
+  "jumlah_saham_beredar": "6.822.863.965 miliar",
+
+  "laporan_keuangan": {
+    "laporan_kuartal1": [],
+    "laporan_kuartal2": [],
+    "laporan_kuartal3": [
+      {
+        "harga_saham": 1220,
+        "tanggal": "31 september 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 2848072000000,
+          "aset_lancar": 3846984000000,
+          "aset": 11758629000000,
+          "liabilitas_berbunga": 0,
+          "persediaan": 389684000000,
+          "liabilitas_lancar": 777557000000,
+          "total_liabilitas": 1851065000000,
+          "ekuitas": 9907564000000
+        },
+        "labar_rugi": {
+          "pendapatan": 3339123000000,
+          "laba_kotor": 1161651000000,
+          "laba_operasional": 942780000000,
+          "laba_bersih": 752298000000
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 1245165000000,
+          "aktivitas_investasi": -223773000000,
+          "aktivitas_pendanaan": -139723000000
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "6.40%",
+            "ROE": "7.59%",
+            "GPM": "34.79%",
+            "OPM": "28.23%",
+            "NPM": "22.53%"
+          },
+          "valuasi": {
+            "BVPS": "1452.11",
+            "PBV": "0.84x",
+            "RPS": "489.40",
+            "PS": "2.49x",
+            "CFPS": "182.50",
+            "PCF": "6.68x",
+            "EPS": "110.26",
+            "PER": "11.06x"
+          },
+          "solvabilitas": {
+            "DER": "18.68% | 0.00%",
+            "DAR": "15.74%"
+          },
+          "likuiditas": {
+            "CRR": "494.75%",
+            "QR": "444.64%",
+            "CR": "366.28%"
+          }
+        }
+      }
+    ],
+    "laporan_tahunan": [
+      {
+        "harga_saham": 1185,
+        "tanggal": "31 desember 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 3367867000000,
+          "aset_lancar": 4307772000000,
+          "aset": 11849874000000,
+          "liabilitas_berbunga": 0,
+          "persediaan": 367649000000,
+          "liabilitas_lancar": 696556000000,
+          "total_liabilitas": 1678676000000,
+          "ekuitas": 10171198000000
+        },
+        "labar_rugi": {
+          "pendapatan": 4525473000000,
+          "laba_kotor": 1808374000000,
+          "laba_operasional": 1191297000000,
+          "laba_bersih": 991238000000
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 1878851000000,
+          "aktivitas_investasi": -334804000000,
+          "aktivitas_pendanaan": -140848000000
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "8.36%",
+            "ROE": "9.75%",
+            "GPM": "39.96%",
+            "OPM": "26.32%",
+            "NPM": "21.90%"
+          },
+          "valuasi": {
+            "BVPS": "1490.75",
+            "PBV": "0.79x",
+            "RPS": "663.28",
+            "PS": "1.79x",
+            "CFPS": "275.38",
+            "PCF": "4.30x",
+            "EPS": "145.28",
+            "PER": "8.16x"
+          },
+          "solvabilitas": {
+            "DER": "16.50% | 0.00%",
+            "DAR": "14.17%"
+          },
+          "likuiditas": {
+            "CRR": "618.44%",
+            "QR": "565.66%",
+            "CR": "483.50%"
+          }
+        }
+      }
+    ]
+  }
+}

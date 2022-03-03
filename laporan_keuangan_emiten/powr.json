@@ -1,0 +1,122 @@
+{
+  "informasi": {
+    "kode_emiten": "POWR",
+    "nama_emiten": "PT CIKARANG LISTRINDO TBK",
+    "jumlah_saham_beredar": "16.087.156.000 miliar" 
+  },
+
+  "laporan_keuangan": {
+    "laporan_kuartal1": [],
+    "laporan_kuartal2": [],
+    "laporan_kuartal3": [
+      {
+        "harga_saham": 605,
+        "tanggal": "31 september 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 4663965641169,
+          "aset_lancar": 7023456781026,
+          "aset": 19536838193991,
+          "liabilitas_berbunga": 7758405582651,
+          "persediaan": 688896686061,
+          "liabilitas_lancar": 812522070975,
+          "total_liabilitas": 9580544158389,
+          "ekuitas": 9956294035602
+        },
+        "labar_rugi": {
+          "pendapatan": 5489006136846,
+          "laba_kotor": 2245126261140,
+          "laba_operasional": 1524397959393,
+          "laba_bersih": 946247310855
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 1465887737439,
+          "aktivitas_investasi": -75904872852,
+          "aktivitas_pendanaan": -605870847327
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "4.84%",
+            "ROE": "9.50%",
+            "GPM": "40.90%",
+            "OPM": "27.77%",
+            "NPM": "17.24%"
+          },
+          "valuasi": {
+            "BVPS": "618.90",
+            "PBV": "0.98x",
+            "RPS": "341.20",
+            "PS": "1.77x",
+            "CFPS": "91.12",
+            "PCF": "6.64x",
+            "EPS": "58.82",
+            "PER": "10.29x"
+          },
+          "solvabilitas": {
+            "DER": "96.23% | 77.92%",
+            "DAR": "49.04%"
+          },
+          "likuiditas": {
+            "CRR": "864.40%",
+            "QR": "779.62%",
+            "CR": "574.01%"
+          }
+        }
+      }
+    ],
+    "laporan_tahunan": [
+      {
+        "harga_saham": 710,
+        "tanggal": "31 desember 2020",
+        "neraca": {
+          "kas_dan_setara_kas": 3843317056670,
+          "aset_lancar": 6169247565845,
+          "aset": 18941175157905,
+          "liabilitas_berbunga": 7634719208025,
+          "persediaan": 602182649250,
+          "liabilitas_lancar": 796905093985,
+          "total_liabilitas": 9482807777170,
+          "ekuitas": 9458367380735
+        },
+        "labar_rugi": {
+          "pendapatan": 6571487086710,
+          "laba_kotor": 2679312863045,
+          "laba_operasional": 1802438131585,
+          "laba_bersih": 1054381008135
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 2395632228535,
+          "aktivitas_investasi": -1022943558455,
+          "aktivitas_pendanaan": -932152353405
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "5.57%",
+            "ROE": "11.15%",
+            "GPM": "40.77%",
+            "OPM": "27.43%",
+            "NPM": "16.04%"
+          },
+          "valuasi": {
+            "BVPS": "587.95",
+            "PBV": "1.21x",
+            "RPS": "408.49",
+            "PS": "1.74x",
+            "CFPS": "148.92",
+            "PCF": "4.77x",
+            "EPS": "65.54",
+            "PER": "10.83x"
+          },
+          "solvabilitas": {
+            "DER": "100.26% | 80.72%",
+            "DAR": "50.06%"
+          },
+          "likuiditas": {
+            "CRR": "774.15%",
+            "QR": "698.59%",
+            "CR": "482.28%"
+          }
+        }
+      }
+    ]
+  }
+}

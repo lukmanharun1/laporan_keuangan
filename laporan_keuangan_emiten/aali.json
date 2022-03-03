@@ -1,0 +1,67 @@
+ {
+ "informasi": {
+    "kode_emiten": "AALI",
+    "nama_emiten": "PT ASTRA AGRO LESTARI Tbk",
+    "jumlah_saham_beredar": "1.924.688.333 miliar"
+  },
+  "laporan_keuangan": {
+    "laporan_kuartal1": [],
+    "laporan_kuartal2": [],
+    "laporan_kuartal3": [],
+    "laporan_tahunan": [
+      {
+        "harga_saham": 9775,
+        "tanggal": "31 desember 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 3896022000000,
+          "aset_lancar": 9414208000000,
+          "aset": 29847925000000,
+          "liabilitas_berbunga": 2131944000000,
+          "persediaan": 3023478000000,
+          "liabilitas_lancar": 5960396000000,
+          "total_liabilitas": 9228733000000,
+          "ekuitas": 20619192000000
+        },
+        "labar_rugi": {
+          "pendapatan": 24322048000000,
+          "laba_kotor": 4830014000000,
+          "laba_operasional": 3035159000000,
+          "laba_bersih": 1971365000000
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 4895119000000,
+          "aktivitas_investasi": -1186688000000,
+          "aktivitas_pendanaan": -891402000000
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "6.60%",
+            "ROE": "9.56%",
+            "GPM": "19.86%",
+            "OPM": "12.48%",
+            "NPM": "8.11%"
+          },
+          "valuasi": {
+            "BVPS": "10713.00",
+            "PBV": "0.91x",
+            "RPS": "12636.88",
+            "PS": "0.77x",
+            "CFPS": "2543.33",
+            "PCF": "3.84x",
+            "EPS": "1024.25",
+            "PER": "9.54x"
+          },
+          "solvabilitas": {
+            "DER": "44.76% | 10.34%",
+            "DAR": "30.92%"
+          },
+          "likuiditas": {
+            "CRR": "157.95%",
+            "QR": "107.22%",
+            "CR": "65.37%"
+          }
+        }
+      }
+    ]
+  }
+}

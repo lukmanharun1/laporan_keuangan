@@ -1,0 +1,121 @@
+{
+  "informasi": {
+    "kode_emiten": "CEKA",
+    "nama_emiten": "PT WILMAR CAHAYA INDONESIA Tbk.",
+    "jumlah_saham_beredar": "595.000.000 juta"
+  },
+  "laporan_keuangan": {
+    "laporan_kuartal1": [],
+    "laporan_kuartal2": [],
+    "laporan_kuartal3": [
+      {
+        "harga_saham": 1795,
+        "tanggal": "31 september 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 321390104560,
+          "aset_lancar": 1247706890571,
+          "aset": 1581329942561,
+          "liabilitas_berbunga": 0,
+          "persediaan": 308959799601,
+          "liabilitas_lancar": 220105586076,
+          "total_liabilitas": 250546140187,
+          "ekuitas": 1330783802374
+        },
+        "labar_rugi": {
+          "pendapatan": 3688124983656,
+          "laba_kotor": 252864278467,
+          "laba_operasional": 157232726362,
+          "laba_bersih": 129568807510
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 17006046051,
+          "aktivitas_investasi": -43990600331,
+          "aktivitas_pendanaan": -59419426896
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "8.19%",
+            "ROE": "9.74%",
+            "GPM": "6.86%",
+            "OPM": "4.26%",
+            "NPM": "3.51%"
+          },
+          "valuasi": {
+            "BVPS": "2236.61",
+            "PBV": "0.80x",
+            "RPS": "6198.53",
+            "PS": "0.29x",
+            "CFPS": "28.58",
+            "PCF": "62.81x",
+            "EPS": "217.76",
+            "PER": "8.24x"
+          },
+          "solvabilitas": {
+            "DER": "18.83% | 0.00%",
+            "DAR": "15.84%"
+          },
+          "likuiditas": {
+            "CRR": "566.87%",
+            "QR": "426.50%",
+            "CR": "146.02%"
+          }
+        }
+      }
+    ],
+    "laporan_tahunan": [
+      {
+        "harga_saham": 1785,
+        "tanggal": "31 desember 2020",
+        "neraca": {
+          "kas_dan_setara_kas": 441806177838,
+          "aset_lancar": 1266586465994,
+          "aset": 1566673828068,
+          "liabilitas_berbunga": 0,
+          "persediaan": 326172666133,
+          "liabilitas_lancar": 271641005590,
+          "total_liabilitas": 305958833204,
+          "ekuitas": 1260714994864
+        },
+        "labar_rugi": {
+          "pendapatan": 3634297273749,
+          "laba_kotor": 335139934770,
+          "laba_operasional": 207543083141,
+          "laba_bersih": 181812593992
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 171295450196,
+          "aktivitas_investasi": -36436211255,
+          "aktivitas_pendanaan": -59431829211
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "11.61%",
+            "ROE": "14.42%",
+            "GPM": "9.22%",
+            "OPM": "5.71%",
+            "NPM": "5.00%"
+          },
+          "valuasi": {
+            "BVPS": "2118.85",
+            "PBV": "0.84x",
+            "RPS": "6108.06",
+            "PS": "0.29x",
+            "CFPS": "287.89",
+            "PCF": "6.20x",
+            "EPS": "305.57",
+            "PER": "5.84x"
+          },
+          "solvabilitas": {
+            "DER": "24.27% | 0.00%",
+            "DAR": "19.53%"
+          },
+          "likuiditas": {
+            "CRR": "466.27%",
+            "QR": "346.20%",
+            "CR": "162.64%"
+          }
+        }
+      }
+    ]
+  }
+}

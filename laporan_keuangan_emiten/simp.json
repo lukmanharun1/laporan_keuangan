@@ -1,0 +1,121 @@
+{
+  "informasi": {
+    "kode_emiten": "SIMP",
+    "nama_emiten": "PT Salim Ivomas Pratama Tbk",
+    "jumlah_saham_beredar": "15.816.310.000 miliar" 
+  },
+  "laporan_keuangan": {
+    "laporan_kuartal1": [],
+    "laporan_kuartal2": [],
+    "laporan_kuartal3": [
+      {
+        "harga_saham": 458,
+        "tanggal": "31 september 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 3532462000000,
+          "aset_lancar": 9656187000000,
+          "aset": 32591705000000,
+          "liabilitas_berbunga": 9683861000000,
+          "persediaan": 2879226000000,
+          "liabilitas_lancar": 9709888000000,
+          "total_liabilitas": 17381312000000,
+          "ekuitas": 15210393000000
+        },
+        "labar_rugi": {
+          "pendapatan": 14125377000000,
+          "laba_kotor": 3447030000000,
+          "laba_operasional": 1964195000000,
+          "laba_bersih": 563228000000
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 2495766000000,
+          "aktivitas_investasi": -892816000000,
+          "aktivitas_pendanaan": -508130000000
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "1.73%",
+            "ROE": "3.70%",
+            "GPM": "24.40%",
+            "OPM": "13.91%",
+            "NPM": "3.99%"
+          },
+          "valuasi": {
+            "BVPS": "961.69",
+            "PBV": "0.48x",
+            "RPS": "893.09",
+            "PS": "0.51x",
+            "CFPS": "157.80",
+            "PCF": "2.90x",
+            "EPS": "35.61",
+            "PER": "12.86x"
+          },
+          "solvabilitas": {
+            "DER": "114.27% | 63.67%",
+            "DAR": "53.33%"
+          },
+          "likuiditas": {
+            "CRR": "99.45%",
+            "QR": "69.79%",
+            "CR": "36.38%"
+          }
+        }
+      }
+    ],
+    "laporan_tahunan": [
+      {
+        "harga_saham": 456,
+        "tanggal": "31 desember 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 3726293000000,
+          "aset_lancar": 9527236000000,
+          "aset": 31860947000000,
+          "liabilitas_berbunga": 9692719000000,
+          "persediaan": 2655342000000,
+          "liabilitas_lancar": 9159909000000,
+          "total_liabilitas": 16193066000000,
+          "ekuitas": 15667881000000
+        },
+        "labar_rugi": {
+          "pendapatan": 19658529000000,
+          "laba_kotor": 5150931000000,
+          "laba_operasional": 2913195000000,
+          "laba_bersih": 984414000000
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 3706169000000,
+          "aktivitas_investasi": -1376346000000,
+          "aktivitas_pendanaan": -1039809000000
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "3.09%",
+            "ROE": "6.28%",
+            "GPM": "26.20%",
+            "OPM": "14.82%",
+            "NPM": "5.01%"
+          },
+          "valuasi": {
+            "BVPS": "990.62",
+            "PBV": "0.46x",
+            "RPS": "1242.93",
+            "PS": "0.37x",
+            "CFPS": "234.33",
+            "PCF": "1.95x",
+            "EPS": "62.24",
+            "PER": "7.33x"
+          },
+          "solvabilitas": {
+            "DER": "103.35% | 61.86%",
+            "DAR": "50.82%"
+          },
+          "likuiditas": {
+            "CRR": "104.01%",
+            "QR": "75.02%",
+            "CR": "40.68%"
+          }
+        }
+      }
+    ]
+  }
+}

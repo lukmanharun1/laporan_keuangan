@@ -1,0 +1,67 @@
+{
+  "informasi": {
+    "kode_emiten": "SGRO",
+    "nama_emiten": "Sampoerna Agro Tbk",
+    "jumlah_saham_beredar": "1.890.000.000 miliar"
+  },
+  "laporan_keuangan": {
+    "laporan_kuartal1": [],
+    "laporan_kuartal2": [],
+    "laporan_kuartal3": [
+      {
+        "harga_saham": 1905,
+        "tanggal": "31 september 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 572917000000,
+          "aset_lancar": 1514200000000,
+          "aset": 9616765000000,
+          "liabilitas_berbunga": 1601855000000,
+          "persediaan": 420452000000,
+          "liabilitas_lancar": 1512656000000,
+          "total_liabilitas": 5473764000000,
+          "ekuitas": 4143001000000
+        },
+        "labar_rugi": {
+          "pendapatan": 3905745000000,
+          "laba_kotor": 1191434000000,
+          "laba_operasional": 933856000000,
+          "laba_bersih": 509666000000
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 1375065000000,
+          "aktivitas_investasi": -163019000000,
+          "aktivitas_pendanaan": -888788000000
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "5.30%",
+            "ROE": "12.30%",
+            "GPM": "30.50%",
+            "OPM": "23.91%",
+            "NPM": "13.05%"
+          },
+          "valuasi": {
+            "BVPS": "2192.06",
+            "PBV": "0.87x",
+            "RPS": "2066.53",
+            "PS": "0.92x",
+            "CFPS": "727.55",
+            "PCF": "2.62x",
+            "EPS": "269.66",
+            "PER": "7.06x"
+          },
+          "solvabilitas": {
+            "DER": "132.12% | 38.66%",
+            "DAR": "56.92%"
+          },
+          "likuiditas": {
+            "CRR": "100.10%",
+            "QR": "72.31%",
+            "CR": "37.87%"
+          }
+        }
+      }
+    ],
+    "laporan_tahunan": []
+  }
+}
