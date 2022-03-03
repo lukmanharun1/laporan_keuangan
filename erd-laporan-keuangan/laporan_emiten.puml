@@ -9,11 +9,10 @@
     ** persediaan: bigint **
     ** aset_lancar: bigint **
     ** aset_tidak_lancar: bigint **
-    ** liabilitas: bigint **
     ** liabilitas_jangka_pendek: bigint **
     ** liabilitas_jangka_panjang: bigint **
     ** liabilitas_berbunga: bigint **
-    ** equitas: bigint **
+    ** ekuitas: bigint **
     <color:yellow> created_at: date</color>
     <color:yellow> updated_at: date</color>
     <color:yellow> deleted_at: date</color>
@@ -23,7 +22,7 @@
     <color:yellow> id: <<PK>> <<UUID>></color>
     ** pendapatan: bigint **
     ** laba_kotor: bigint **
-    ** laba_operasi: bigint **
+    ** laba_usaha: bigint **
     ** laba_sebelum_pajak: bigint **
     ** laba_bersih: bigint **
     <color:yellow> created_at: date</color>
@@ -60,7 +59,7 @@
   }
   entity laporan_keuangan {
     <color:yellow> id: <<PK>> <<UUID>></color>
-    ** emmiten_id: <<FK>> <<UUID>> **
+    ** emiten_id: <<FK>> <<UUID>> **
     ** jenis_laporan: enum('Q1', 'Q2', 'Q3', 'TAHUNAN') **
     ** tanggal: date **
     ** harga_saham: integer(6) **
