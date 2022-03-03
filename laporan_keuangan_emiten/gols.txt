@@ -79,11 +79,7 @@ emiten :
   jumlah_saham
 
 dividen :
-  cash_dividen
-  cumulative_date
-  ex_date
-  recording_date
-  payment_date
+  cash
 
 
 laporan_keuangan :
@@ -94,3 +90,12 @@ laporan_keuangan :
 
 
 catatan: ambil laporan sampai laporan kuartal 1 2012 jika ada
+
+relationship
+1 emiten mempunyai banyak table laporan_keuangan
+1 laporan_keuangan mempunyai 1 neraca_keuangan, laba_rugi, arus_kas, dividen
+
+catatan: data dividen yang dimasukkan harus laporan_tahunan bukan kuartal
+contoh format nama file: PTBA Q3 31 september 2021.pdf
+
+
