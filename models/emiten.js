@@ -32,11 +32,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(255),
       primaryKey: false
     },
+   
   }, {
     sequelize,
     timestamps: true,
     modelName: 'Emiten',
-    tableName: 'emiten'
+    tableName: 'emiten',
+    underscored: true,
+    paranoid: true,
   });
   return Emiten;
 };

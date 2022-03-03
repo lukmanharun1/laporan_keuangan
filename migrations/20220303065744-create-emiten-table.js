@@ -1,6 +1,6 @@
 'use strict';
 
-const constantColumn = require('../constant-column');
+const constantColumn = require('../constant/constant-column');
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('emiten', {
@@ -10,7 +10,8 @@ module.exports = {
       },
       kode_emiten: {
         type: Sequelize.STRING(4),
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       nama_emiten: {
         type: Sequelize.STRING(255),

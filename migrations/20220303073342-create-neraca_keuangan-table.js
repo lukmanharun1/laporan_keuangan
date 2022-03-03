@@ -1,5 +1,5 @@
 'use strict';
-const constantColumn = require('../constant-column');
+const constantColumn = require('../constant/constant-column');
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('neraca_keuangan', {
