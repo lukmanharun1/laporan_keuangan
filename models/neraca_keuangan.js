@@ -64,7 +64,9 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     timestamps: true,
     modelName: 'NeracaKeuangan',
-    tableName: 'laporan_keuangan'
+    tableName: 'neraca_keuangan',
+    underscored: true,
+    paranoid: true,
   });
   return NeracaKeuangan;
 };

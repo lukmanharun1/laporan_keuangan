@@ -28,7 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     timestamps: true,
     modelName: 'Dividen',
-    tableName: 'dividen'
+    tableName: 'dividen',
+    underscored: true,
+    paranoid: true,
   });
   return Dividen;
 };

@@ -26,6 +26,7 @@ const storage = multer.diskStorage({
     const formatNamaFile = `${getEmiten.kode_emiten} ${jenis_laporan} ${formatTanggal(tanggal)}${path.extname(file.originalname)}`;
     cb(null, formatNamaFile);
     req.destination = destination + formatNamaFile;
+    req.body.nama_file = formatNamaFile;
   }
 });
 
