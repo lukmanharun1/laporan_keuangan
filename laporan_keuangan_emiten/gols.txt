@@ -26,12 +26,7 @@ Ex Date
 Recording Date
 Payment Date
 
-GPM (Gross Profit Margin)
-OPM (Operating Profit Margin)
-NPM (Net Profit Margin)
 
-ROA (Return on Equitas)
-ROE (Return on Equity)
 
 neraca_keuangan {
 DER
@@ -43,6 +38,14 @@ ICR
 BVPS
 PBV
 
+}
+laba_rugi {
+GPM (Gross Profit Margin)
+OPM (Operating Profit Margin)
+NPM (Net Profit Margin)
+
+ROA (Return on Equitas)
+ROE (Return on Equity)
 }
 
 

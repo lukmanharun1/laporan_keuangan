@@ -57,7 +57,7 @@ const create = async (req, res) => {
     // create laba rugi
     
     const createLabaRugi = await LabaRugi.create({
-      id: LaporanKeuangan.id,
+      id: createLaporanKeuangan.id,
       pendapatan,
       laba_kotor,
       laba_usaha,
@@ -74,7 +74,7 @@ const create = async (req, res) => {
     // create arus kas
 
     const createArusKas = await ArusKas.create({
-      id: LaporanKeuangan.id,
+      id: createLaporanKeuangan.id,
       operasi,
       investasi,
       pendanaan,
@@ -90,7 +90,7 @@ const create = async (req, res) => {
     if (jenis_laporan === "TAHUNAN" && cash) {
       // create dividen
       const createDividen = await Dividen.create({
-        id: LaporanKeuangan.id,
+        id: createLaporanKeuangan.id,
         cash
       }, { transaction: transaction.data });
 

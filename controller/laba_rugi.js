@@ -1,4 +1,4 @@
-const { NeracaKeuangan, Emiten, LaporanKeuangan } = require('../models');
+const { LabaRugi, NeracaKeuangan, LaporanKeuangan } = require('../models');
 const response = require('../helper/response');
 const t = require('../helper/transaction');
 
@@ -10,31 +10,24 @@ const find = async (req, res) => {
       throw transaction.error;
     }
     
-    // cari emiten untuk mendapatkan jumlah_saham
-    const emiten = await Emiten.findByPk(emiten_id, {
-      attributes: ['jumlah_saham'],
-      transaction: transaction.data
-    });
-    if (!emiten) {
-      // rollback transaction
-      await t.rollback(transaction.data);
-      throw new Error('Emiten not found');
-    }
     //  cari laporan keuangan berdasarkan emiten_id, jenis_laporan
     const laporanKeuangan = await LaporanKeuangan.findAll({
       where: {
         emiten_id,
         jenis_laporan
       },
-      attributes: ['tanggal', 'harga_saham', 'nama_file'],
+      attributes: ['tanggal', 'nama_file'],
       include: [
         {
-          model: NeracaKeuangan,
+          model: LabaRugi,
           attributes: [
-          'aset', 'kas_dan_setara_kas', 'piutang', 'persediaan',
-          'aset_lancar', 'aset_tidak_lancar', 'liabilitas_jangka_pendek',
-          'liabilitas_jangka_panjang', 'liabilitas_berbunga', 'ekuitas'
-        ]
+            'pendapatan', 'laba_kotor', 'laba_usaha',
+            'laba_sebelum_pajak', 'laba_bersih'
+          ]
+        },
+        {
+          model: NeracaKeuangan,
+          attributes: ['ekuitas', 'aset']
         }
       ]
     });
@@ -42,7 +35,7 @@ const find = async (req, res) => {
     if (!laporanKeuangan) {
       // rollback transaction
       await t.rollback(transaction.data);
-      throw new Error('Laporan keuangan not found');
+      throw new Error('Laba Rugi not found');
     }
 
     // commit transaction
@@ -52,7 +45,6 @@ const find = async (req, res) => {
     }
     return response(res, {
       status: 'success',
-      jumlah_saham: emiten.jumlah_saham,
       data: laporanKeuangan
     });  
 
