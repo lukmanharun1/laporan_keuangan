@@ -3,11 +3,9 @@ const path = require("path");
 const { Emiten } = require('../models');
 const formatTanggal = require('../helper/format_tanggal');
 
-let destination = "public/laporan_keuangan/";
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-      destination += `${req.body.jenis_laporan}/`;
-      cb(null, destination);
+      cb(null, `public/laporan_keuangan/${req.body.jenis_laporan}/`);
       
   },
   filename: async (req, file, cb) => {
@@ -25,7 +23,7 @@ const storage = multer.diskStorage({
     }
     const formatNamaFile = `${getEmiten.kode_emiten} ${jenis_laporan} ${formatTanggal(tanggal)}${path.extname(file.originalname)}`;
     cb(null, formatNamaFile);
-    req.destination = destination + formatNamaFile;
+    req.destination = `public/laporan_keuangan/${req.body.jenis_laporan}/${formatNamaFile}`;
     req.body.nama_file = formatNamaFile;
   }
 });

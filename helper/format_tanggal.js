@@ -1,5 +1,5 @@
 module.exports = (date) => {
-  let [tanggal, bulan, tahun] = date.split('-');
+  let [tahun, bulan, tanggal] = date.split('-');
   if (bulan == 03) {
       bulan = "MARET";
   } else if (bulan == 06) {
