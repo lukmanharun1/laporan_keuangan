@@ -33,12 +33,18 @@ NPM (Net Profit Margin)
 ROA (Return on Equitas)
 ROE (Return on Equity)
 
+neraca_keuangan {
 DER
-
+NGR
 CRR
 QR
 CR
 ICR
+BVPS
+PBV
+
+}
+
 
 DPS
 DPR

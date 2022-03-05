@@ -13,8 +13,8 @@ const create = async (req, res) => {
     }
     const createEmiten = await Emiten.create({
       jumlah_saham,
-      kode_emiten,
-      nama_emiten
+      kode_emiten: kode_emiten.toUpperCase(),
+      nama_emiten: nama_emiten.toUpperCase(),
     }, { transaction: transaction.data });
 
     if (!createEmiten) {
