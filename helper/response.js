@@ -1,3 +1,1 @@
-module.exports = (res, object, httpCode = 200) => {
-  return res.status(httpCode).json(object);
-}
+module.exports = (res, object, httpCode = 200) => res.status(httpCode).json(object);

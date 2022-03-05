@@ -29,7 +29,7 @@ const create = async (req, res) => {
     }
     return response(res, {
       status: 'success',
-      data: createEmiten
+      message: 'Data Emiten Berhasil Ditambahkan'
     });  
   } catch (error) {
     return response(res, {
