@@ -7,5 +7,6 @@ const validation = require('../validation/emiten');
 
 router.get('/', validation.getAll(), validate, controller.getAll);
 router.post('/', validation.create(), validate, controller.create);
+router.put('/:id', validation.update(), validate, controller.update);
 
 module.exports = router;
