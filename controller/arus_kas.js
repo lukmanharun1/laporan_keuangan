@@ -1,4 +1,4 @@
-const { LabaRugi, NeracaKeuangan, LaporanKeuangan } = require('../models');
+const { ArusKas, LaporanKeuangan } = require('../models');
 const response = require('../helper/response');
 const t = require('../helper/transaction');
 
@@ -17,27 +17,19 @@ const find = async (req, res) => {
         jenis_laporan
       },
       attributes: ['tanggal', 'nama_file'],
-      include: [
+      include: 
         {
-          model: LabaRugi,
-          attributes: [
-            'pendapatan', 'laba_kotor', 'laba_usaha',
-            'laba_sebelum_pajak', 'laba_bersih'
-          ],
-          as: 'laba_rugi'
-        },
-        {
-          model: NeracaKeuangan,
-          attributes: ['ekuitas', 'aset'],
-          as: 'neraca_keuangan'
+          model: ArusKas,
+          as: 'arus_kas',
+          attributes: ['operasi', 'investasi', 'pendanaan'],
         }
-      ]
+      
     });
 
     if (!laporanKeuangan) {
       // rollback transaction
       await t.rollback(transaction.data);
-      throw new Error('Laba Rugi not found');
+      throw new Error('Arus kas not found');
     }
 
     // commit transaction

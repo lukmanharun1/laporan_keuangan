@@ -27,22 +27,21 @@ const find = async (req, res) => {
         jenis_laporan
       },
       attributes: ['tanggal', 'harga_saham', 'nama_file'],
-      include: [
-        {
-          model: NeracaKeuangan,
-          attributes: [
-          'aset', 'kas_dan_setara_kas', 'piutang', 'persediaan',
-          'aset_lancar', 'aset_tidak_lancar', 'liabilitas_jangka_pendek',
-          'liabilitas_jangka_panjang', 'liabilitas_berbunga', 'ekuitas'
+      include: {
+        model: NeracaKeuangan,
+        as: 'neraca_keuangan',
+        attributes: [
+        'aset', 'kas_dan_setara_kas', 'piutang', 'persediaan',
+        'aset_lancar', 'aset_tidak_lancar', 'liabilitas_jangka_pendek',
+        'liabilitas_jangka_panjang', 'liabilitas_berbunga', 'ekuitas'
         ]
-        }
-      ]
+      }
     });
 
     if (!laporanKeuangan) {
       // rollback transaction
       await t.rollback(transaction.data);
-      throw new Error('Laporan keuangan not found');
+      throw new Error('Neraca keuangan not found');
     }
 
     // commit transaction
