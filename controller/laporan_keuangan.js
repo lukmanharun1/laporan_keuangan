@@ -107,7 +107,7 @@ const create = async (req, res) => {
      }
      return response(res, {
        status: 'success',
-       message: 'Data Laporan Keuangan Berhasil Ditambahkan'
+       message: 'Data Laporan keuangan add successfully'
      });  
   } catch (error) {
     hapusFile(req.destination);
@@ -118,6 +118,66 @@ const create = async (req, res) => {
   }
 }
 
+const destroy = async (req, res) => {
+  try {
+    const { id } = req.params;
+     // create transaction
+     const transaction = await t.create();
+     if (!transaction.status && transaction.error) {
+         throw transaction.error;
+     }
+    // cek laporan keuangan
+    const findLaporanKeuangan = await LaporanKeuangan.findByPk(id, { transaction: transaction.data });
+    if (!findLaporanKeuangan) {
+      // rollback transaction
+      await t.rollback(transaction.data);
+      return response(res, {
+        message: 'Laporan keuangan not found'
+      }, 404);
+    }
+
+    // delete laporan keuangan, neraca keuangan, laba rugi, aruskas dividen
+    // const deleteLaporanKeuangan = await LaporanKeuangan.destroy({
+    //   where: {
+    //     id
+    //   },
+    //   include: [NeracaKeuangan, LabaRugi, ArusKas, Dividen]
+    // }, { transaction: transaction.data });
+    const where = {
+      where: {
+        id
+      }
+    };
+    const deleteLaporanKeuangan = await Promise.all([
+      LaporanKeuangan.destroy(where),
+      NeracaKeuangan.destroy(where),
+      LabaRugi.destroy(where),
+      ArusKas.destroy(where),
+      Dividen.destroy(where)
+     ]);
+     console.log(deleteLaporanKeuangan);
+    if (!deleteLaporanKeuangan[0]) {
+      // rollback transaction
+      await t.rollback(transaction.data);
+      throw new Error('Laporan keuangan failed deleted');
+    }
+    const commit = await t.commit(transaction.data);
+    if (!commit.status && commit.error) {
+        throw commit.error;
+    }
+    return response(res, {
+      status: 'success',
+      message: 'Data Laporan Keuangan deleted successfully'
+    }); 
+  } catch (error) {
+    return response(res, {
+      status: 'error',
+      message: error.message
+    }, 500);
+  }
+}
+
 module.exports = {
-  create
+  create,
+  destroy
 }

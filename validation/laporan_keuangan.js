@@ -1,4 +1,4 @@
-const { body } = require('express-validator');
+const { body, param } = require('express-validator');
 
 const create = () => [
   // laporan keuangan
@@ -96,8 +96,15 @@ const create = () => [
     .optional()
     .isInt()
   
-]
+];
+
+const destroy = () => [
+  param('id')
+    .notEmpty()
+    .isUUID()
+];
 
 module.exports = {
-  create
+  create,
+  destroy
 };
