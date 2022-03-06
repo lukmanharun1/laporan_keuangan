@@ -1,5 +1,21 @@
-const { body } = require('express-validator');
+const { body, query } = require('express-validator');
 
+const getAll = () => [
+  query('kode_emiten')
+    .optional()
+    .isString({
+      max: 4
+    }),
+  query('nama_emiten')
+    .optional()
+    .isString({ max: 255 }),
+  query('page')
+    .optional()
+    .isInt({ min: 1 }),
+  query('per_page')
+    .optional()
+    .isInt({ min: 1 })
+]
 const create = () => [
   body('jumlah_saham')
     .notEmpty()
@@ -16,5 +32,6 @@ const create = () => [
 ]
 
 module.exports = {
+  getAll,
   create
 };

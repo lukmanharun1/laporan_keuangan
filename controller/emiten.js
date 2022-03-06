@@ -1,7 +1,67 @@
-const { Emiten } = require('../models');
+const { Emiten, Sequelize } = require('../models');
 
 const response = require('../helper/response');
+const pagination = require('../helper/pagination');
 const t = require('../helper/transaction');
+
+const getAll = async (req, res) => {
+  try {
+    const where = {};
+    const { kode_emiten, nama_emiten } = req.query;
+    const page = req.query.page ? parseInt(req.query.page) : 1;
+    const per_page = req.query.per_page ? parseInt(req.query.per_page) : 1;
+    if (kode_emiten) {
+      where.kode_emiten = { [Sequelize.Op.eq]: kode_emiten }
+    }
+
+    if (nama_emiten) {
+      where.nama_emiten = { [Sequelize.Op.eq]: nama_emiten }
+    }
+    
+    // create transaction
+    const transaction = await t.create();
+    if (!transaction.status && transaction.error) {
+        throw transaction.error;
+    }
+   
+    const { count, rows } = await Emiten.findAndCountAll({
+      where,
+      offset: (page - 1) * page,
+      limit: per_page,
+      distinct: true,
+      order: [['kode_emiten', 'ASC']],
+      attributes: ['id', 'kode_emiten', 'nama_emiten', 'jumlah_saham']
+    }, { transaction: transaction.data });
+
+    const result = pagination({
+      data: rows,
+      count,
+      page,
+      per_page
+    });
+
+    if (count <= 0) {
+      return response(res, {
+        message: 'Emiten not found'
+      }, 404);
+    }
+
+    // commit transaction
+    const commit = await t.commit(transaction.data);
+    if (!commit.status && commit.error) {
+        throw commit.error;
+    }
+    return response(res, {
+      status: 'success',
+      data: result
+    });  
+  } catch (error) {
+    return response(res, {
+      status: 'error',
+      message: error.message
+    }, 500);
+  }
+}
 
 const create = async (req, res) => {
   try {
@@ -40,5 +100,6 @@ const create = async (req, res) => {
 }
 
 module.exports = {
+  getAll,
   create
 };
