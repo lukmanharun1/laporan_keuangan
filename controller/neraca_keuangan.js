@@ -41,7 +41,9 @@ const find = async (req, res) => {
     if (!laporanKeuangan) {
       // rollback transaction
       await t.rollback(transaction.data);
-      throw new Error('Neraca keuangan not found');
+      return response(res, {
+        message: 'Laporan keuangan not found'
+      }, 404);
     }
 
     // commit transaction
@@ -56,7 +58,10 @@ const find = async (req, res) => {
     });  
 
   } catch (error) {
-    
+    return response(res, {
+      status: 'error',
+      message: error.message
+    }, 500);
   }
 }
 
