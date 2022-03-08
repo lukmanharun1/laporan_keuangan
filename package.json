@@ -6,7 +6,9 @@
     "start": "nodemon app.js",
     "migrate": "npx sequelize db:migrate",
     "undo": "npx sequelize db:migrate:undo",
-    "undo:all": "npx sequelize db:migrate:undo:all"
+    "undo:all": "npx sequelize db:migrate:undo:all",
+    "seed:all": "npx sequelize db:seed:all",
+    "seed": "npx sequelize db:seed"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

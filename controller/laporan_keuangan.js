@@ -137,12 +137,6 @@ const destroy = async (req, res) => {
     }
 
     // delete laporan keuangan, neraca keuangan, laba rugi, aruskas dividen
-    // const deleteLaporanKeuangan = await LaporanKeuangan.destroy({
-    //   where: {
-    //     id
-    //   },
-    //   include: [NeracaKeuangan, LabaRugi, ArusKas, Dividen]
-    // }, { transaction: transaction.data });
     const where = {
       where: {
         id

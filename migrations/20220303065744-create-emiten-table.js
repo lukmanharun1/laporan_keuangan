@@ -15,7 +15,8 @@ module.exports = {
       },
       nama_emiten: {
         type: Sequelize.STRING(255),
-        allowNull: false
+        allowNull: false,
+        unique: 'true'
       },
       ...constantColumn(Sequelize)
     })
