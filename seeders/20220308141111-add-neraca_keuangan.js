@@ -1,10 +1,10 @@
 'use strict';
 
-const dataLaporanKeuangan = require('../constant/neraca_keuangan-seeder');
+const dataNeracaKeuangan = require('../constant/neraca_keuangan-seeder');
 const { NeracaKeuangan } = require('../models');
 module.exports = {
   async up (queryInterface, Sequelize) {
-   await Promise.all(dataLaporanKeuangan.map(async (data) => {
+   await Promise.all(dataNeracaKeuangan.map(async (data) => {
       try {
         await NeracaKeuangan.findOrCreate({
           where: data,
