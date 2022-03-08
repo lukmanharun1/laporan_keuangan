@@ -26,11 +26,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     kode_emiten: {
       type: DataTypes.STRING(4),
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     nama_emiten: {
       type: DataTypes.STRING(255),
-      primaryKey: false
+      primaryKey: false,
+      unique: true
     },
    
   }, {
