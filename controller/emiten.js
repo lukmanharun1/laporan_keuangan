@@ -17,7 +17,6 @@ const getAll = async (req, res) => {
     if (nama_emiten) {
       where.nama_emiten = { [Sequelize.Op.eq]: nama_emiten }
     }
-    
     // create transaction
     const transaction = await t.create();
     if (!transaction.status && transaction.error) {

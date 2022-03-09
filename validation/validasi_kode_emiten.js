@@ -3,5 +3,5 @@ module.exports = (kodeEmiten) => {
   if (kodeEmiten.match(validasiHuruf) && kodeEmiten.length === 4) {
      return true;
   } 
-  throw new Error("kode emiten harus 4 huruf");
+  throw new Error("kode emiten must be 4 letters");
 }
