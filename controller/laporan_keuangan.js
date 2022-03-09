@@ -108,7 +108,7 @@ const create = async (req, res) => {
      return response(res, {
        status: 'success',
        message: 'Data Laporan keuangan add successfully'
-     });  
+     }, 201);  
   } catch (error) {
     hapusFile(req.destination);
     return response(res, {

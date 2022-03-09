@@ -90,7 +90,7 @@ const create = async (req, res) => {
     return response(res, {
       status: 'success',
       message: 'Data Emiten Berhasil Ditambahkan'
-    });  
+    }, 201);  
   } catch (error) {
     return response(res, {
       status: 'error',

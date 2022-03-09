@@ -11,7 +11,7 @@ describe('POST /emiten', () => {
         jumlah_saham: 200000000,
         kode_emiten: "AALI",
         nama_emiten: "PT ASTRA AGRO LESTARI TBK"
-    }).expect(200);
+    }).expect(201);
     expect(response.body).toEqual(expect.objectContaining({
       status: 'success'
     }));
