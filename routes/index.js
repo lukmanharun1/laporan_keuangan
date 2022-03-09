@@ -7,6 +7,7 @@ const neracaKeuangan = require('./neraca_keuangan');
 const labaRugi = require('./laba_rugi');
 const arusKas = require('./arus_kas');
 const dividen = require('./dividen');
+const stockSplit = require('./stock_split');
 
 router.use('/laporan-keuangan', laporanKeuangan);
 router.use('/emiten', emiten);
@@ -14,4 +15,6 @@ router.use('/neraca-keuangan', neracaKeuangan);
 router.use('/laba-rugi', labaRugi);
 router.use('/arus-kas', arusKas);
 router.use('/dividen', dividen);
+router.use('/stock-split', stockSplit);
+
 module.exports = router;
