@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon bin/www",
     "test": "jest",
     "migrate": "npx sequelize db:migrate",
     "undo": "npx sequelize db:migrate:undo",

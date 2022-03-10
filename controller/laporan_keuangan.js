@@ -107,7 +107,7 @@ const create = async (req, res) => {
      }
      return response(res, {
        status: 'success',
-       message: 'Data Laporan keuangan add successfully'
+       message: 'Data Laporan keuangan created successfully'
      }, 201);  
   } catch (error) {
     hapusFile(req.destination);
@@ -161,7 +161,7 @@ const destroy = async (req, res) => {
     }
     return response(res, {
       status: 'success',
-      message: 'Data Laporan Keuangan deleted successfully'
+      message: 'Data Laporan Keuangan created successfully'
     }); 
   } catch (error) {
     return response(res, {

@@ -9,6 +9,9 @@ const create = () => [
     .notEmpty()
     .isDate({ format: 'YYYY-MM-DD' })
     .custom((value, { req }) => {
+      if (!value) {
+        throw new Error('tanggal wajib di isi')
+      }
       const [tahun, bulan, tanggal] = value.split('-');
       // cek tanggal khusus tanggal 30, 31
       

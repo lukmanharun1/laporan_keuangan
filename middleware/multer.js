@@ -12,15 +12,16 @@ const storage = multer.diskStorage({
     // cek table Emiten
     
     const { jenis_laporan, emiten_id, tanggal } = req.body;
-    const getEmiten = await Emiten.findOne({
-      where: {
-        id: emiten_id
-      },
-      attributes: ['kode_emiten']
-    });
-    if (!getEmiten) {
-      return cb('Emiten not found');
-    }
+      const getEmiten = await Emiten.findOne({
+        where: {
+          id: emiten_id
+        },
+        attributes: ['kode_emiten']
+      });
+      if (!getEmiten) {
+        return cb('Emiten not found');
+      }
+   
     const formatNamaFile = `${getEmiten.kode_emiten} ${jenis_laporan} ${formatTanggal(tanggal)}${path.extname(file.originalname)}`;
     cb(null, formatNamaFile);
     req.destination = `public/laporan_keuangan/${req.body.jenis_laporan}/${formatNamaFile}`;
@@ -39,7 +40,7 @@ const uploadFile = multer({
 
 function checkFileType(file, cb) {
   const fileTypes = /pdf/;
-  const extName = fileTypes.test(path.extname(file.originalname));
+  const extName = fileTypes.test(path.extname(file.originalname).toLocaleLowerCase());
   const mimeType = fileTypes.test(file.mimetype);
   if (mimeType && extName) {
     return cb(null, true);
