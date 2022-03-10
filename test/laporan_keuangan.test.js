@@ -37,7 +37,7 @@ const sendCreateLaporanKeuangan = {
 };
 
 describe('POST /laporan-keuangan', () => {
-  it('should create laporan keuangan', async () => {
+  it('should create laporan keuangan success', async () => {
     // create emiten
     const { kode_emiten, nama_emiten } = sendCreateEmiten;
     await request(app)
@@ -89,7 +89,6 @@ describe('POST /laporan-keuangan', () => {
       .field('pendanaan', pendanaan)
       .field('cash', cash)
       .attach('nama_file', __dirname + '/test.pdf')
-      .attach('nama_file', + 'test1.pdf')
       .expect(201)
     
     // cek file apakah berhasil di upload
@@ -103,5 +102,58 @@ describe('POST /laporan-keuangan', () => {
 
     // hapus file karena untuk test saja
     hapusFile(pathFile);
+  });
+
+  it('should create laporan keuangan bad request tanggal not suitable jenis_laporan', async () => {
+    // create laporan keuangan
+    sendCreateLaporanKeuangan.jenis_laporan = 'Q1'; // harus nya tahunan
+    sendCreateLaporanKeuangan.tanggal = '2022-09-30'; // harus nya 2022-12-31
+    const { emiten_id, tanggal, jenis_laporan, harga_saham, aset,
+      kas_dan_setara_kas, piutang, persediaan, aset_lancar,
+      aset_tidak_lancar, liabilitas_jangka_pendek,
+      liabilitas_jangka_panjang, liabilitas_berbunga,
+      ekuitas, pendapatan, laba_kotor, laba_usaha,
+      laba_sebelum_pajak, laba_bersih,
+      operasi, investasi, pendanaan, cash } = sendCreateLaporanKeuangan;
+      const response = await request(app)
+      .post('/laporan-keuangan')
+      .set('Accept', 'application/json')
+      .set('Content-Type', 'multipart/form-data')
+      .field('tanggal', tanggal)
+      .field('emiten_id', emiten_id)
+      .field('jenis_laporan', jenis_laporan)
+      .field('harga_saham', harga_saham)
+      .field('aset', aset)
+      .field('kas_dan_setara_kas', kas_dan_setara_kas)
+      .field('piutang', piutang)
+      .field('persediaan', persediaan)
+      .field('aset_lancar', aset_lancar)
+      .field('aset_tidak_lancar', aset_tidak_lancar)
+      .field('liabilitas_jangka_pendek', liabilitas_jangka_pendek)
+      .field('liabilitas_jangka_panjang', liabilitas_jangka_panjang)
+      .field('liabilitas_berbunga', liabilitas_berbunga)
+      .field('ekuitas', ekuitas)
+      .field('pendapatan', pendapatan)
+      .field('laba_kotor', laba_kotor)
+      .field('laba_usaha', laba_usaha)
+      .field('laba_sebelum_pajak', laba_sebelum_pajak)
+      .field('laba_bersih', laba_bersih)
+      .field('operasi', operasi)
+      .field('investasi', investasi)
+      .field('pendanaan', pendanaan)
+      .field('cash', cash)
+      .attach('nama_file', __dirname + '/test.pdf')
+      .expect(400)
+
+      expect(response.body).toEqual(expect.objectContaining({
+        errors: expect.objectContaining({
+          errors: expect.arrayContaining([
+            expect.objectContaining({
+              value: tanggal,
+              msg: response.body.errors.errors[0].msg
+            })
+          ])
+        })
+      }))
   });
 });

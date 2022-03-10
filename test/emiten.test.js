@@ -10,10 +10,16 @@ const send = {
 
 describe('POST /emiten', () => {
   it('should create emiten success', async () => {
+    const { jumlah_saham, kode_emiten, nama_emiten } = send;
+    
     const response =  await request(app)
       .post('/emiten')
       .set('Accept', 'application/json')
-      .send(send).expect(201);
+      .send({
+        jumlah_saham,
+        kode_emiten,
+        nama_emiten
+      }).expect(201);
     expect(response.body).toEqual(expect.objectContaining({
       status: 'success',
       message: response.body.message
@@ -21,16 +27,20 @@ describe('POST /emiten', () => {
   });
 
   it('should failed create emiten bad request kode emiten must be 4 letters', async () => {
-    send.kode_emiten = 'ABCDE';
+    const { jumlah_saham, nama_emiten } = send;
     const response = await request(app)
       .post('/emiten')
       .set('Accept', 'application/json')
-      .send(send).expect(400);
+      .send({
+        jumlah_saham,
+        kode_emiten: 'ERROR',
+        nama_emiten 
+      }).expect(400);
     expect(response.body).toEqual(expect.objectContaining({
       errors: expect.objectContaining({
         errors: expect.arrayContaining([
           expect.objectContaining({
-            value: send.kode_emiten,
+            value: 'ERROR',
             msg: "kode emiten must be 4 letters"
           })
         ])
@@ -50,7 +60,6 @@ describe('GET /emiten', () => {
     }));
   });
   it('should get emiten success query params', async () => {
-    send.kode_emiten = kodeEmiten;
     const { jumlah_saham, kode_emiten, nama_emiten } = send;
     const response = await request(app)
       .get(`/emiten?kode_emiten=${kode_emiten}&nama_emiten=${nama_emiten}&page=1&per_page=1`)
@@ -73,10 +82,8 @@ describe('GET /emiten', () => {
 
 describe('PUT /emiten', () => {
   it('should update emiten success', async () => {
-    send.kode_emiten = kodeEmiten;
-    const { kode_emiten, nama_emiten } = send;
     const getEmiten = await request(app)
-    .get(`/emiten?kode_emiten=${kode_emiten}&nama_emiten=${nama_emiten}&page=1&per_page=1`)
+    .get('/emiten')
     .set('Accept', 'application/json')
     .expect(200);
     

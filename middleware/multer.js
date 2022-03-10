@@ -1,6 +1,6 @@
 const multer = require("multer");
 const path = require("path");
-const { Emiten } = require('../models');
+const { Emiten, LaporanKeuangan } = require('../models');
 const formatTanggal = require('../helper/format_tanggal');
 
 const storage = multer.diskStorage({
@@ -12,20 +12,33 @@ const storage = multer.diskStorage({
     // cek table Emiten
     
     const { jenis_laporan, emiten_id, tanggal } = req.body;
-      const getEmiten = await Emiten.findOne({
-        where: {
-          id: emiten_id
-        },
-        attributes: ['kode_emiten']
-      });
-      if (!getEmiten) {
-        return cb('Emiten not found');
+    const getEmiten = await Emiten.findOne({
+      where: {
+        id: emiten_id
+      },
+      attributes: ['kode_emiten']
+    });
+  
+    if (!getEmiten) {
+      return cb('Emiten not found');
+    }
+
+    // cek emiten_id & tanggal agar laporan_keuangan tidak duplikat
+    const getLaporanKeuangan = await LaporanKeuangan.findOne({
+      where: {
+        emiten_id,
+        tanggal: new Date(tanggal)
       }
+    });
+
+    if (getLaporanKeuangan) {
+      return cb('Laporan keuangan duplicate');
+    }
    
     const formatNamaFile = `${getEmiten.kode_emiten} ${jenis_laporan} ${formatTanggal(tanggal)}${path.extname(file.originalname)}`;
-    cb(null, formatNamaFile);
     req.destination = `public/laporan_keuangan/${req.body.jenis_laporan}/${formatNamaFile}`;
     req.body.nama_file = formatNamaFile;
+    return cb(null, formatNamaFile);
   }
 });
 

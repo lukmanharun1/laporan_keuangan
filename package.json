@@ -5,11 +5,12 @@
   "scripts": {
     "start": "nodemon bin/www",
     "test": "jest",
-    "migrate": "npx sequelize db:migrate",
-    "undo": "npx sequelize db:migrate:undo",
-    "undo:all": "npx sequelize db:migrate:undo:all",
-    "seed:all": "npx sequelize db:seed:all",
-    "seed": "npx sequelize db:seed"
+    "migrate": "sequelize db:migrate",
+    "undo": "sequelize db:migrate:undo",
+    "undo:all": "sequelize db:migrate:undo:all",
+    "seed:all": "sequelize db:seed:all",
+    "seed": "sequelize db:seed",
+    "reset": "sequelize db:drop && sequelize db:create && npm run migrate && npm run seed:all"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
