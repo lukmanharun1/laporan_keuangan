@@ -2,15 +2,35 @@ const request = require('supertest');
 const app = require('../app');
 const randomAlphabert = require('../helper/random_alphabert');
 const kodeEmiten = randomAlphabert(4);
+const { Emiten, Sequelize } = require('../models');
 const send = {
   jumlah_saham: 200000000,
   kode_emiten: kodeEmiten,
   nama_emiten: `PT ${kodeEmiten} AGRO LESTARI TBK`
 }
 
+;
+
 describe('POST /emiten', () => {
   it('should create emiten success', async () => {
-    const { jumlah_saham, kode_emiten, nama_emiten } = send;
+    let jumlah_saham = 25000000;
+    let kode_emiten = randomAlphabert(4);
+    let nama_emiten = `PT ${kode_emiten} AGRO LESTARI TBK`
+    // cari emiten kalau ada berarti status code 400
+    // kalau tidak ada harus berhasil di create
+    const findEmiten = await Emiten.findOne({
+      where: {
+        [Sequelize.Op.and]: [
+          { kode_emiten },
+          { nama_emiten }
+        ]
+      }
+    });
+    if (findEmiten) {
+      // generate lagi
+      kode_emiten = randomAlphabert(4);
+      nama_emiten = `PT ${kode_emiten} AGRO LESTARI TBK`;
+    }
     
     const response =  await request(app)
       .post('/emiten')
@@ -19,7 +39,8 @@ describe('POST /emiten', () => {
         jumlah_saham,
         kode_emiten,
         nama_emiten
-      }).expect(201);
+      })
+      .expect(201);
     expect(response.body).toEqual(expect.objectContaining({
       status: 'success',
       message: response.body.message
@@ -60,9 +81,28 @@ describe('GET /emiten', () => {
     }));
   });
   it('should get emiten success query params', async () => {
-    const { jumlah_saham, kode_emiten, nama_emiten } = send;
+    // create emiten terlebih dahulu
+    const kode_emiten = randomAlphabert(4);
+    const data = {
+      jumlah_saham: 20000000000,
+      kode_emiten,
+      nama_emiten: `PT ${kode_emiten} AGRO LESTARI TBK`
+    }
+    const createEmiten = await Emiten.findOrCreate({
+      where: { kode_emiten },
+      defaults: data
+    });
+
+    const { nama_emiten } = data;
+    // cari emiten
     const response = await request(app)
-      .get(`/emiten?kode_emiten=${kode_emiten}&nama_emiten=${nama_emiten}&page=1&per_page=1`)
+      .get('/emiten')
+      .query({
+        kode_emiten,
+        nama_emiten,
+        page: 1,
+        per_page: 1
+      })
       .set('Accept', 'application/json')
       .expect(200);
     expect(response.body).toEqual(expect.objectContaining({
@@ -70,7 +110,6 @@ describe('GET /emiten', () => {
       data: expect.objectContaining({
         data: expect.arrayContaining([
           expect.objectContaining({
-            jumlah_saham,
             kode_emiten,
             nama_emiten
           })
@@ -78,15 +117,35 @@ describe('GET /emiten', () => {
       })
     }));
   });
-});
+})
 
 describe('PUT /emiten', () => {
   it('should update emiten success', async () => {
+    // create emiten terlebih dahulu
+    const kode_emiten = randomAlphabert(4);
+    const data = {
+      jumlah_saham: 30000000000,
+      kode_emiten,
+      nama_emiten: `PT ${kode_emiten} AGRO LESTARI TBK`
+    }
+    const createEmiten = await Emiten.findOrCreate({
+      where: { kode_emiten },
+      defaults: data
+    });
+    const { nama_emiten } = data;
+    // get emiten yang sudah di create
     const getEmiten = await request(app)
     .get('/emiten')
+    .query({
+      kode_emiten,
+      nama_emiten,
+      page: 1,
+      per_page: 1
+    })
     .set('Accept', 'application/json')
     .expect(200);
     
+    // update emiten
     const updateKodeEmiten = randomAlphabert(4);
     const update = {
       jumlah_saham: 2000000000,
@@ -94,19 +153,26 @@ describe('PUT /emiten', () => {
       nama_emiten: `PT ${updateKodeEmiten} AGRO LESTARI TBK`
     }
     const { id } = getEmiten.body.data.data[0];
-
     const updateEmiten = await request(app)
       .put(`/emiten/${id}`)
       .set('Accept', 'application/json')
-      .send(update).expect(200);
+      .send(update)
+      .expect(200);
     
     expect(updateEmiten.body).toEqual(expect.objectContaining({
       status: 'success',
       message: updateEmiten.body.message
     }));
 
+    // get update emiten untuk memastikan data benar benar update
     const getUpdateEmiten = await request(app)
-      .get(`/emiten?kode_emiten=${updateKodeEmiten}&jumlah_saham=${update.jumlah_saham}&nama_emiten=${update.nama_emiten}`)
+      .get('/emiten')
+      .query({
+        kode_emiten: updateKodeEmiten,
+        nama_emiten: update.nama_emiten,
+        page: 1,
+        per_page: 1
+      })
       .set('Accept', 'application/json')
       .expect(200);
 
@@ -126,27 +192,48 @@ describe('PUT /emiten', () => {
   });
 
   it('should failed update emiten bad request kode emiten must be 4 letters', async () => {
-  
+   // create emiten terlebih dahulu
+   const kode_emiten = randomAlphabert(4);
+   const data = {
+     jumlah_saham: 40000000000,
+     kode_emiten,
+     nama_emiten: `PT ${kode_emiten} AGRO LESTARI TBK`
+   }
+   const createEmiten = await Emiten.findOrCreate({
+     where: { kode_emiten },
+     defaults: data
+   });
+   const { nama_emiten, jumlah_saham } = data;
+    // get emiten
     const getEmiten = await request(app)
       .get('/emiten')
+      .query({
+        kode_emiten,
+        nama_emiten,
+        page: 1,
+        per_page: 1
+      })
       .set('Accept', 'application/json')
       .expect(200);
 
     const { id } = getEmiten.body.data.data[0];
     
-    const updateKodeEmitenFailed = 'ABCDE';
-    send.kode_emiten = updateKodeEmitenFailed;
+    // update emiten
     const response = await request(app)
       .put(`/emiten/${id}`)
       .set('Accept', 'application/json')
-      .send(send)
+      .send({
+        kode_emiten: 'ERROR',
+        jumlah_saham,
+        nama_emiten
+      })
       .expect(400);
     
     expect(response.body).toEqual(expect.objectContaining({
       errors: expect.objectContaining({
         errors: expect.arrayContaining([
           expect.objectContaining({
-            value: send.kode_emiten,
+            value: 'ERROR',
             msg: "kode emiten must be 4 letters"
           })
         ])

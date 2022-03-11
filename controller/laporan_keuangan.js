@@ -150,7 +150,6 @@ const destroy = async (req, res) => {
       ArusKas.destroy(where),
       Dividen.destroy(where)
      ]);
-     console.log(deleteLaporanKeuangan);
     if (!deleteLaporanKeuangan[0]) {
       // rollback transaction
       await t.rollback(transaction.data);
@@ -162,7 +161,7 @@ const destroy = async (req, res) => {
     }
     return response(res, {
       status: 'success',
-      message: 'Data Laporan Keuangan created successfully'
+      message: 'Data Laporan Keuangan deleted successfully'
     }); 
   } catch (error) {
     return response(res, {

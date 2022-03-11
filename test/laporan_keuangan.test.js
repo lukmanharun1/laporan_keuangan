@@ -1,5 +1,6 @@
 const request = require('supertest');
 const app = require('../app');
+const { LaporanKeuangan } = require('../models');
 const randomAlphabert = require('../helper/random_alphabert');
 const formatTanggal = require('../helper/format_tanggal');
 const cekFile = require('../helper/cek_file');
@@ -47,7 +48,13 @@ describe('POST /laporan-keuangan', () => {
   
     // get emiten menggunakan query params
     const getEmiten = await request(app)
-    .get(`/emiten?kode_emiten=${kode_emiten}&nama_emiten=${nama_emiten}`)
+    .get('/emiten')
+    .query({
+      kode_emiten,
+      nama_emiten,
+      page: 1,
+      per_page: 1
+    })
     .set('Accept', 'application/json')
     .expect(200);
 
@@ -155,5 +162,26 @@ describe('POST /laporan-keuangan', () => {
           ])
         })
       }))
+  });
+});
+
+describe('DELETE /laporan-keuangan', () => {
+  it('should delete laporan keuangan success', async () => {
+    // cari id laporan_keuangan yang sudah di buat
+    const laporanKeuangan = await LaporanKeuangan.findOne({
+      where: {
+        harga_saham: sendCreateLaporanKeuangan.harga_saham,
+      }
+    });
+    console.log('DELETE');
+    console.log(laporanKeuangan);
+    const response = await request(app)
+      .delete(`/laporan-keuangan/${laporanKeuangan.id}`)
+      .set('Accept', 'application/json')
+      .expect(200);
+    expect(response.body).toEqual(expect.objectContaining({
+      status: 'success',
+      message: response.body.message
+    }));
   });
 });
