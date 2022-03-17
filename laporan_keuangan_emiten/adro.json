@@ -64,6 +64,60 @@
         }
       }
     ],
-    "laporan_tahunan": []
+    "laporan_tahunan": [
+      {
+        "harga_saham": 2250,
+        "tanggal": "31 desember 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 25872149185000,
+          "aset_lancar": 40542715620000,
+          "aset": 103786253285000,
+          "liabilitas_berbunga": 18437820920000,
+          "persediaan": 1796167330000,
+          "liabilitas_lancar": 19449856030000,
+          "total_liabilitas": 44692350985000,
+          "ekuitas": 59093902300000
+        },
+        "labar_rugi": {
+          "pendapatan": 57035976630000,
+          "laba_kotor": 25280821610000,
+          "laba_operasional": 21831465515000,
+          "laba_bersih": 13334933220000
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 20518002620000,
+          "aktivitas_investasi": -9208282420000,
+          "aktivitas_pendanaan": -2191633270000
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "12.85%",
+            "ROE": "22.57%",
+            "GPM": "44.32%",
+            "OPM": "38.28%",
+            "NPM": "23.38%"
+          },
+          "valuasi": {
+            "BVPS": "1847.49",
+            "PBV": "1.22x",
+            "RPS": "1783.16",
+            "PS": "1.26x",
+            "CFPS": "641.47",
+            "PCF": "3.51x",
+            "EPS": "416.90",
+            "PER": "5.40x"
+          },
+          "solvabilitas": {
+            "DER": "75.63% | 31.20%",
+            "DAR": "43.06%"
+          },
+          "likuiditas": {
+            "CRR": "208.45%",
+            "QR": "199.21%",
+            "CR": "133.02%"
+          }
+        }
+      }
+    ]
   }
 }

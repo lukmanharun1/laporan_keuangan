@@ -1,27 +1,27 @@
 {
-   "saham_beredar": 11520659250,
-   "harga_saham": 2710,
+   "saham_beredar": 31985962000,
+   "harga_saham": 2250,
    "tanggal": "31 desember 2021",
-   "satuan": 1000000,
+   "satuan":  14285000,
    "pembagian": 1,
    "neraca": {
-      "kas_dan_setara_kas": 4394195,
-      "persediaan":  1207585,
-      "aset_lancar":  18211500,
-      "liabilitas_berbunga": 5940,
-      "liabilitas_lancar": 7500647,
-      "total_liabilitas": 11869979,
-      "ekuitas": 24059665  
+      "kas_dan_setara_kas": 1811141,
+      "persediaan":  125738,
+      "aset_lancar":  2838132,
+      "liabilitas_berbunga": 1290712,
+      "liabilitas_lancar": 1361558,
+      "total_liabilitas": 3128621,
+      "ekuitas": 4136780  
    },
    "laba_rugi": {
-      "pendapatan":  29261468,
-      "laba_kotor":  13484223,
-      "laba_operasional": 9959025,
-      "laba_bersih": 7909113
+      "pendapatan":  3992718,
+      "laba_kotor":  1769746,
+      "laba_operasional": 1528279,
+      "laba_bersih": 933492
    },
    "arus_kas": {
-      "aktivitas_operasi": 10795075,
-      "aktivitas_investasi": -9838749,
-      "aktivitas_pendanaan": -911583
+      "aktivitas_operasi": 1436332,
+      "aktivitas_investasi": -644612,
+      "aktivitas_pendanaan": -153422
    }
 }

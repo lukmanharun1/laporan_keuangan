@@ -173,8 +173,6 @@ describe('DELETE /laporan-keuangan', () => {
         harga_saham: sendCreateLaporanKeuangan.harga_saham,
       }
     });
-    console.log('DELETE');
-    console.log(laporanKeuangan);
     const response = await request(app)
       .delete(`/laporan-keuangan/${laporanKeuangan.id}`)
       .set('Accept', 'application/json')

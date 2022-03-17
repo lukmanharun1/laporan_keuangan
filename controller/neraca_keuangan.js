@@ -18,7 +18,9 @@ const find = async (req, res) => {
     if (!emiten) {
       // rollback transaction
       await t.rollback(transaction.data);
-      throw new Error('Emiten not found');
+      return response(res, {
+        message: 'Emiten not found'
+      }, 404);
     }
     //  cari laporan keuangan berdasarkan emiten_id, jenis_laporan
     const laporanKeuangan = await LaporanKeuangan.findAll({
