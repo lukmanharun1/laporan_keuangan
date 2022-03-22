@@ -12,6 +12,12 @@ describe('GET /neraca-keuangan', () => {
     const kode_emiten = randomAlphabert(4);
     const nama_emiten = `PT ${kode_emiten} AGRO LESTARI TBK`;
 
+    console.log({
+      jumlah_saham,
+      kode_emiten,
+      nama_emiten
+    }, 'TOSR');
+
     await request(app)
     .post('/emiten')
     .set('Accept', 'application/json')
@@ -37,8 +43,8 @@ describe('GET /neraca-keuangan', () => {
     // create laporan keuangan
     const dataLaporanKeuangan = {
       emiten_id: getEmiten.body.data.data[0].id,
-      tanggal: '2021-12-31',
-      jenis_laporan: 'TAHUNAN',
+      tanggal: '2021-03-31',
+      jenis_laporan: 'Q1',
       harga_saham: 3500,
       aset: 1000000,
       kas_dan_setara_kas: 1000000,

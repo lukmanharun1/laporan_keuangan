@@ -13,8 +13,8 @@ const sendCreateEmiten = {
 }
 const sendCreateLaporanKeuangan = {
   emiten_id: '',
-  tanggal: '2021-12-31',
-  jenis_laporan: 'TAHUNAN',
+  tanggal: '2021-03-31',
+  jenis_laporan: 'Q1',
   harga_saham: 2900,
   aset: 1000000,
   kas_dan_setara_kas: 1000000,

@@ -1,6 +1,6 @@
 module.exports = (n) => {
   let emptyString = "";
-  let alphabet = "ABCDEFGHIJKLMN0PQRSTUVWXYZ";
+  let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   while (emptyString.length < n) {
     emptyString += alphabet[Math.floor(Math.random() * alphabet.length)];
   }

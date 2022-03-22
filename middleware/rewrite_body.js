@@ -1,6 +1,6 @@
 module.exports = (req, res, next) => {
   const { rewriteBody, body } = req;
-  if (rewriteBody.laba_rugi && rewriteBody.arus_kas) {
+  if (rewriteBody?.laba_rugi && rewriteBody?.arus_kas) {
     const { pendapatan, laba_kotor, laba_usaha, laba_sebelum_pajak, laba_bersih } = rewriteBody.laba_rugi;
     const { operasi, investasi, pendanaan } = rewriteBody.arus_kas;
     body.pendapatan -= pendapatan;

@@ -66,6 +66,7 @@ const storage = multer.diskStorage({
         ]
       });
       if (!laporanKeuanganQ1) {
+       req.message = 'Lengkapi laporan keuangan Q1';
         return cb('Lengkapi laporan keuangan Q1');
       }
       // rewriteBody
