@@ -1,5 +1,5 @@
 const { body, query, param } = require('express-validator');
-
+const validasiKodeEmiten = require('./validasi_kode_emiten');
 const getAll = () => [
   query('kode_emiten')
     .optional()
@@ -21,7 +21,7 @@ const create = () => [
     .isInt(),
   body('kode_emiten')
     .notEmpty()
-    .custom(require('./validasi_kode_emiten')),
+    .custom(validasiKodeEmiten),
     
   body('nama_emiten')
     .notEmpty()
@@ -37,7 +37,7 @@ const update = () => [
     .isInt(),
   body('kode_emiten')
     .optional()
-    .custom(require('./validasi_kode_emiten')),
+    .custom(validasiKodeEmiten),
   body('nama_emiten')
     .optional()
     .isString({ max: 255 })
