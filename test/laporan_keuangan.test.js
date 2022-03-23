@@ -34,7 +34,6 @@ const sendCreateLaporanKeuangan = {
   operasi: 1000000,
   investasi: 1000000,
   pendanaan: 1000000,
-  cash: 400
 };
 
 describe('POST /laporan-keuangan', () => {
@@ -67,7 +66,7 @@ describe('POST /laporan-keuangan', () => {
             liabilitas_jangka_panjang, liabilitas_berbunga,
             ekuitas, pendapatan, laba_kotor, laba_usaha,
             laba_sebelum_pajak, laba_bersih,
-            operasi, investasi, pendanaan, cash } = sendCreateLaporanKeuangan;
+            operasi, investasi, pendanaan } = sendCreateLaporanKeuangan;
     const response = await request(app)
       .post('/laporan-keuangan')
       .set('Accept', 'application/json')
@@ -94,7 +93,6 @@ describe('POST /laporan-keuangan', () => {
       .field('operasi', operasi)
       .field('investasi', investasi)
       .field('pendanaan', pendanaan)
-      .field('cash', cash)
       .attach('nama_file', __dirname + '/test.pdf')
       .expect(201)
     
@@ -121,7 +119,7 @@ describe('POST /laporan-keuangan', () => {
       liabilitas_jangka_panjang, liabilitas_berbunga,
       ekuitas, pendapatan, laba_kotor, laba_usaha,
       laba_sebelum_pajak, laba_bersih,
-      operasi, investasi, pendanaan, cash } = sendCreateLaporanKeuangan;
+      operasi, investasi, pendanaan } = sendCreateLaporanKeuangan;
       const response = await request(app)
       .post('/laporan-keuangan')
       .set('Accept', 'application/json')
@@ -148,7 +146,6 @@ describe('POST /laporan-keuangan', () => {
       .field('operasi', operasi)
       .field('investasi', investasi)
       .field('pendanaan', pendanaan)
-      .field('cash', cash)
       .attach('nama_file', __dirname + '/test.pdf')
       .expect(400)
 

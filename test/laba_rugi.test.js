@@ -58,7 +58,6 @@ describe('GET /laba-rugi/:emiten_id/:jenis_laporan', () => {
       operasi: 1000000,
       investasi: 1000000,
       pendanaan: 1000000,
-      cash: 400
     }
 
     const { emiten_id, tanggal, jenis_laporan, harga_saham, aset,
@@ -67,7 +66,7 @@ describe('GET /laba-rugi/:emiten_id/:jenis_laporan', () => {
       liabilitas_jangka_panjang, liabilitas_berbunga,
       ekuitas, pendapatan, laba_kotor, laba_usaha,
       laba_sebelum_pajak, laba_bersih,
-      operasi, investasi, pendanaan, cash } = dataLaporanKeuangan;
+      operasi, investasi, pendanaan } = dataLaporanKeuangan;
     const laporanKeuangan = await request(app)
       .post('/laporan-keuangan')
       .set('Accept', 'application/json')
@@ -94,7 +93,6 @@ describe('GET /laba-rugi/:emiten_id/:jenis_laporan', () => {
       .field('operasi', operasi)
       .field('investasi', investasi)
       .field('pendanaan', pendanaan)
-      .field('cash', cash)
       .attach('nama_file', __dirname + '/test.pdf')
       .expect(201);
 
