@@ -5,8 +5,8 @@ const cekFile = require('../helper/cek_file');
 const hapusFile = require('../helper/hapus_file');
 const formatTanggal = require('../helper/format_tanggal');
 
-describe('GET /laba-rugi/:emiten_id/:jenis_laporan', () => {
-  it('should find laba rugi success', async () => {
+describe('GET /arus-kas/:emiten_id/:jenis_laporan', () => {
+  it('should find arus kas success', async () => {
     // create emiten terlebih dahulu
     const jumlah_saham = 200000000;
     const kode_emiten = randomAlphabert(4);
