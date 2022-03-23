@@ -5,13 +5,12 @@ const cekFile = require('../helper/cek_file');
 const hapusFile = require('../helper/hapus_file');
 const formatTanggal = require('../helper/format_tanggal');
 
-describe('GET /neraca-keuangan/:emiten_id/:jenis_laporan', () => {
-  it('should find neraca keuangan success', async () => {
+describe('GET /laba-rugi/:emiten_id/:jenis_laporan', () => {
+  it('should find laba rugi success', async () => {
     // create emiten terlebih dahulu
     const jumlah_saham = 200000000;
     const kode_emiten = randomAlphabert(4);
     const nama_emiten = `PT ${kode_emiten} AGRO LESTARI TBK`;
-
 
     await request(app)
     .post('/emiten')
@@ -40,7 +39,7 @@ describe('GET /neraca-keuangan/:emiten_id/:jenis_laporan', () => {
       emiten_id: getEmiten.body.data.data[0].id,
       tanggal: '2021-03-31',
       jenis_laporan: 'Q1',
-      harga_saham: 3500,
+      harga_saham: 3300,
       aset: 1000000,
       kas_dan_setara_kas: 1000000,
       piutang: 1000000,
@@ -112,29 +111,26 @@ describe('GET /neraca-keuangan/:emiten_id/:jenis_laporan', () => {
       // hapus file karena untuk test saja
       hapusFile(pathFile);
 
-    // cari neraca keuangan
-    const neracaKeuangan = await request(app)
-      .get(`/neraca-keuangan/${emiten_id}/${jenis_laporan}`)
+    // cari laba rugi
+    const labaRugi = await request(app)
+      .get(`/laba-rugi/${emiten_id}/${jenis_laporan}`)
       .set('Accept', 'application/json')
       .expect(200);
     
-      expect(neracaKeuangan.body).toEqual(expect.objectContaining({
+      expect(labaRugi.body).toEqual(expect.objectContaining({
         status: 'success',
-        jumlah_saham,
         data: expect.arrayContaining([
           expect.objectContaining({
-            harga_saham,
             nama_file,
+            laba_rugi: expect.objectContaining({
+              pendapatan,
+              laba_kotor,
+              laba_usaha,
+              laba_sebelum_pajak,
+              laba_bersih,
+            }),
             neraca_keuangan: expect.objectContaining({
               aset,
-              kas_dan_setara_kas,
-              piutang,
-              persediaan,
-              aset_lancar,
-              aset_tidak_lancar,
-              liabilitas_jangka_pendek,
-              liabilitas_jangka_panjang,
-              liabilitas_berbunga,
               ekuitas
             })
           })    

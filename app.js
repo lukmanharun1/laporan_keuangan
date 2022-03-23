@@ -14,11 +14,5 @@ app.use(helmet());
 app.use(cors());
 app.use(routes);
 
-
-// const { PORT, HOST } = process.env;
-// app.listen(PORT, () => {
-//   console.log(`app listening on http://${HOST}:${PORT}`);
-// });
-
 module.exports = app;
 
