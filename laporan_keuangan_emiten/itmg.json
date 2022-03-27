@@ -1,0 +1,67 @@
+{
+  "informasi": {
+    "kode_emiten": "ITMG",
+    "nama_emiten": "PT INDO TAMBANGRAYA MEGAH TBK",
+    "jumlah_saham_beredar": "1.129.925.000 miliar"
+  },
+  "laporan_keuangan": {
+    "laporan_kuartal1": [],
+    "laporan_kuartal2": [],
+    "laporan_kuartal3": [],
+    "laporan_tahunan": [
+      {
+        "harga_saham": 20400,
+        "tanggal": "31 desember 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 9859450930000,
+          "aset_lancar": 14098114456000,
+          "aset": 23886106234000,
+          "liabilitas_berbunga": 509974060000,
+          "persediaan": 891056243000,
+          "liabilitas_lancar": 5204517867000,
+          "total_liabilitas": 6630518920000,
+          "ekuitas": 17255587314000
+        },
+        "labar_rugi": {
+          "pendapatan": 29634044697000,
+          "laba_kotor": 13078009377000,
+          "laba_operasional": 11289375958000,
+          "laba_bersih": 6785908330000
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 8814203873000,
+          "aktivitas_investasi": -352201727000,
+          "aktivitas_pendanaan": -1914742841000
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "28.41%",
+            "ROE": "39.33%",
+            "GPM": "44.13%",
+            "OPM": "38.10%",
+            "NPM": "22.90%"
+          },
+          "valuasi": {
+            "BVPS": "15271.44",
+            "PBV": "1.34x",
+            "RPS": "26226.56",
+            "PS": "0.78x",
+            "CFPS": "7800.70",
+            "PCF": "2.62x",
+            "EPS": "6005.63",
+            "PER": "3.40x"
+          },
+          "solvabilitas": {
+            "DER": "38.43% | 2.96%",
+            "DAR": "27.76%"
+          },
+          "likuiditas": {
+            "CRR": "270.88%",
+            "QR": "253.76%",
+            "CR": "189.44%"
+          }
+        }
+      }
+    ]
+  }
+}

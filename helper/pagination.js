@@ -9,7 +9,7 @@ module.exports = ({ data, count, page, per_page }) => {
       data,
       pagination: {
           total_records: count,
-          total_perpage: total_perpage,
+          total_perpage,
           total_page,
           current_page,
           next_page,
