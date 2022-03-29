@@ -9,16 +9,16 @@ module.exports = {
   },
   "test": {
     "username": process.env.TEST_USERNAME,
-    "password": process.env._TESTPASSWORD,
+    "password": process.env._TEST_PASSWORD,
     "database": process.env.TEST_DATABASE,
     "host": process.env.TEST_HOST,
     "dialect": process.env.TEST_DIALECT
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": process.env.PROD_USERNAME,
+    "password": process.env._PROD_PASSWORD,
+    "database": process.env.PROD_DATABASE,
+    "host": process.env.PROD_HOST,
+    "dialect": process.env.PROD_DIALECT
   }
 }

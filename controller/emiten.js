@@ -11,18 +11,12 @@ const getAll = async (req, res) => {
     const page = req.query.page ? parseInt(req.query.page) : 1;
     const per_page = req.query.per_page ? parseInt(req.query.per_page) : 1;
     if (kode_emiten) {
-      where.kode_emiten = { [Sequelize.Op.eq]: kode_emiten }
+      where.kode_emiten = { [Sequelize.Op.like]: `%${kode_emiten}%` }
     }
 
     if (nama_emiten) {
-      where.nama_emiten = { [Sequelize.Op.eq]: nama_emiten }
+      where.nama_emiten = { [Sequelize.Op.like]: `%${nama_emiten}%` }
     }
-    // create transaction
-    const transaction = await t.create();
-    if (!transaction.status && transaction.error) {
-        throw transaction.error;
-    }
-   
     const { count, rows } = await Emiten.findAndCountAll({
       where,
       offset: (page - 1) * page,
@@ -30,7 +24,7 @@ const getAll = async (req, res) => {
       distinct: true,
       order: [['kode_emiten', 'ASC']],
       attributes: ['id', 'kode_emiten', 'nama_emiten', 'jumlah_saham']
-    }, { transaction: transaction.data });
+    });
 
     const result = pagination({
       data: rows,
@@ -45,11 +39,6 @@ const getAll = async (req, res) => {
       }, 404);
     }
 
-    // commit transaction
-    const commit = await t.commit(transaction.data);
-    if (!commit.status && commit.error) {
-        throw commit.error;
-    }
     return response(res, {
       status: 'success',
       data: result
