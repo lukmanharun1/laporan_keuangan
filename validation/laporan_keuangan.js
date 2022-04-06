@@ -1,9 +1,9 @@
 const { body, param } = require('express-validator');
-
+const validasiKodeEmiten = require('./validasi_kode_emiten');
 const find = () => [
-  param('emiten_id')
+  param('kode_emiten')
   .notEmpty()
-  .isUUID(),
+  .custom(validasiKodeEmiten),
   param('tanggal')
   .notEmpty()
   .isDate({ format: 'YYYY-MM-DD' })

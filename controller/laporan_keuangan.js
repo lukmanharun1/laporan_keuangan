@@ -1,4 +1,4 @@
-const { ArusKas, Dividen, LabaRugi, LaporanKeuangan, NeracaKeuangan } = require('../models');
+const { Emiten, ArusKas, Dividen, LabaRugi, LaporanKeuangan, NeracaKeuangan } = require('../models');
 
 const response = require('../helper/response');
 const t = require('../helper/transaction');
@@ -7,20 +7,28 @@ const { LOCATION_LAPORAN_KEUANGAN, HOST, PORT } = process.env;
 
 const find = async (req, res) => {
   try {
-    const { tanggal, emiten_id } = req.params;
-    const findLaporanKeuangan = await LaporanKeuangan.findOne({
+    const { tanggal, kode_emiten } = req.params;
+    const findLaporanKeuangan = await Emiten.findOne({
       where: {
-        emiten_id,
-        tanggal: new Date(tanggal)
+        kode_emiten
       },
-      attributes: ['nama_file', 'jenis_laporan']
+      include: [
+        {
+          model: LaporanKeuangan,
+          attributes: ['nama_file', 'jenis_laporan'],
+          as: 'laporan_keuangan',
+          where: {
+            tanggal: new Date(tanggal)
+          }
+        }
+      ]
     });
     if (!findLaporanKeuangan) {
       return response(res, {
         message: 'Laporan keuangan not found'
       }, 404);
     }
-    const { nama_file, jenis_laporan } = findLaporanKeuangan;
+    const { nama_file, jenis_laporan } = findLaporanKeuangan.laporan_keuangan[0];
     const replacePublic = LOCATION_LAPORAN_KEUANGAN.split('/')[1];
     const download = `${HOST}:${PORT}/${replacePublic}/${jenis_laporan}/${nama_file}`;
     return response(res, {
