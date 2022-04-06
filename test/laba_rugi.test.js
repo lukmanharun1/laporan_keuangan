@@ -4,6 +4,7 @@ const randomAlphabert = require('../helper/random_alphabert');
 const cekFile = require('../helper/cek_file');
 const hapusFile = require('../helper/hapus_file');
 const formatTanggal = require('../helper/format_tanggal');
+const { LOCATION_LAPORAN_KEUANGAN } = process.env;
 
 describe('GET /laba-rugi/:emiten_id/:jenis_laporan', () => {
   it('should find laba rugi success', async () => {
@@ -98,7 +99,7 @@ describe('GET /laba-rugi/:emiten_id/:jenis_laporan', () => {
 
       // cek file apakah berhasil di upload
       const nama_file = `${kode_emiten} ${jenis_laporan} ${formatTanggal(tanggal)}.pdf`;
-      const pathFile = `public/laporan_keuangan/${jenis_laporan}/${nama_file}`;
+      const pathFile = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${nama_file}`;
 
       expect(cekFile(pathFile)).toEqual(true);
       expect(laporanKeuangan.body).toEqual(expect.objectContaining({

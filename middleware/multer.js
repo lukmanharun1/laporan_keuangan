@@ -1,11 +1,12 @@
 const multer = require("multer");
 const path = require("path");
 const { Emiten, LaporanKeuangan, LabaRugi, ArusKas, Sequelize } = require('../models');
+const { LOCATION_LAPORAN_KEUANGAN } = process.env;
 const formatTanggal = require('../helper/format_tanggal');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-      cb(null, `public/laporan_keuangan/${req.body.jenis_laporan}/`);
+      cb(null, `${LOCATION_LAPORAN_KEUANGAN}/${req.body.jenis_laporan}/`);
       
   },
   filename: async (req, file, cb) => {
@@ -152,7 +153,7 @@ const storage = multer.diskStorage({
     }
    
     const formatNamaFile = `${getEmiten.kode_emiten} ${jenis_laporan} ${formatTanggal(tanggal)}${path.extname(file.originalname)}`;
-    req.destination = `public/laporan_keuangan/${req.body.jenis_laporan}/${formatNamaFile}`;
+    req.destination = `${LOCATION_LAPORAN_KEUANGAN}/${req.body.jenis_laporan}/${formatNamaFile}`;
     req.body.nama_file = formatNamaFile;
     return cb(null, formatNamaFile);
   }

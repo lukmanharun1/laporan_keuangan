@@ -5,6 +5,7 @@ const formatTanggal = require('../helper/format_tanggal');
 const cekFile = require('../helper/cek_file');
 const hapusFile = require('../helper/hapus_file');
 const kodeEmiten = randomAlphabert(4);
+const { LOCATION_LAPORAN_KEUANGAN } = process.env;
 const sendCreateEmiten = {
   jumlah_saham: 200000000,
   kode_emiten: kodeEmiten,
@@ -96,7 +97,7 @@ describe('PUT /stock-split', () => {
       .expect(201)
   
     // cek file apakah berhasil di upload
-    const pathFile = `public/laporan_keuangan/${jenis_laporan}/${kode_emiten} ${jenis_laporan} ${formatTanggal(tanggal)}.pdf`;
+    const pathFile = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten} ${jenis_laporan} ${formatTanggal(tanggal)}.pdf`;
 
     expect(cekFile(pathFile)).toEqual(true);
     expect(laporanKeuangan.body).toEqual(expect.objectContaining({
@@ -224,7 +225,7 @@ describe('PUT /stock-split', () => {
        .expect(201)
    
      // cek file apakah berhasil di upload
-     const pathFile = `public/laporan_keuangan/${jenis_laporan}/${kode_emiten} ${jenis_laporan} ${formatTanggal(tanggal)}.pdf`;
+     const pathFile = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten} ${jenis_laporan} ${formatTanggal(tanggal)}.pdf`;
  
      expect(cekFile(pathFile)).toEqual(true);
      expect(laporanKeuangan.body).toEqual(expect.objectContaining({

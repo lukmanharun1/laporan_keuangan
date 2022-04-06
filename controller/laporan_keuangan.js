@@ -3,7 +3,39 @@ const { ArusKas, Dividen, LabaRugi, LaporanKeuangan, NeracaKeuangan } = require(
 const response = require('../helper/response');
 const t = require('../helper/transaction');
 const hapusFile = require('../helper/hapus_file');
+const { LOCATION_LAPORAN_KEUANGAN, HOST, PORT } = process.env;
 
+const find = async (req, res) => {
+  try {
+    const { tanggal, emiten_id } = req.params;
+    const findLaporanKeuangan = await LaporanKeuangan.findOne({
+      where: {
+        emiten_id,
+        tanggal: new Date(tanggal)
+      },
+      attributes: ['nama_file', 'jenis_laporan']
+    });
+    if (!findLaporanKeuangan) {
+      return response(res, {
+        message: 'Laporan keuangan not found'
+      }, 404);
+    }
+    const { nama_file, jenis_laporan } = findLaporanKeuangan;
+    const replacePublic = LOCATION_LAPORAN_KEUANGAN.split('/')[1];
+    const download = `${HOST}:${PORT}/${replacePublic}/${jenis_laporan}/${nama_file}`;
+    return response(res, {
+      status: 'success',
+      nama_file,
+      download
+    });
+
+  } catch (error) {
+    return response(res, {
+      status: 'error',
+      message: error.message
+    }, 500);
+  }
+}
 const create = async (req, res) => {
   try {
     const { emiten_id, tanggal, jenis_laporan, harga_saham, nama_file,
@@ -172,6 +204,7 @@ const destroy = async (req, res) => {
 }
 
 module.exports = {
+  find,
   create,
   destroy
 }
