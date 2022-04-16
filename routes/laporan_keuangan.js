@@ -7,7 +7,7 @@ const validation = require('../validation/laporan_keuangan');
 const uploadFile = require('../middleware/multer');
 const rewriteBody = require('../middleware/rewrite_body');
 
-router.get('/:kode_emiten/:tanggal',  validation.find(), validate, controller.find);
+router.get('/:kode_emiten',  validation.find(), validate, controller.find);
 router.post('/', uploadFile, validation.create(), validate, rewriteBody, controller.create);
 router.delete('/:id', validation.destroy(), validate, controller.destroy);
 

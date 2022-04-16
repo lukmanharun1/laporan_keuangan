@@ -1,4 +1,4 @@
-const { Emiten, ArusKas, Dividen, LabaRugi, LaporanKeuangan, NeracaKeuangan } = require('../models');
+const { Emiten, ArusKas, Dividen, LabaRugi, LaporanKeuangan, NeracaKeuangan, Sequelize } = require('../models');
 
 const response = require('../helper/response');
 const t = require('../helper/transaction');
@@ -7,19 +7,21 @@ const { LOCATION_LAPORAN_KEUANGAN, HOST, PORT } = process.env;
 
 const find = async (req, res) => {
   try {
-    const { tanggal, kode_emiten } = req.params;
+    const { kode_emiten } = req.params;
+    const replacePublic = LOCATION_LAPORAN_KEUANGAN.split('/')[1];
+    const pathUpload = `${HOST}:${PORT}/${replacePublic}/`;
     const findLaporanKeuangan = await Emiten.findOne({
       where: {
         kode_emiten
       },
+      attributes: [],
       include: [
         {
           model: LaporanKeuangan,
-          attributes: ['nama_file', 'jenis_laporan'],
+          attributes: ['nama_file', 'jenis_laporan', 'tanggal', [
+            Sequelize.fn('CONCAT', pathUpload, Sequelize.col('jenis_laporan'), '/', Sequelize.col('nama_file')), 'download']
+          ],
           as: 'laporan_keuangan',
-          where: {
-            tanggal: new Date(tanggal)
-          }
         }
       ]
     });
@@ -28,13 +30,9 @@ const find = async (req, res) => {
         message: 'Laporan keuangan not found'
       }, 404);
     }
-    const { nama_file, jenis_laporan } = findLaporanKeuangan.laporan_keuangan[0];
-    const replacePublic = LOCATION_LAPORAN_KEUANGAN.split('/')[1];
-    const download = `${HOST}:${PORT}/${replacePublic}/${jenis_laporan}/${nama_file}`;
     return response(res, {
       status: 'success',
-      nama_file,
-      download
+      data: findLaporanKeuangan.laporan_keuangan
     });
 
   } catch (error) {

@@ -4,22 +4,6 @@ const find = () => [
   param('kode_emiten')
   .notEmpty()
   .custom(validasiKodeEmiten),
-  param('tanggal')
-  .notEmpty()
-  .isDate({ format: 'YYYY-MM-DD' })
-  .custom((value) => {
-    const [tahun, bulan, tanggal] = value.split('-');
-    const validBulanTanggal = {
-      '03': '31',
-      '06': '30',
-      '09': '30',
-      '12': '31'
-    };
-    if (validBulanTanggal[bulan] !== tanggal) {
-      throw new Error('Format bulan atau tanggal tidak valid');
-    }
-    return true;
-  })
 ];
 
 const create = () => [
