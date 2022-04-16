@@ -163,13 +163,13 @@ describe('POST /laporan-keuangan', () => {
   });
 });
 
-describe('GET /laporan-keuangan/:kode_emitem/:tanggal', () => {
+describe('GET /laporan-keuangan/:kode_emiten', () => {
   it('should find laporan keuangan success', async () => {
     const { kode_emiten } = sendCreateEmiten;
+    const tanggal = '2021-03-31';
     const { jenis_laporan } = sendCreateLaporanKeuangan;
-    const tanggal = '2021-03-31'; 
     const response = await request(app)
-      .get(`/laporan-keuangan/${kode_emiten}/${tanggal}`)
+      .get(`/laporan-keuangan/${kode_emiten}`)
       .set('Accept', 'application/json')
       .expect(200);
     const nama_file = `${kodeEmiten} ${jenis_laporan} ${formatTanggal(tanggal)}.pdf`;
@@ -177,10 +177,15 @@ describe('GET /laporan-keuangan/:kode_emitem/:tanggal', () => {
     const download = `${HOST}:${PORT}/${replacePublic}/${jenis_laporan}/${nama_file}`;
     expect(response.body).toEqual(expect.objectContaining({
       status: 'success',
-      nama_file,
-      download
+      data: expect.arrayContaining([
+        expect.objectContaining({
+          nama_file,
+          jenis_laporan,
+          download
+        })
+      ])
     }));
-  })
+  });
 });
 
 describe('DELETE /laporan-keuangan', () => {
