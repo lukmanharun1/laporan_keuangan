@@ -10,7 +10,7 @@
     "laporan_kuartal3": [
       {
         "harga_saham": 8575,
-        "tanggal": "31 desember 2021",
+        "tanggal": "31 september 2021",
         "neraca": {
           "kas_dan_setara_kas": 13906438960000,
           "aset_lancar": 62685985296000,
@@ -62,6 +62,60 @@
         }
       }
     ],
-    "laporan_tahunan": []
+    "laporan_tahunan": [
+      {
+        "harga_saham": 8100,
+        "tanggal": "31 desember 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 15117402527570,
+          "aset_lancar": 67094711453280,
+          "aset": 128106230025340,
+          "liabilitas_berbunga": 50806936187490,
+          "persediaan": 6300795283720,
+          "liabilitas_lancar": 32321034200210,
+          "total_liabilitas": 60211440912350,
+          "ekuitas": 67894789112990
+        },
+        "labar_rugi": {
+          "pendapatan": 50178200799860,
+          "laba_kotor": 17527994807960,
+          "laba_operasional": 12257735964460,
+          "laba_bersih": 7520895521790
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 9683877671650,
+          "aktivitas_investasi": -5711684936860,
+          "aktivitas_pendanaan": -1306199444410
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "5.87%",
+            "ROE": "11.08%",
+            "GPM": "34.93%",
+            "OPM": "24.43%",
+            "NPM": "14.99%"
+          },
+          "valuasi": {
+            "BVPS": "12409.98",
+            "PBV": "0.65x",
+            "RPS": "9171.70",
+            "PS": "0.88x",
+            "CFPS": "1770.04",
+            "PCF": "4.58x",
+            "EPS": "1374.69",
+            "PER": "5.89x"
+          },
+          "solvabilitas": {
+            "DER": "88.68% | 74.83%",
+            "DAR": "47.00%"
+          },
+          "likuiditas": {
+            "CRR": "207.59%",
+            "QR": "188.09%",
+            "CR": "46.77%"
+          }
+        }
+      }
+    ]
   }
 }

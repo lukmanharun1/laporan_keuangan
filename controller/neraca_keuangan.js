@@ -4,17 +4,21 @@ const t = require('../helper/transaction');
 
 const find = async (req, res) => {
   try {
-    const { emiten_id, jenis_laporan } = req.params;
+    const { kode_emiten, jenis_laporan } = req.params;
     const transaction = await t.create();
     if (!transaction.status && transaction.error) {
       throw transaction.error;
     }
     
     // cari emiten untuk mendapatkan jumlah_saham
-    const emiten = await Emiten.findByPk(emiten_id, {
-      attributes: ['jumlah_saham'],
+    const emiten = await Emiten.findOne({
+      where: {
+        kode_emiten
+      },
+      attributes: ['id', 'nama_emiten', 'jumlah_saham'],
       transaction: transaction.data
     });
+    const { id: emiten_id, nama_emiten, jumlah_saham } = emiten;
     if (!emiten) {
       // rollback transaction
       await t.rollback(transaction.data);
@@ -55,7 +59,8 @@ const find = async (req, res) => {
     }
     return response(res, {
       status: 'success',
-      jumlah_saham: emiten.jumlah_saham,
+      jumlah_saham,
+      nama_emiten,
       data: laporanKeuangan
     });  
 
