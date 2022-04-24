@@ -1,4 +1,4 @@
-const { Dividen, LaporanKeuangan } = require('../models');
+const { Dividen, LaporanKeuangan, Emiten } = require('../models');
 const response = require('../helper/response');
 const t = require('../helper/transaction');
 
