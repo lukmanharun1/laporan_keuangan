@@ -1,13 +1,29 @@
-const { LabaRugi, NeracaKeuangan, LaporanKeuangan, Sequelize } = require('../models');
+const { LabaRugi, NeracaKeuangan, LaporanKeuangan, Emiten } = require('../models');
 const response = require('../helper/response');
 const t = require('../helper/transaction');
 
 const find = async (req, res) => {
   try {
-    const { emiten_id, jenis_laporan } = req.params;
+    const { kode_emiten, jenis_laporan } = req.params;
     const transaction = await t.create();
     if (!transaction.status && transaction.error) {
       throw transaction.error;
+    }
+    // cari emiten untuk mendapatkan id
+    const emiten = await Emiten.findOne({
+      where: {
+        kode_emiten
+      },
+      attributes: ['id'],
+      transaction: transaction.data
+    });
+    const { id: emiten_id } = emiten;
+    if (!emiten) {
+      // rollback transaction
+      await t.rollback(transaction.data);
+      return response(res, {
+        message: 'Emiten not found'
+      }, 404);
     }
     // cek jika jenis laporan Q4
     if (jenis_laporan === 'Q4') {
@@ -16,8 +32,8 @@ const find = async (req, res) => {
       const Q3 = [];
       const Q4 = [];
       const TAHUNAN = [];
-
-      // ambil seluruh laporan keuangan berdasarkan emiten_id
+      
+      // ambil seluruh laporan keuangan berdasarkan kode_emiten
       const findLaporanKeuangan = await LaporanKeuangan.findAll({
         where: {
           emiten_id
@@ -79,7 +95,7 @@ const find = async (req, res) => {
       return response(res, { status: 'success', data: Q4 });
       
     }
-    //  cari laporan keuangan berdasarkan emiten_id, jenis_laporan
+    //  cari laporan keuangan berdasarkan kode_emiten, jenis_laporan
     const laporanKeuangan = await LaporanKeuangan.findAll({
       where: {
         emiten_id,
