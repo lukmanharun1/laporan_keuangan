@@ -1,13 +1,29 @@
-const { ArusKas, LaporanKeuangan } = require('../models');
+const { ArusKas, LaporanKeuangan, Emiten } = require('../models');
 const response = require('../helper/response');
 const t = require('../helper/transaction');
 
 const find = async (req, res) => {
   try {
-    const { emiten_id, jenis_laporan } = req.params;
+    const { kode_emiten, jenis_laporan } = req.params;
     const transaction = await t.create();
     if (!transaction.status && transaction.error) {
       throw transaction.error;
+    }
+    // cari emiten untuk mendapatkan id
+    const emiten = await Emiten.findOne({
+      where: {
+        kode_emiten
+      },
+      attributes: ['id'],
+      transaction: transaction.data
+    });
+    const { id: emiten_id } = emiten;
+    if (!emiten) {
+      // rollback transaction
+      await t.rollback(transaction.data);
+      return response(res, {
+        message: 'Emiten not found'
+      }, 404);
     }
      // cek jika jenis laporan Q4
      if (jenis_laporan === 'Q4') {
