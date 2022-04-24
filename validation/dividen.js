@@ -1,12 +1,10 @@
 const { param } = require('express-validator');
+const validasiKodeEmiten = require('./validasi_kode_emiten');
 
 const find = () => [
-  param('emiten_id')
+  param('kode_emiten')
     .notEmpty()
-    .isUUID(),
-  param('jenis_laporan')
-    .notEmpty()
-    .isIn(['TAHUNAN'])
+    .custom(validasiKodeEmiten),
 ];
 
 module.exports = {
