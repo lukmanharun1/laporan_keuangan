@@ -14,10 +14,10 @@ const find = async (req, res) => {
       where: {
         kode_emiten
       },
-      attributes: ['id'],
+      attributes: ['id', 'nama_emiten', 'jumlah_saham'],
       transaction: transaction.data
     });
-    const { id: emiten_id } = emiten;
+    const { id: emiten_id, jumlah_saham, nama_emiten } = emiten;
     if (!emiten) {
       // rollback transaction
       await t.rollback(transaction.data);
@@ -111,6 +111,8 @@ const find = async (req, res) => {
     }
     return response(res, {
       status: 'success',
+      jumlah_saham,
+      nama_emiten,
       data: laporanKeuangan
     });  
 
