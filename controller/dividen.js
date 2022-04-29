@@ -11,7 +11,7 @@ const find = async (req, res) => {
       },
       attributes: ['id'],
     });
-    const { id: emiten_id } = emiten;
+    const { id: emiten_id, jumlah_saham, nama_emiten } = emiten;
     //  cari laporan keuangan berdasarkan emiten_id, jenis_laporan TAHUNAN
     const laporanKeuangan = await LaporanKeuangan.findAll({
       where: {
@@ -34,6 +34,8 @@ const find = async (req, res) => {
 
     return response(res, {
       status: 'success',
+      jumlah_saham,
+      nama_emiten,
       data: laporanKeuangan
     });  
 
