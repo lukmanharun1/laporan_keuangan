@@ -1,26 +1,18 @@
 const { ArusKas, LaporanKeuangan, Emiten } = require('../models');
 const response = require('../helper/response');
-const t = require('../helper/transaction');
 
 const find = async (req, res) => {
   try {
     const { kode_emiten, jenis_laporan } = req.params;
-    const transaction = await t.create();
-    if (!transaction.status && transaction.error) {
-      throw transaction.error;
-    }
     // cari emiten untuk mendapatkan id
     const emiten = await Emiten.findOne({
       where: {
         kode_emiten
       },
       attributes: ['id', 'nama_emiten', 'jumlah_saham'],
-      transaction: transaction.data
     });
     const { id: emiten_id, jumlah_saham, nama_emiten } = emiten;
     if (!emiten) {
-      // rollback transaction
-      await t.rollback(transaction.data);
       return response(res, {
         message: 'Emiten not found'
       }, 404);
@@ -49,7 +41,6 @@ const find = async (req, res) => {
             as: 'arus_kas'
           },
         ],
-        transaction: transaction.data
       });
       // filter laporan keuangan Q1, Q2, Q3, TAHUNAN
       findLaporanKeuangan.forEach((data) => {
@@ -97,18 +88,11 @@ const find = async (req, res) => {
     });
 
     if (!laporanKeuangan) {
-      // rollback transaction
-      await t.rollback(transaction.data);
       return response(res, {
         message: 'Laporan keuangan not found'
       }, 404);
     }
 
-    // commit transaction
-    const commit = await t.commit(transaction.data);
-    if (!commit.status && commit.error) {
-        throw commit.error;
-    }
     return response(res, {
       status: 'success',
       jumlah_saham,
