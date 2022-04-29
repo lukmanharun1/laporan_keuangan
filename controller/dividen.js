@@ -9,7 +9,7 @@ const find = async (req, res) => {
       where: {
         kode_emiten
       },
-      attributes: ['id'],
+      attributes: ['id', 'nama_emiten', 'jumlah_saham'],
     });
     const { id: emiten_id, jumlah_saham, nama_emiten } = emiten;
     //  cari laporan keuangan berdasarkan emiten_id, jenis_laporan TAHUNAN
