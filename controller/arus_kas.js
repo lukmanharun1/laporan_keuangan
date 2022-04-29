@@ -69,7 +69,12 @@ const find = async (req, res) => {
           },
         });
       });
-      return response(res, { status: 'success', data: Q4 });
+      return response(res, {
+        status: 'success',
+        jumlah_saham,
+        nama_emiten,
+        data: Q4
+      });
     }
     //  cari laporan keuangan berdasarkan emiten_id, jenis_laporan
     const laporanKeuangan = await LaporanKeuangan.findAll({
