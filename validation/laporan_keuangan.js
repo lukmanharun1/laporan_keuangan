@@ -8,9 +8,9 @@ const find = () => [
 
 const create = () => [
   // laporan keuangan
-  body('emiten_id')
+  body('kode_emiten')
     .notEmpty()
-    .isUUID(),
+    .custom(validasiKodeEmiten),
   body('tanggal')
     .notEmpty()
     .isDate({ format: 'YYYY-MM-DD' })

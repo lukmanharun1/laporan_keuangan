@@ -43,19 +43,16 @@ const find = async (req, res) => {
   }
 }
 const create = async (req, res) => {
+  // create transaction
+  const transaction = await t.create();
   try {
-    const { emiten_id, tanggal, jenis_laporan, harga_saham, nama_file,
+    const { tanggal, jenis_laporan, harga_saham, nama_file,
             aset, kas_dan_setara_kas, piutang, persediaan, aset_lancar, aset_tidak_lancar,
             liabilitas_jangka_pendek, liabilitas_jangka_panjang, liabilitas_berbunga, ekuitas,
             pendapatan, laba_kotor, laba_usaha, laba_sebelum_pajak, laba_bersih,
             operasi, investasi, pendanaan, cash
           } = req.body;
-     // create transaction
-    const transaction = await t.create();
-    if (!transaction.status && transaction.error) {
-        throw transaction.error;
-    }
-
+    const { emiten_id } = req;
     // create laporan keuangan
     const createLaporanKeuangan = await LaporanKeuangan.create({
       emiten_id,
@@ -70,7 +67,6 @@ const create = async (req, res) => {
       await t.rollback(transaction.data);
       throw new Error('Laporan Keuangan failed created');
     }
-
     // create neraca keuangan
     const createNeracaKeuangan = await NeracaKeuangan.create({
       id: createLaporanKeuangan.id,
@@ -91,9 +87,7 @@ const create = async (req, res) => {
       await t.rollback(transaction.data);
       throw new Error('Neraca Keuangan failed created');
     }
-
     // create laba rugi
-    
     const createLabaRugi = await LabaRugi.create({
       id: createLaporanKeuangan.id,
       pendapatan,
@@ -110,7 +104,6 @@ const create = async (req, res) => {
     }
 
     // create arus kas
-
     const createArusKas = await ArusKas.create({
       id: createLaporanKeuangan.id,
       operasi,
@@ -123,8 +116,6 @@ const create = async (req, res) => {
       await t.rollback(transaction.data);
       throw new Error('Arus Kas failed created');
     }
-    
-    
     if (jenis_laporan === "TAHUNAN" && cash) {
       // create dividen
       const createDividen = await Dividen.create({
@@ -138,22 +129,19 @@ const create = async (req, res) => {
         throw new Error('Dividen failed created');
       }
     }
-     // commit transaction
-     const commit = await t.commit(transaction.data);
-     if (!commit.status && commit.error) {
-         throw commit.error;
-     }
-     return response(res, {
-       status: 'success',
-       message: 'Data Laporan keuangan created successfully'
-     }, 201);  
+    // commit transaction
+    await t.commit(transaction.data);
+    return response(res, {
+      status: 'success',
+      message: 'Data Laporan keuangan created successfully'
+    }, 201);  
   } catch (error) {
+    await t.rollback(transaction.data);
     hapusFile(req.destination);
     return response(res, {
       status: 'error',
       message: error.message
     }, 500);
-   
   }
 }
 
