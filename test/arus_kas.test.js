@@ -6,7 +6,7 @@ const hapusFile = require("../helper/hapus_file");
 const formatTanggal = require("../helper/format_tanggal");
 const { LOCATION_LAPORAN_KEUANGAN } = process.env;
 
-describe("GET /arus-kas/:emiten_id/:jenis_laporan", () => {
+describe("GET /arus-kas/:kode_emiten/:jenis_laporan", () => {
   it("should find arus kas success", async () => {
     // create emiten terlebih dahulu
     const jumlah_saham = 200000000;
