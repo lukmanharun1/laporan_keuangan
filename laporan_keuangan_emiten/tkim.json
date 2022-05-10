@@ -1,0 +1,67 @@
+{
+  "informasi": {
+    "kode_emiten": "TIKIM",
+    "nama_emiten": "PT PABRIK KERTAS TJIWI KIMIA Tbk",
+    "jumlah_saham_beredar": "3.113.223.570 miliar"
+  },
+  "laporan_keuangan": {
+    "laporan_kuartal1": [],
+    "laporan_kuartal2": [],
+    "laporan_kuartal3": [],
+    "laporan_tahunan": [
+      {
+        "harga_saham": 7700,
+        "tanggal": "31 desember 2021",
+        "neraca": {
+          "kas_dan_setara_kas": 2931254186280,
+          "aset_lancar": 11491304630330,
+          "aset": 45116240964340,
+          "liabilitas_berbunga": 16126321417640,
+          "persediaan": 4029126084690,
+          "liabilitas_lancar": 9668110415600,
+          "total_liabilitas": 20060744082960,
+          "ekuitas": 25055496881380
+        },
+        "labar_rugi": {
+          "pendapatan": 14618015715590,
+          "laba_kotor": 2004039647470,
+          "laba_operasional": 706715527280,
+          "laba_bersih": 3553069104060
+        },
+        "arus_kas": {
+          "aktivitas_operasi": 1392155960650,
+          "aktivitas_investasi": 1504167689150,
+          "aktivitas_pendanaan": -2264135161750
+        },
+        "rasio": {
+          "profitabilitas": {
+            "ROA": "7.88%",
+            "ROE": "14.18%",
+            "GPM": "13.71%",
+            "OPM": "4.83%",
+            "NPM": "24.31%"
+          },
+          "valuasi": {
+            "BVPS": "8048.09",
+            "PBV": "0.96x",
+            "RPS": "4695.46",
+            "PS": "1.64x",
+            "CFPS": "447.18",
+            "PCF": "17.22x",
+            "EPS": "1141.28",
+            "PER": "6.75x"
+          },
+          "solvabilitas": {
+            "DER": "80.07% | 64.36%",
+            "DAR": "44.46%"
+          },
+          "likuiditas": {
+            "CRR": "118.86%",
+            "QR": "77.18%",
+            "CR": "30.32%"
+          }
+        }
+      }
+    ]
+  }
+}
