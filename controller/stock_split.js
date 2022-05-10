@@ -1,4 +1,4 @@
-const { Emiten, LaporanKeuangan, Sequelize, sequelize } = require("../models");
+const { Emiten, LaporanKeuangan, Sequelize } = require("../models");
 const response = require("../helper/response");
 const t = require("../helper/transaction");
 
