@@ -1,21 +1,21 @@
-const request = require('supertest');
-const app = require('../app');
-const { LaporanKeuangan } = require('../models');
-const randomAlphabert = require('../helper/random_alphabert');
-const formatTanggal = require('../helper/format_tanggal');
-const cekFile = require('../helper/cek_file');
-const hapusFile = require('../helper/hapus_file');
+const request = require("supertest");
+const app = require("../app");
+const { LaporanKeuangan } = require("../models");
+const randomAlphabert = require("../helper/random_alphabert");
+const formatTanggal = require("../helper/format_tanggal");
+const cekFile = require("../helper/cek_file");
+const hapusFile = require("../helper/hapus_file");
 const kodeEmiten = randomAlphabert(4);
 const { HOST, PORT, LOCATION_LAPORAN_KEUANGAN } = process.env;
 const sendCreateEmiten = {
   jumlah_saham: 200000000,
   kode_emiten: kodeEmiten,
-  nama_emiten: `PT ${kodeEmiten} AGRO LESTARI TBK`
-}
+  nama_emiten: `PT ${kodeEmiten} AGRO LESTARI TBK`,
+};
 const sendCreateLaporanKeuangan = {
-  emiten_id: '',
-  tanggal: '2021-03-31',
-  jenis_laporan: 'Q1',
+  kode_emiten: kodeEmiten,
+  tanggal: "2021-03-31",
+  jenis_laporan: "Q1",
   harga_saham: 2900,
   aset: 1000000,
   kas_dan_setara_kas: 1000000,
@@ -37,172 +37,218 @@ const sendCreateLaporanKeuangan = {
   pendanaan: 1000000,
 };
 
-describe('POST /laporan-keuangan', () => {
-  it('should create laporan keuangan success', async () => {
+describe("POST /laporan-keuangan", () => {
+  it("should create laporan keuangan success", async () => {
     // create emiten
     const { kode_emiten, nama_emiten } = sendCreateEmiten;
     await request(app)
-      .post('/emiten')
-      .set('Accept', 'application/json')
-      .send(sendCreateEmiten).expect(201);
-  
+      .post("/emiten")
+      .set("Accept", "application/json")
+      .send(sendCreateEmiten)
+      .expect(201);
+
     // get emiten menggunakan query params
-    const getEmiten = await request(app)
-    .get('/emiten')
-    .query({
-      kode_emiten,
-      nama_emiten,
-      page: 1,
-      per_page: 1
-    })
-    .set('Accept', 'application/json')
-    .expect(200);
+    await request(app)
+      .get("/emiten")
+      .query({
+        kode_emiten,
+        nama_emiten,
+        page: 1,
+        per_page: 1,
+      })
+      .set("Accept", "application/json")
+      .expect(200);
 
     // create laporan keuangan
-    sendCreateLaporanKeuangan.emiten_id = getEmiten.body.data.data[0].id;
 
-    const { emiten_id, tanggal, jenis_laporan, harga_saham, aset,
-            kas_dan_setara_kas, piutang, persediaan, aset_lancar,
-            aset_tidak_lancar, liabilitas_jangka_pendek,
-            liabilitas_jangka_panjang, liabilitas_berbunga,
-            ekuitas, pendapatan, laba_kotor, laba_usaha,
-            laba_sebelum_pajak, laba_bersih,
-            operasi, investasi, pendanaan } = sendCreateLaporanKeuangan;
+    const {
+      tanggal,
+      jenis_laporan,
+      harga_saham,
+      aset,
+      kas_dan_setara_kas,
+      piutang,
+      persediaan,
+      aset_lancar,
+      aset_tidak_lancar,
+      liabilitas_jangka_pendek,
+      liabilitas_jangka_panjang,
+      liabilitas_berbunga,
+      ekuitas,
+      pendapatan,
+      laba_kotor,
+      laba_usaha,
+      laba_sebelum_pajak,
+      laba_bersih,
+      operasi,
+      investasi,
+      pendanaan,
+    } = sendCreateLaporanKeuangan;
+
     const response = await request(app)
-      .post('/laporan-keuangan')
-      .set('Accept', 'application/json')
-      .set('Content-Type', 'multipart/form-data')
-      .field('tanggal', tanggal)
-      .field('emiten_id', emiten_id)
-      .field('jenis_laporan', jenis_laporan)
-      .field('harga_saham', harga_saham)
-      .field('aset', aset)
-      .field('kas_dan_setara_kas', kas_dan_setara_kas)
-      .field('piutang', piutang)
-      .field('persediaan', persediaan)
-      .field('aset_lancar', aset_lancar)
-      .field('aset_tidak_lancar', aset_tidak_lancar)
-      .field('liabilitas_jangka_pendek', liabilitas_jangka_pendek)
-      .field('liabilitas_jangka_panjang', liabilitas_jangka_panjang)
-      .field('liabilitas_berbunga', liabilitas_berbunga)
-      .field('ekuitas', ekuitas)
-      .field('pendapatan', pendapatan)
-      .field('laba_kotor', laba_kotor)
-      .field('laba_usaha', laba_usaha)
-      .field('laba_sebelum_pajak', laba_sebelum_pajak)
-      .field('laba_bersih', laba_bersih)
-      .field('operasi', operasi)
-      .field('investasi', investasi)
-      .field('pendanaan', pendanaan)
-      .attach('nama_file', __dirname + '/test.pdf')
-      .expect(201)
-    
+      .post("/laporan-keuangan")
+      .set("Accept", "application/json")
+      .set("Content-Type", "multipart/form-data")
+      .field("tanggal", tanggal)
+      .field("kode_emiten", kode_emiten)
+      .field("jenis_laporan", jenis_laporan)
+      .field("harga_saham", harga_saham)
+      .field("aset", aset)
+      .field("kas_dan_setara_kas", kas_dan_setara_kas)
+      .field("piutang", piutang)
+      .field("persediaan", persediaan)
+      .field("aset_lancar", aset_lancar)
+      .field("aset_tidak_lancar", aset_tidak_lancar)
+      .field("liabilitas_jangka_pendek", liabilitas_jangka_pendek)
+      .field("liabilitas_jangka_panjang", liabilitas_jangka_panjang)
+      .field("liabilitas_berbunga", liabilitas_berbunga)
+      .field("ekuitas", ekuitas)
+      .field("pendapatan", pendapatan)
+      .field("laba_kotor", laba_kotor)
+      .field("laba_usaha", laba_usaha)
+      .field("laba_sebelum_pajak", laba_sebelum_pajak)
+      .field("laba_bersih", laba_bersih)
+      .field("operasi", operasi)
+      .field("investasi", investasi)
+      .field("pendanaan", pendanaan)
+      .attach("nama_file", __dirname + "/test.pdf")
+      .expect(201);
+
     // cek file apakah berhasil di upload
-    const pathFile = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten} ${jenis_laporan} ${formatTanggal(tanggal)}.pdf`;
+    const pathFile = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten} ${jenis_laporan} ${formatTanggal(
+      tanggal
+    )}.pdf`;
 
     expect(cekFile(pathFile)).toEqual(true);
-    expect(response.body).toEqual(expect.objectContaining({
-      status: 'success',
-      message: response.body.message
-    }));
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        status: "success",
+        message: response.body.message,
+      })
+    );
 
     // hapus file karena untuk test saja
     hapusFile(pathFile);
   });
 
-  it('should create laporan keuangan bad request tanggal not suitable jenis_laporan', async () => {
+  it("should create laporan keuangan bad request tanggal not suitable jenis_laporan", async () => {
     // create laporan keuangan
-    sendCreateLaporanKeuangan.jenis_laporan = 'Q1'; // harus nya tahunan
-    sendCreateLaporanKeuangan.tanggal = '2022-09-30'; // harus nya 2022-12-31
-    const { emiten_id, tanggal, jenis_laporan, harga_saham, aset,
-      kas_dan_setara_kas, piutang, persediaan, aset_lancar,
-      aset_tidak_lancar, liabilitas_jangka_pendek,
-      liabilitas_jangka_panjang, liabilitas_berbunga,
-      ekuitas, pendapatan, laba_kotor, laba_usaha,
-      laba_sebelum_pajak, laba_bersih,
-      operasi, investasi, pendanaan } = sendCreateLaporanKeuangan;
-      const response = await request(app)
-      .post('/laporan-keuangan')
-      .set('Accept', 'application/json')
-      .set('Content-Type', 'multipart/form-data')
-      .field('tanggal', tanggal)
-      .field('emiten_id', emiten_id)
-      .field('jenis_laporan', jenis_laporan)
-      .field('harga_saham', harga_saham)
-      .field('aset', aset)
-      .field('kas_dan_setara_kas', kas_dan_setara_kas)
-      .field('piutang', piutang)
-      .field('persediaan', persediaan)
-      .field('aset_lancar', aset_lancar)
-      .field('aset_tidak_lancar', aset_tidak_lancar)
-      .field('liabilitas_jangka_pendek', liabilitas_jangka_pendek)
-      .field('liabilitas_jangka_panjang', liabilitas_jangka_panjang)
-      .field('liabilitas_berbunga', liabilitas_berbunga)
-      .field('ekuitas', ekuitas)
-      .field('pendapatan', pendapatan)
-      .field('laba_kotor', laba_kotor)
-      .field('laba_usaha', laba_usaha)
-      .field('laba_sebelum_pajak', laba_sebelum_pajak)
-      .field('laba_bersih', laba_bersih)
-      .field('operasi', operasi)
-      .field('investasi', investasi)
-      .field('pendanaan', pendanaan)
-      .attach('nama_file', __dirname + '/test.pdf')
-      .expect(400)
+    sendCreateLaporanKeuangan.jenis_laporan = "Q1"; // harus nya tahunan
+    sendCreateLaporanKeuangan.tanggal = "2022-09-30"; // harus nya 2022-12-31
+    const {
+      kode_emiten,
+      tanggal,
+      jenis_laporan,
+      harga_saham,
+      aset,
+      kas_dan_setara_kas,
+      piutang,
+      persediaan,
+      aset_lancar,
+      aset_tidak_lancar,
+      liabilitas_jangka_pendek,
+      liabilitas_jangka_panjang,
+      liabilitas_berbunga,
+      ekuitas,
+      pendapatan,
+      laba_kotor,
+      laba_usaha,
+      laba_sebelum_pajak,
+      laba_bersih,
+      operasi,
+      investasi,
+      pendanaan,
+    } = sendCreateLaporanKeuangan;
+    const response = await request(app)
+      .post("/laporan-keuangan")
+      .set("Accept", "application/json")
+      .set("Content-Type", "multipart/form-data")
+      .field("tanggal", tanggal)
+      .field("kode_emiten", kode_emiten)
+      .field("jenis_laporan", jenis_laporan)
+      .field("harga_saham", harga_saham)
+      .field("aset", aset)
+      .field("kas_dan_setara_kas", kas_dan_setara_kas)
+      .field("piutang", piutang)
+      .field("persediaan", persediaan)
+      .field("aset_lancar", aset_lancar)
+      .field("aset_tidak_lancar", aset_tidak_lancar)
+      .field("liabilitas_jangka_pendek", liabilitas_jangka_pendek)
+      .field("liabilitas_jangka_panjang", liabilitas_jangka_panjang)
+      .field("liabilitas_berbunga", liabilitas_berbunga)
+      .field("ekuitas", ekuitas)
+      .field("pendapatan", pendapatan)
+      .field("laba_kotor", laba_kotor)
+      .field("laba_usaha", laba_usaha)
+      .field("laba_sebelum_pajak", laba_sebelum_pajak)
+      .field("laba_bersih", laba_bersih)
+      .field("operasi", operasi)
+      .field("investasi", investasi)
+      .field("pendanaan", pendanaan)
+      .attach("nama_file", __dirname + "/test.pdf")
+      .expect(400);
 
-      expect(response.body).toEqual(expect.objectContaining({
+    expect(response.body).toEqual(
+      expect.objectContaining({
         errors: expect.objectContaining({
           errors: expect.arrayContaining([
             expect.objectContaining({
               value: tanggal,
-              msg: response.body.errors.errors[0].msg
-            })
-          ])
-        })
-      }))
+              msg: response.body.errors.errors[0].msg,
+            }),
+          ]),
+        }),
+      })
+    );
   });
 });
 
-describe('GET /laporan-keuangan/:kode_emiten', () => {
-  it('should find laporan keuangan success', async () => {
+describe("GET /laporan-keuangan/:kode_emiten", () => {
+  it("should find laporan keuangan success", async () => {
     const { kode_emiten } = sendCreateEmiten;
-    const tanggal = '2021-03-31';
+    const tanggal = "2021-03-31";
     const { jenis_laporan } = sendCreateLaporanKeuangan;
     const response = await request(app)
       .get(`/laporan-keuangan/${kode_emiten}`)
-      .set('Accept', 'application/json')
+      .set("Accept", "application/json")
       .expect(200);
-    const nama_file = `${kodeEmiten} ${jenis_laporan} ${formatTanggal(tanggal)}.pdf`;
-    const replacePublic = LOCATION_LAPORAN_KEUANGAN.split('/')[1];
+    const nama_file = `${kodeEmiten} ${jenis_laporan} ${formatTanggal(
+      tanggal
+    )}.pdf`;
+    const replacePublic = LOCATION_LAPORAN_KEUANGAN.split("/")[1];
     const download = `${HOST}:${PORT}/${replacePublic}/${jenis_laporan}/${nama_file}`;
-    expect(response.body).toEqual(expect.objectContaining({
-      status: 'success',
-      data: expect.arrayContaining([
-        expect.objectContaining({
-          nama_file,
-          jenis_laporan,
-          download
-        })
-      ])
-    }));
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        status: "success",
+        data: expect.arrayContaining([
+          expect.objectContaining({
+            nama_file,
+            jenis_laporan,
+            download,
+          }),
+        ]),
+      })
+    );
   });
 });
 
-describe('DELETE /laporan-keuangan', () => {
-  it('should delete laporan keuangan success', async () => {
+describe("DELETE /laporan-keuangan", () => {
+  it("should delete laporan keuangan success", async () => {
     // cari id laporan_keuangan yang sudah di buat
     const laporanKeuangan = await LaporanKeuangan.findOne({
       where: {
         harga_saham: sendCreateLaporanKeuangan.harga_saham,
-      }
+      },
     });
     const response = await request(app)
       .delete(`/laporan-keuangan/${laporanKeuangan.id}`)
-      .set('Accept', 'application/json')
+      .set("Accept", "application/json")
       .expect(200);
-    expect(response.body).toEqual(expect.objectContaining({
-      status: 'success',
-      message: response.body.message
-    }));
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        status: "success",
+        message: response.body.message,
+      })
+    );
   });
 });
