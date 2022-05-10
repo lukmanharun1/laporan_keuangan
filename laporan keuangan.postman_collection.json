@@ -1,0 +1,457 @@
+{
+	"info": {
+		"_postman_id": "5f13b763-0b0f-4cf5-bb85-6c7cac8921e7",
+		"name": "laporan emiten",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "emiten",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jumlah_saham\": 16087156000,\n    \"kode_emiten\": \"POWR\",\n    \"nama_emiten\": \"PT CIKARANG LISTRINDO TBK\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}emiten",
+							"host": [
+								"{{host}}emiten"
+							]
+						},
+						"description": "create emiten\n"
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}emiten",
+							"host": [
+								"{{host}}emiten"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "optional | default 1",
+									"disabled": true
+								},
+								{
+									"key": "per_page",
+									"value": "10",
+									"description": "optional | default 1",
+									"disabled": true
+								},
+								{
+									"key": "kode_emiten",
+									"value": "ACCC",
+									"description": "optional",
+									"disabled": true
+								},
+								{
+									"key": "nama_emiten",
+									"value": "PT BUKIT ASAM TBK",
+									"description": "optional",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\n//     \"kode_emiten\": \"CSRA\",\n//     \"nama_emiten\": \"PT CISADANE SAWIT TBK\",\n//     \"jumlah_saham\": 20000000\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}emiten/5fcfd452-d00d-493c-a9ff-b214875e7065",
+							"host": [
+								"{{host}}emiten"
+							],
+							"path": [
+								"5fcfd452-d00d-493c-a9ff-b214875e7065"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "laporan_keuangan",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "kode_emiten",
+									"value": "AGRO",
+									"description": "string (4)",
+									"type": "text"
+								},
+								{
+									"key": "tanggal",
+									"value": "2021-03-31",
+									"description": "YYYY-MM-DD",
+									"type": "text"
+								},
+								{
+									"key": "jenis_laporan",
+									"value": "Q1",
+									"description": "['Q1', 'Q2', 'Q3', 'TAHUNAN']",
+									"type": "text"
+								},
+								{
+									"key": "harga_saham",
+									"value": "2800",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "nama_file",
+									"description": "pdf",
+									"type": "file",
+									"src": "/home/lukman/Downloads/AnnualReport2161.pdf"
+								},
+								{
+									"key": "aset",
+									"value": "1000000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "kas_dan_setara_kas",
+									"value": "1000000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "piutang",
+									"value": "1000000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "persediaan",
+									"value": "1000000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "aset_lancar",
+									"value": "1000000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "aset_tidak_lancar",
+									"value": "1000000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "liabilitas_jangka_pendek",
+									"value": "1000000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "liabilitas_jangka_panjang",
+									"value": "1000000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "liabilitas_berbunga",
+									"value": "1000000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "ekuitas",
+									"value": "1000000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "pendapatan",
+									"value": "200000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "laba_kotor",
+									"value": "100000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "laba_usaha",
+									"value": "50000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "laba_sebelum_pajak",
+									"value": "40000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "laba_bersih",
+									"value": "30000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "operasi",
+									"value": "500000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "investasi",
+									"value": "-10000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "pendanaan",
+									"value": "-10000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "cash",
+									"value": "400",
+									"description": "optional | int \njenis_laporan harus TAHUNAN",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}laporan-keuangan",
+							"host": [
+								"{{host}}laporan-keuangan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}laporan-keuangan/ca6c9ec4-386f-4977-9ba9-da29a010fe25",
+							"host": [
+								"{{host}}laporan-keuangan"
+							],
+							"path": [
+								"ca6c9ec4-386f-4977-9ba9-da29a010fe25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}laporan-keuangan/AALI",
+							"host": [
+								"{{host}}laporan-keuangan"
+							],
+							"path": [
+								"AALI"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "neraca_keuangan",
+			"item": [
+				{
+					"name": "find",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}neraca-keuangan/AALI/TAHUNAN",
+							"host": [
+								"{{host}}neraca-keuangan"
+							],
+							"path": [
+								"AALI",
+								"TAHUNAN"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "laba_rugi",
+			"item": [
+				{
+					"name": "find",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}laba-rugi/AALI/TAHUNAN",
+							"host": [
+								"{{host}}laba-rugi"
+							],
+							"path": [
+								"AALI",
+								"TAHUNAN"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "arus_kas",
+			"item": [
+				{
+					"name": "find",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}arus-kas/95e28076-d415-41c1-9e5c-d1449740018h/Q4",
+							"host": [
+								"{{host}}arus-kas"
+							],
+							"path": [
+								"95e28076-d415-41c1-9e5c-d1449740018h",
+								"Q4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dividen",
+			"item": [
+				{
+					"name": "find",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}dividen/16074c60-9316-420f-b970-ba54688d0e31/TAHUNAN",
+							"host": [
+								"{{host}}dividen"
+							],
+							"path": [
+								"16074c60-9316-420f-b970-ba54688d0e31",
+								"TAHUNAN"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stock_split",
+			"item": [
+				{
+					"name": "stock split atau reverse stock split",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jumlah_saham\": 2304131850,\n    // \"aksi\": \"stock_split\",\n    // aksi: \"reverse_stock_split\",\n    \"split\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}stock-split/16074c60-9316-420f-b970-ba54688d0e31",
+							"host": [
+								"{{host}}stock-split"
+							],
+							"path": [
+								"16074c60-9316-420f-b970-ba54688d0e31"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:4000/",
+			"type": "string"
+		}
+	]
+}
