@@ -34,7 +34,7 @@ const find = async (req, res) => {
       const Q4 = [];
       const TAHUNAN = [];
 
-      // ambil seluruh laporan keuangan berdasarkan kode_emiten
+      // ambil seluruh laporan keuangan berdasarkan emiten_id
       const findLaporanKeuangan = await LaporanKeuangan.findAll({
         where: {
           emiten_id,
@@ -60,6 +60,15 @@ const find = async (req, res) => {
           },
         ],
       });
+      if (!findLaporanKeuangan) {
+        return response(
+          res,
+          {
+            message: "Laporan Keuangan not found",
+          },
+          404
+        );
+      }
       // filter laporan keuangan Q1, Q2, Q3, TAHUNAN
       findLaporanKeuangan.forEach((data) => {
         if (data.jenis_laporan === "Q1") {
