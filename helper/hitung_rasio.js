@@ -22,7 +22,7 @@ module.exports = (dataLaporanKeuangan, jumlah_saham, jenis_laporan) => {
     dividen: {
       tanggal: [],
       DPS: [],
-      yield: [],
+      DY: [],
       DPR: [],
     },
     valuasi: {
@@ -132,12 +132,12 @@ module.exports = (dataLaporanKeuangan, jumlah_saham, jenis_laporan) => {
       if (dividen && jenis_laporan === "TAHUNAN") {
         // isi data response dividen
         const { cash } = dividen;
-        const yield = rasio(cash, harga_saham);
+        const dividenYield = rasio(cash, harga_saham);
         const dividenPayoutRasio = rasio(jumlah_saham * cash, laba_bersih);
 
         dataResponse.dividen.tanggal.push(tanggal);
         dataResponse.dividen.DPS.push(cash);
-        dataResponse.dividen.yield.push(yield);
+        dataResponse.dividen.DY.push(dividenYield);
         dataResponse.dividen.DPR.push(dividenPayoutRasio);
       }
     }
