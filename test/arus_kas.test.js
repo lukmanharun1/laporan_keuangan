@@ -117,7 +117,7 @@ describe("GET /arus-kas/:kode_emiten/:jenis_laporan", () => {
     const nama_file = `${kode_emiten} ${jenis_laporan} ${formatTanggal(
       tanggal
     )}.pdf`;
-    const pathFile = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${nama_file}`;
+    const pathFile = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten}/${nama_file}`;
 
     expect(cekFile(pathFile)).toEqual(true);
     expect(laporanKeuangan.body).toEqual(
