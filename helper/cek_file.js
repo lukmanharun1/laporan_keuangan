@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require("fs");
 module.exports = (path) => {
   let status = true;
   fs.readFile(path, (err, data) => {
@@ -7,4 +7,4 @@ module.exports = (path) => {
     }
   });
   return status;
-}
+};

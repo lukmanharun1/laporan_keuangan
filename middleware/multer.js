@@ -9,10 +9,15 @@ const {
 } = require("../models");
 const { LOCATION_LAPORAN_KEUANGAN } = process.env;
 const formatTanggal = require("../helper/format_tanggal");
+const createFolder = require("../helper/create_folder");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, `${LOCATION_LAPORAN_KEUANGAN}/${req.body.jenis_laporan}/`);
+    const { jenis_laporan, kode_emiten } = req.body;
+    const url = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/`;
+    // create folder untuk kode emiten
+    createFolder(url, kode_emiten);
+    cb(null, `${url}/${kode_emiten}/`);
   },
   filename: async (req, file, cb) => {
     try {
@@ -131,7 +136,7 @@ const storage = multer.diskStorage({
         const investasi = Q1.arus_kas.investasi + Q2.arus_kas.investasi;
         const pendanaan = Q1.arus_kas.pendanaan + Q2.arus_kas.pendanaan;
 
-        // rewriteBody
+        // rewriteBody untuk (Q1 + Q2) - Q3 -> req.body
         req.rewriteBody = {
           laba_rugi: {
             pendapatan,
@@ -165,7 +170,8 @@ const storage = multer.diskStorage({
       const formatNamaFile = `${kode_emiten} ${jenis_laporan} ${formatTanggal(
         tanggal
       )}${path.extname(file.originalname)}`;
-      req.destination = `${LOCATION_LAPORAN_KEUANGAN}/${req.body.jenis_laporan}/${formatNamaFile}`;
+      // kirim data ke controller untuk di proses
+      req.destination = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten}/${formatNamaFile}`;
       req.body.nama_file = formatNamaFile;
       return cb(null, formatNamaFile);
     } catch (error) {
