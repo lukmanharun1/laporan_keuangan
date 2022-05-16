@@ -115,7 +115,7 @@ describe("POST /laporan-keuangan", () => {
       .expect(201);
 
     // cek file apakah berhasil di upload
-    const pathFile = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten} ${jenis_laporan} ${formatTanggal(
+    const pathFile = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten}/${kode_emiten} ${jenis_laporan} ${formatTanggal(
       tanggal
     )}.pdf`;
 
@@ -126,7 +126,6 @@ describe("POST /laporan-keuangan", () => {
         message: response.body.message,
       })
     );
-
     // hapus file karena untuk test saja
     hapusFile(pathFile);
   });
@@ -216,7 +215,7 @@ describe("GET /laporan-keuangan/:kode_emiten", () => {
       tanggal
     )}.pdf`;
     const replacePublic = LOCATION_LAPORAN_KEUANGAN.split("/")[1];
-    const download = `${HOST}:${PORT}/${replacePublic}/${jenis_laporan}/${nama_file}`;
+    const download = `${HOST}:${PORT}/${replacePublic}/${jenis_laporan}/${kode_emiten}/${nama_file}`;
     expect(response.body).toEqual(
       expect.objectContaining({
         status: "success",
