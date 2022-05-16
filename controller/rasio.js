@@ -51,10 +51,8 @@ const find = async (req, res) => {
             attributes: [
               "aset",
               "kas_dan_setara_kas",
-              "piutang",
               "persediaan",
               "aset_lancar",
-              "aset_tidak_lancar",
               "liabilitas_jangka_pendek",
               "liabilitas_jangka_panjang",
               "liabilitas_berbunga",
@@ -67,7 +65,6 @@ const find = async (req, res) => {
               "pendapatan",
               "laba_kotor",
               "laba_usaha",
-              "laba_sebelum_pajak",
               "laba_bersih",
             ],
             as: "laba_rugi",
@@ -75,7 +72,7 @@ const find = async (req, res) => {
           {
             model: ArusKas,
             as: "arus_kas",
-            attributes: ["operasi", "investasi", "pendanaan"],
+            attributes: ["operasi"],
           },
           {
             model: Dividen,
@@ -127,13 +124,7 @@ const find = async (req, res) => {
       // susun laporan Q4 bagian data laba rugi & arus kas
       TAHUNAN.forEach(({ laba_rugi, arus_kas }, i) => {
         // susun laporan Q4 bagian laba rugi
-        const {
-          pendapatan,
-          laba_kotor,
-          laba_usaha,
-          laba_sebelum_pajak,
-          laba_bersih,
-        } = laba_rugi;
+        const { pendapatan, laba_kotor, laba_usaha, laba_bersih } = laba_rugi;
         Q4[i].laba_rugi = {
           pendapatan:
             pendapatan -
@@ -150,11 +141,6 @@ const find = async (req, res) => {
             Q3[i].laba_rugi.laba_usaha -
             Q2[i].laba_rugi.laba_usaha -
             Q1[i].laba_rugi.laba_usaha,
-          laba_sebelum_pajak:
-            laba_sebelum_pajak -
-            Q3[i].laba_rugi.laba_sebelum_pajak -
-            Q2[i].laba_rugi.laba_sebelum_pajak -
-            Q1[i].laba_rugi.laba_sebelum_pajak,
           laba_bersih:
             laba_bersih -
             Q3[i].laba_rugi.laba_bersih -
@@ -163,7 +149,7 @@ const find = async (req, res) => {
         };
 
         // susun laporan Q4 bagian arus kas
-        const { operasi, investasi, pendanaan } = arus_kas;
+        const { operasi } = arus_kas;
 
         Q4[i].arus_kas = {
           operasi:
@@ -171,16 +157,6 @@ const find = async (req, res) => {
             Q3[i].arus_kas.operasi -
             Q2[i].arus_kas.operasi -
             Q1[i].arus_kas.operasi,
-          investasi:
-            investasi -
-            Q3[i].arus_kas.investasi -
-            Q2[i].arus_kas.investasi -
-            Q1[i].arus_kas.investasi,
-          pendanaan:
-            pendanaan -
-            Q3[i].arus_kas.pendanaan -
-            Q2[i].arus_kas.pendanaan -
-            Q1[i].arus_kas.pendanaan,
         };
       });
 
@@ -205,10 +181,8 @@ const find = async (req, res) => {
           attributes: [
             "aset",
             "kas_dan_setara_kas",
-            "piutang",
             "persediaan",
             "aset_lancar",
-            "aset_tidak_lancar",
             "liabilitas_jangka_pendek",
             "liabilitas_jangka_panjang",
             "liabilitas_berbunga",
@@ -217,19 +191,13 @@ const find = async (req, res) => {
         },
         {
           model: LabaRugi,
-          attributes: [
-            "pendapatan",
-            "laba_kotor",
-            "laba_usaha",
-            "laba_sebelum_pajak",
-            "laba_bersih",
-          ],
+          attributes: ["pendapatan", "laba_kotor", "laba_usaha", "laba_bersih"],
           as: "laba_rugi",
         },
         {
           model: ArusKas,
           as: "arus_kas",
-          attributes: ["operasi", "investasi", "pendanaan"],
+          attributes: ["operasi"],
         },
         {
           model: Dividen,

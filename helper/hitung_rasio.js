@@ -55,9 +55,7 @@ module.exports = (dataLaporanKeuangan, jumlah_saham, jenis_laporan) => {
         aset,
         aset_lancar,
         kas_dan_setara_kas,
-        piutang,
         persediaan,
-        aset_tidak_lancar,
         liabilitas_jangka_pendek,
         liabilitas_jangka_panjang,
         liabilitas_berbunga,
@@ -83,13 +81,7 @@ module.exports = (dataLaporanKeuangan, jumlah_saham, jenis_laporan) => {
       dataResponse.solvabilitas.NGR.push(netGearingRasio);
 
       // isi data response profitabilitas
-      const {
-        pendapatan,
-        laba_kotor,
-        laba_usaha,
-        laba_sebelum_pajak,
-        laba_bersih,
-      } = laba_rugi;
+      const { pendapatan, laba_kotor, laba_usaha, laba_bersih } = laba_rugi;
       const grossProfitMargin = rasio(laba_kotor, pendapatan);
       const operatingProfitMargin = rasio(laba_usaha, pendapatan);
       const netProfitMargin = rasio(laba_bersih, pendapatan);
@@ -103,7 +95,7 @@ module.exports = (dataLaporanKeuangan, jumlah_saham, jenis_laporan) => {
       dataResponse.profitabilitas.ROE.push(returnOnEquity);
 
       // isi data response valuasi
-      const { operasi, investasi, pendanaan } = arus_kas;
+      const { operasi } = arus_kas;
       const bookValuePerShare = ekuitas / jumlah_saham;
       const priceToBookValue = rasio(harga_saham, bookValuePerShare, "x");
 
