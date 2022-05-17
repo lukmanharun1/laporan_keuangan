@@ -1,8 +1,4 @@
-const fs = require('fs');
+const fs = require("fs");
 module.exports = (destination) => {
-  fs.unlink(destination, (err) => {
-    if (err) {
-      throw err;
-    }
-  });
-}
+  fs.unlink(destination, (err) => {});
+};
