@@ -128,7 +128,7 @@ describe("GET /arus-kas/:kode_emiten/:jenis_laporan", () => {
       })
     );
     // delete foder karena untuk test saja
-    deleteFolder(pathFolder);
+    expect(await deleteFolder(pathFolder)).toEqual(true);
 
     // cari arus kas
     const arusKas = await request(app)
