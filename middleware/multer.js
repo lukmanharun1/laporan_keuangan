@@ -29,12 +29,13 @@ const storage = multer.diskStorage({
         },
         attributes: ["id"],
       });
-      const emiten_id = getEmiten.id;
-      req.emiten_id = emiten_id;
 
       if (!getEmiten) {
         return cb("Emiten not found");
       }
+      const emiten_id = getEmiten.id;
+      // kirim data ke controller untuk di proses
+      req.emiten_id = emiten_id;
 
       // cek emiten_id & tanggal agar laporan_keuangan tidak duplikat
       const getLaporanKeuangan = await LaporanKeuangan.findOne({
@@ -172,6 +173,7 @@ const storage = multer.diskStorage({
       )}${path.extname(file.originalname)}`;
       // kirim data ke controller untuk di proses
       req.destination = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten}/${formatNamaFile}`;
+      // nama file untuk dimasukan ke database
       req.body.nama_file = formatNamaFile;
       return cb(null, formatNamaFile);
     } catch (error) {
@@ -182,7 +184,7 @@ const storage = multer.diskStorage({
 
 const uploadFile = multer({
   storage: storage,
-  limits: { fileSize: 50000000 },
+  limits: { fileSize: 50000000 }, //limit 50mb
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   },

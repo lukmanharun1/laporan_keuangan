@@ -73,6 +73,7 @@ const find = async (req, res) => {
 const create = async (req, res) => {
   // create transaction
   const transaction = await t.create();
+  const { emiten_id, destination } = req;
   try {
     const {
       tanggal,
@@ -99,7 +100,7 @@ const create = async (req, res) => {
       pendanaan,
       cash,
     } = req.body;
-    const { emiten_id } = req;
+
     // create laporan keuangan
     const createLaporanKeuangan = await LaporanKeuangan.create(
       {
@@ -203,7 +204,7 @@ const create = async (req, res) => {
     );
   } catch (error) {
     await t.rollback(transaction.data);
-    hapusFile(req.destination);
+    if (destination) hapusFile(destination);
     return response(
       res,
       {
