@@ -3,7 +3,7 @@ const app = require("../app");
 const randomAlphabert = require("../helper/random_alphabert");
 const formatTanggal = require("../helper/format_tanggal");
 const cekFile = require("../helper/cek_file");
-const hapusFile = require("../helper/hapus_file");
+const deleteFolder = require("../helper/delete_folder");
 const kodeEmiten = randomAlphabert(4);
 const { LOCATION_LAPORAN_KEUANGAN } = process.env;
 const sendCreateEmiten = {
@@ -111,11 +111,13 @@ describe("PUT /stock-split", () => {
       .expect(201);
 
     // cek file apakah berhasil di upload
-    const pathFile = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten} ${jenis_laporan} ${formatTanggal(
+    const nama_file = `${kode_emiten} ${jenis_laporan} ${formatTanggal(
       tanggal
     )}.pdf`;
+    const pathFolder = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten}`;
+    const pathFile = `${pathFolder}/${nama_file}`;
 
-    expect(cekFile(pathFile)).toEqual(true);
+    expect(await cekFile(pathFile)).toEqual(true);
     expect(laporanKeuangan.body).toEqual(
       expect.objectContaining({
         status: "success",
@@ -123,8 +125,9 @@ describe("PUT /stock-split", () => {
       })
     );
 
-    // hapus file karena untuk test saja
-    hapusFile(pathFile);
+    // delete foder karena untuk test saja
+    expect(await deleteFolder(pathFolder)).toEqual(true);
+
     const split = 5;
     const stockSplit = await request(app)
       .put(`/stock-split/${kode_emiten}`)
@@ -261,11 +264,13 @@ describe("PUT /stock-split", () => {
       .expect(201);
 
     // cek file apakah berhasil di upload
-    const pathFile = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten} ${jenis_laporan} ${formatTanggal(
+    const nama_file = `${kode_emiten} ${jenis_laporan} ${formatTanggal(
       tanggal
     )}.pdf`;
+    const pathFolder = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten}`;
+    const pathFile = `${pathFolder}/${nama_file}`;
 
-    expect(cekFile(pathFile)).toEqual(true);
+    expect(await cekFile(pathFile)).toEqual(true);
     expect(laporanKeuangan.body).toEqual(
       expect.objectContaining({
         status: "success",
@@ -273,8 +278,9 @@ describe("PUT /stock-split", () => {
       })
     );
 
-    // hapus file karena untuk test saja
-    hapusFile(pathFile);
+    // delete foder karena untuk test saja
+    expect(await deleteFolder(pathFolder)).toEqual(true);
+
     const split = 5;
     const stockSplit = await request(app)
       .put(`/stock-split/${kode_emiten}`)
