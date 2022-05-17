@@ -2,7 +2,7 @@ const request = require("supertest");
 const app = require("../app");
 const randomAlphabert = require("../helper/random_alphabert");
 const cekFile = require("../helper/cek_file");
-const hapusFile = require("../helper/hapus_file");
+const deleteFolder = require("../helper/delete_folder");
 const formatTanggal = require("../helper/format_tanggal");
 const { LOCATION_LAPORAN_KEUANGAN } = process.env;
 
@@ -189,18 +189,18 @@ describe("GET /dividen/:kode_emiten/:jenis_laporan", () => {
       const nama_file = `${kode_emiten} ${jenis_laporan} ${formatTanggal(
         tanggal
       )}.pdf`;
-      const pathFile = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten}/${nama_file}`;
+      const pathFolder = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten}`;
+      const pathFile = `${pathFolder}/${nama_file}`;
 
-      expect(cekFile(pathFile)).toEqual(true);
+      expect(await cekFile(pathFile)).toEqual(true);
       expect(laporanKeuangan.body).toEqual(
         expect.objectContaining({
           status: "success",
           message: laporanKeuangan.body.message,
         })
       );
-
-      // hapus file karena untuk test saja
-      hapusFile(pathFile);
+      // delete foder karena untuk test saja
+      expect(await deleteFolder(pathFolder)).toEqual(true);
     }
   });
   it("should find dividen success", async () => {
