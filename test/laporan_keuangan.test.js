@@ -4,7 +4,7 @@ const { LaporanKeuangan } = require("../models");
 const randomAlphabert = require("../helper/random_alphabert");
 const formatTanggal = require("../helper/format_tanggal");
 const cekFile = require("../helper/cek_file");
-const hapusFile = require("../helper/hapus_file");
+const deleteFolder = require("../helper/delete_folder");
 const kodeEmiten = randomAlphabert(4);
 const { HOST, PORT, LOCATION_LAPORAN_KEUANGAN } = process.env;
 const sendCreateEmiten = {
@@ -115,19 +115,21 @@ describe("POST /laporan-keuangan", () => {
       .expect(201);
 
     // cek file apakah berhasil di upload
-    const pathFile = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten}/${kode_emiten} ${jenis_laporan} ${formatTanggal(
+    const nama_file = `${kode_emiten} ${jenis_laporan} ${formatTanggal(
       tanggal
     )}.pdf`;
+    const pathFolder = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten}`;
+    const pathFile = `${pathFolder}/${nama_file}`;
 
-    expect(cekFile(pathFile)).toEqual(true);
+    expect(await cekFile(pathFile)).toEqual(true);
     expect(response.body).toEqual(
       expect.objectContaining({
         status: "success",
         message: response.body.message,
       })
     );
-    // hapus file karena untuk test saja
-    hapusFile(pathFile);
+    // delete foder karena untuk test saja
+    expect(await deleteFolder(pathFolder)).toEqual(true);
   });
 
   it("should create laporan keuangan bad request tanggal not suitable jenis_laporan", async () => {
