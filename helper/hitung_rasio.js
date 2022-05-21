@@ -1,4 +1,4 @@
-module.exports = (dataLaporanKeuangan, jumlah_saham, jenis_laporan) => {
+module.exports = (dataLaporanKeuangan = [], jumlah_saham, jenis_laporan) => {
   // format response data yang dikirimkan
   const dataResponse = {
     tanggal: [],
@@ -19,12 +19,6 @@ module.exports = (dataLaporanKeuangan, jumlah_saham, jenis_laporan) => {
       ROE: [],
       ROA: [],
     },
-    dividen: {
-      tanggal: [],
-      DPS: [],
-      DY: [],
-      DPR: [],
-    },
     valuasi: {
       BVPS: [],
       PBV: [],
@@ -37,6 +31,15 @@ module.exports = (dataLaporanKeuangan, jumlah_saham, jenis_laporan) => {
       PCF: [],
     },
   };
+  if (dataLaporanKeuangan.length === 0) return null;
+  if (jenis_laporan === "TAHUNAN") {
+    dataResponse.dividen = {
+      tanggal: [],
+      DPS: [],
+      DY: [],
+      DPR: [],
+    };
+  }
   dataLaporanKeuangan.forEach(
     ({
       tanggal,
@@ -114,18 +117,18 @@ module.exports = (dataLaporanKeuangan, jumlah_saham, jenis_laporan) => {
       const cashflowPerShare = operasi / jumlah_saham;
       const priceToCashflowRasio = rasio(harga_saham, cashflowPerShare, "x");
 
-      dataResponse.valuasi.BVPS.push(bookValuePerShare);
+      dataResponse.valuasi.BVPS.push(bookValuePerShare.toFixed(2));
       dataResponse.valuasi.PBV.push(priceToBookValue);
 
-      dataResponse.valuasi.RPS.push(revenuePerShare);
+      dataResponse.valuasi.RPS.push(revenuePerShare.toFixed(2));
       dataResponse.valuasi.PS.push(priceToSalesRasio);
 
       dataResponse.valuasi["EV/EBITDA"].push(enterPriceValue);
 
-      dataResponse.valuasi.EPS.push(earningPerShare);
+      dataResponse.valuasi.EPS.push(earningPerShare.toFixed(2));
       dataResponse.valuasi.PER.push(priceEarningRasio);
 
-      dataResponse.valuasi.CFPS.push(cashflowPerShare);
+      dataResponse.valuasi.CFPS.push(cashflowPerShare.toFixed(2));
       dataResponse.valuasi.PCF.push(priceToCashflowRasio);
 
       // cek jenis laporan harus TAHUNAN
