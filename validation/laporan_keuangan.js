@@ -47,6 +47,7 @@ const create = () => [
   body("pendapatan").notEmpty().isInt(),
   body("laba_kotor").notEmpty().isInt(),
   body("laba_usaha").notEmpty().isInt(),
+  body("beban_bunga").notEmpty().isInt(),
   body("laba_sebelum_pajak").notEmpty().isInt(),
   body("laba_bersih").notEmpty().isInt(),
 
