@@ -3,7 +3,7 @@ module.exports = (Sequelize) => {
     id: {
       type: Sequelize.UUID,
       primaryKey: true,
-      allowNull: false
+      allowNull: false,
     },
     created_at: {
       type: Sequelize.DATE,
@@ -13,6 +13,6 @@ module.exports = (Sequelize) => {
     },
     deleted_at: {
       type: Sequelize.DATE,
-    }
-  }
-}
+    },
+  };
+};

@@ -1,13 +1,8 @@
 module.exports = [
   {
-    "id": "95e28076-d415-41c1-9e5c-d1449740018d",
-    "jumlah_saham": 10000000,
-    "kode_emiten": "AALI",
-    "nama_emiten": "PT ASTRA AGRO LESTARI TBK"
+    id: "95e28076-d415-41c1-9e5c-d1449740018d",
+    jumlah_saham: 10000000,
+    kode_emiten: "AALI",
+    nama_emiten: "PT ASTRA AGRO LESTARI TBK",
   },
-  // {
-  //   "jumlah_saham": 11520659250,
-  //   "kode_emiten": "PTBA",
-  //   "nama_emiten": "PT BUKIT ASAM TBK"
-  // },
-]
+];

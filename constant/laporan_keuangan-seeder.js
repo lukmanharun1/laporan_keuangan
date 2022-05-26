@@ -1,4 +1,4 @@
-const emiten = require('./emiten_seeder');
+const emiten = require("./emiten_seeder");
 const id1 = "95e28076-d415-41c1-9e5c-d1449740018e";
 const id2 = "95e28076-d415-41c1-9e5c-d1449740018f";
 const id3 = "95e28076-d415-41c1-9e5c-d1449740018g";
@@ -11,7 +11,7 @@ module.exports = {
       tanggal: "2022-03-31",
       jenis_laporan: "Q1",
       harga_saham: 11000,
-      nama_file: "AALI Q1 31 MARET 2022.pdf"
+      nama_file: "AALI Q1 31 MARET 2022.pdf",
     },
     {
       id: id2,
@@ -19,7 +19,7 @@ module.exports = {
       tanggal: "2022-06-30",
       jenis_laporan: "Q2",
       harga_saham: 12000,
-      nama_file: "AALI Q2 30 JUNI 2022.pdf"
+      nama_file: "AALI Q2 30 JUNI 2022.pdf",
     },
     {
       id: id3,
@@ -27,7 +27,7 @@ module.exports = {
       tanggal: "2022-09-30",
       jenis_laporan: "Q3",
       harga_saham: 11000,
-      nama_file: "AALI Q3 30 SEPTEMBER 2022.pdf"
+      nama_file: "AALI Q3 30 SEPTEMBER 2022.pdf",
     },
     {
       id: id4,
@@ -35,7 +35,7 @@ module.exports = {
       tanggal: "2022-12-31",
       jenis_laporan: "TAHUNAN",
       harga_saham: 13000,
-      nama_file: "AALI TAHUNAN 31 DESEMBER 2022.pdf"
+      nama_file: "AALI TAHUNAN 31 DESEMBER 2022.pdf",
     },
   ],
   neraca_keuangan: [
@@ -50,7 +50,7 @@ module.exports = {
       liabilitas_jangka_pendek: 100000000000,
       liabilitas_jangka_panjang: 1000000000,
       liabilitas_berbunga: 2000000000,
-      ekuitas: 600000000000
+      ekuitas: 600000000000,
     },
     {
       id: id2,
@@ -63,7 +63,7 @@ module.exports = {
       liabilitas_jangka_pendek: 100000000000,
       liabilitas_jangka_panjang: 1000000000,
       liabilitas_berbunga: 2000000000,
-      ekuitas: 650000000000
+      ekuitas: 650000000000,
     },
     {
       id: id3,
@@ -76,7 +76,7 @@ module.exports = {
       liabilitas_jangka_pendek: 100000000000,
       liabilitas_jangka_panjang: 1000000000,
       liabilitas_berbunga: 2000000000,
-      ekuitas: 750000000000
+      ekuitas: 750000000000,
     },
     {
       id: id4,
@@ -89,8 +89,8 @@ module.exports = {
       liabilitas_jangka_pendek: 100000000000,
       liabilitas_jangka_panjang: 1000000000,
       liabilitas_berbunga: 2000000000,
-      ekuitas: 80000000000
-    }
+      ekuitas: 80000000000,
+    },
   ],
   laba_rugi: [
     {
@@ -98,64 +98,68 @@ module.exports = {
       pendapatan: 1500000000000,
       laba_kotor: 500000000000,
       laba_usaha: 300000000000,
+      beban_bunga: 1500000000,
       laba_sebelum_pajak: 200000000000,
-      laba_bersih: 150000000000
+      laba_bersih: 150000000000,
     },
     {
       id: id2,
       pendapatan: 1600000000000,
       laba_kotor: 510000000000,
       laba_usaha: 400000000000,
+      beban_bunga: 1900000000,
       laba_sebelum_pajak: 300000000000,
-      laba_bersih: 20000000000
+      laba_bersih: 20000000000,
     },
     {
       id: id3,
       pendapatan: 1600000000000,
       laba_kotor: 510000000000,
       laba_usaha: 400000000000,
+      beban_bunga: 3800000000,
       laba_sebelum_pajak: 300000000000,
-      laba_bersih: 20000000000
+      laba_bersih: 20000000000,
     },
     {
       id: id4,
       pendapatan: 1400000000000,
       laba_kotor: 500000000000,
       laba_usaha: 360000000000,
+      beban_bunga: 1500000000,
       laba_sebelum_pajak: 220000000000,
-      laba_bersih: 18000000000
-    }
+      laba_bersih: 18000000000,
+    },
   ],
   arus_kas: [
     {
       id: id1,
       operasi: 400000000000,
       investasi: -100000000000,
-      pendanaan: -150000000000
+      pendanaan: -150000000000,
     },
     {
       id: id2,
       operasi: 350000000000,
       investasi: -50000000000,
-      pendanaan: -100000000000
+      pendanaan: -100000000000,
     },
     {
       id: id3,
       operasi: 340000000000,
       investasi: -40000000000,
-      pendanaan: -20000000000
+      pendanaan: -20000000000,
     },
     {
       id: id4,
       operasi: 250000000000,
       investasi: -50000000000,
-      pendanaan: -20000000000
-    }
+      pendanaan: -20000000000,
+    },
   ],
   dividen: [
     {
       id: id4,
-      cash: 600
-    }
-  ]
-}
+      cash: 600,
+    },
+  ],
+};
