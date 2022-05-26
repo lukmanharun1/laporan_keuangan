@@ -11,30 +11,10 @@ const send = {
 
 describe("POST /emiten", () => {
   it("should create emiten success", async () => {
-    let jumlah_saham = 25000000;
-    let kode_emiten = randomAlphabert(4);
-    let nama_emiten = `PT ${kode_emiten} AGRO LESTARI TBK`;
-    // cari emiten kalau ada berarti status code 400
-    // kalau tidak ada harus berhasil di create
-    const findEmiten = await Emiten.findOne({
-      where: {
-        [Sequelize.Op.and]: [{ kode_emiten }, { nama_emiten }],
-      },
-    });
-    if (findEmiten) {
-      // generate lagi
-      kode_emiten = randomAlphabert(4);
-      nama_emiten = `PT ${kode_emiten} AGRO LESTARI TBK`;
-    }
-
     const response = await request(app)
       .post("/emiten")
       .set("Accept", "application/json")
-      .send({
-        jumlah_saham,
-        kode_emiten,
-        nama_emiten,
-      })
+      .send(send)
       .expect(201);
     expect(response.body).toEqual(
       expect.objectContaining({
@@ -65,6 +45,20 @@ describe("POST /emiten", () => {
             }),
           ]),
         }),
+      })
+    );
+  });
+
+  it("should failed create emiten duplicated", async () => {
+    const response = await request(app)
+      .post("/emiten")
+      .set("Accept", "application/json")
+      .send(send)
+      .expect(400);
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        status: "error",
+        message: response.body.message,
       })
     );
   });
