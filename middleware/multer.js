@@ -129,6 +129,7 @@ const storage = multer.diskStorage({
         const pendapatan = Q1.laba_rugi.pendapatan + Q2.laba_rugi.pendapatan;
         const laba_kotor = Q1.laba_rugi.laba_kotor + Q2.laba_rugi.laba_kotor;
         const laba_usaha = Q1.laba_rugi.laba_usaha + Q2.laba_rugi.laba_usaha;
+        const beban_bunga = Q1.laba_rugi.beban_bunga + Q2.laba_rugi.beban_bunga;
         const laba_sebelum_pajak =
           Q1.laba_rugi.laba_sebelum_pajak + Q2.laba_rugi.laba_sebelum_pajak;
         const laba_bersih = Q1.laba_rugi.laba_bersih + Q2.laba_rugi.laba_bersih;
@@ -143,6 +144,7 @@ const storage = multer.diskStorage({
             pendapatan,
             laba_kotor,
             laba_usaha,
+            beban_bunga,
             laba_sebelum_pajak,
             laba_bersih,
           },
