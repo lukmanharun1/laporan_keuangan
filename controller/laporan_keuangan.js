@@ -93,6 +93,7 @@ const create = async (req, res) => {
       pendapatan,
       laba_kotor,
       laba_usaha,
+      beban_bunga,
       laba_sebelum_pajak,
       laba_bersih,
       operasi,
@@ -114,8 +115,6 @@ const create = async (req, res) => {
     );
 
     if (!createLaporanKeuangan) {
-      // rollback transaction
-      await t.rollback(transaction.data);
       throw new Error("Laporan Keuangan failed created");
     }
     // create neraca keuangan
@@ -137,8 +136,6 @@ const create = async (req, res) => {
     );
 
     if (!createNeracaKeuangan) {
-      // rollback transaction
-      await t.rollback(transaction.data);
       throw new Error("Neraca Keuangan failed created");
     }
     // create laba rugi
@@ -148,6 +145,7 @@ const create = async (req, res) => {
         pendapatan,
         laba_kotor,
         laba_usaha,
+        beban_bunga,
         laba_sebelum_pajak,
         laba_bersih,
       },
@@ -155,8 +153,6 @@ const create = async (req, res) => {
     );
 
     if (!createLabaRugi) {
-      // rollback transaction
-      await t.rollback(transaction.data);
       throw new Error("Laba Rugi failed created");
     }
 
@@ -172,8 +168,6 @@ const create = async (req, res) => {
     );
 
     if (!createArusKas) {
-      // rollback transaction
-      await t.rollback(transaction.data);
       throw new Error("Arus Kas failed created");
     }
     if (jenis_laporan === "TAHUNAN" && cash) {
@@ -187,8 +181,6 @@ const create = async (req, res) => {
       );
 
       if (!createDividen) {
-        // rollback transaction
-        await t.rollback(transaction.data);
         throw new Error("Dividen failed created");
       }
     }
@@ -255,14 +247,9 @@ const destroy = async (req, res) => {
       Dividen.destroy(where),
     ]);
     if (!deleteLaporanKeuangan[0]) {
-      // rollback transaction
-      await t.rollback(transaction.data);
       throw new Error("Laporan keuangan failed deleted");
     }
-    const commit = await t.commit(transaction.data);
-    if (!commit.status && commit.error) {
-      throw commit.error;
-    }
+    await t.commit(transaction.data);
     return response(res, {
       status: "success",
       message: "Data Laporan Keuangan deleted successfully",
