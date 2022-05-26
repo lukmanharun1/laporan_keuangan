@@ -127,16 +127,16 @@ describe("PUT /emiten", () => {
   it("should update emiten success", async () => {
     // create emiten terlebih dahulu
     const kode_emiten = randomAlphabert(4);
+    const nama_emiten = `PT ${kode_emiten} AGRO LESTARI TBK`;
     const data = {
       jumlah_saham: 30000000000,
       kode_emiten,
-      nama_emiten: `PT ${kode_emiten} AGRO LESTARI TBK`,
+      nama_emiten,
     };
     const createEmiten = await Emiten.findOrCreate({
-      where: { kode_emiten },
+      where: { kode_emiten, nama_emiten },
       defaults: data,
     });
-    const { nama_emiten } = data;
     // get emiten yang sudah di create
     const getEmiten = await request(app)
       .get("/emiten")
@@ -202,16 +202,17 @@ describe("PUT /emiten", () => {
   it("should failed update emiten bad request kode emiten must be 4 letters", async () => {
     // create emiten terlebih dahulu
     const kode_emiten = randomAlphabert(4);
+    const nama_emiten = `PT ${kode_emiten} AGRO LESTARI TBK`;
+    const jumlah_saham = 40000000000;
     const data = {
-      jumlah_saham: 40000000000,
+      jumlah_saham,
       kode_emiten,
-      nama_emiten: `PT ${kode_emiten} AGRO LESTARI TBK`,
+      nama_emiten,
     };
     const createEmiten = await Emiten.findOrCreate({
-      where: { kode_emiten },
+      where: { kode_emiten, nama_emiten },
       defaults: data,
     });
-    const { nama_emiten, jumlah_saham } = data;
     // get emiten
     const getEmiten = await request(app)
       .get("/emiten")
