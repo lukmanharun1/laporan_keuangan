@@ -23,6 +23,7 @@
     ** pendapatan: bigint **
     ** laba_kotor: bigint **
     ** laba_usaha: bigint **
+    ** beban_bunga: bigint **
     ** laba_sebelum_pajak: bigint **
     ** laba_bersih: bigint **
     <color:yellow> created_at: date</color>
