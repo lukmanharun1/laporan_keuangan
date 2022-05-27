@@ -53,6 +53,7 @@ describe("GET /laba-rugi/:kode_emiten/:jenis_laporan", () => {
       pendapatan: 1000000,
       laba_kotor: 1000000,
       laba_usaha: 1000000,
+      beban_bunga: 100000,
       laba_sebelum_pajak: 1000000,
       laba_bersih: 1000000,
       operasi: 1000000,
@@ -77,6 +78,7 @@ describe("GET /laba-rugi/:kode_emiten/:jenis_laporan", () => {
       pendapatan,
       laba_kotor,
       laba_usaha,
+      beban_bunga,
       laba_sebelum_pajak,
       laba_bersih,
       operasi,
@@ -104,6 +106,7 @@ describe("GET /laba-rugi/:kode_emiten/:jenis_laporan", () => {
       .field("pendapatan", pendapatan)
       .field("laba_kotor", laba_kotor)
       .field("laba_usaha", laba_usaha)
+      .field("beban_bunga", beban_bunga)
       .field("laba_sebelum_pajak", laba_sebelum_pajak)
       .field("laba_bersih", laba_bersih)
       .field("operasi", operasi)
@@ -146,6 +149,7 @@ describe("GET /laba-rugi/:kode_emiten/:jenis_laporan", () => {
               pendapatan,
               laba_kotor,
               laba_usaha,
+              beban_bunga,
               laba_sebelum_pajak,
               laba_bersih,
             }),
