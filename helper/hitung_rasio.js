@@ -84,7 +84,7 @@ module.exports = (dataLaporanKeuangan = [], jumlah_saham, jenis_laporan) => {
         ekuitas
       );
       const netGearingRasio = rasio(liabilitas_berbunga, ekuitas);
-      const interestCoverageRasio = rasio(laba_usaha, beban_bunga, "x");
+      const interestCoverageRasio = rasio(laba_usaha, beban_bunga * -1, "x"); // convert beban bunga jadi positif
 
       dataResponse.solvabilitas.DER.push(deptToEquityRasio);
       dataResponse.solvabilitas.NGR.push(netGearingRasio);
