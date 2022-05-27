@@ -172,7 +172,7 @@ const storage = multer.diskStorage({
 
       const formatNamaFile = `${kode_emiten} ${jenis_laporan} ${formatTanggal(
         tanggal
-      )}${path.extname(file.originalname)}`;
+      )}${path.extname(file.originalname).toLowerCase()}`;
       // kirim data ke controller untuk di proses
       req.destination = `${LOCATION_LAPORAN_KEUANGAN}/${jenis_laporan}/${kode_emiten}/${formatNamaFile}`;
       // nama file untuk dimasukan ke database
