@@ -54,7 +54,7 @@ describe("GET /arus-kas/:kode_emiten/:jenis_laporan", () => {
       pendapatan: 1000000,
       laba_kotor: 1000000,
       laba_usaha: 1000000,
-      beban_bunga: 100000,
+      beban_bunga: -100000,
       laba_sebelum_pajak: 1000000,
       laba_bersih: 1000000,
       operasi: 1000000,
