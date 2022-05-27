@@ -11,6 +11,7 @@ module.exports = (dataLaporanKeuangan = [], jumlah_saham, jenis_laporan) => {
     solvabilitas: {
       DER: [],
       NGR: [],
+      ICR: [],
     },
     profitabilitas: {
       GPM: [],
@@ -64,6 +65,9 @@ module.exports = (dataLaporanKeuangan = [], jumlah_saham, jenis_laporan) => {
         liabilitas_berbunga,
         ekuitas,
       } = neraca_keuangan;
+      const { pendapatan, laba_kotor, laba_usaha, beban_bunga, laba_bersih } =
+        laba_rugi;
+
       const currentRasio = rasio(aset_lancar, liabilitas_jangka_pendek);
       const quickRasio = rasio(
         aset_lancar - persediaan,
@@ -79,12 +83,14 @@ module.exports = (dataLaporanKeuangan = [], jumlah_saham, jenis_laporan) => {
         liabilitas_jangka_pendek + liabilitas_jangka_panjang,
         ekuitas
       );
-      dataResponse.solvabilitas.DER.push(deptToEquityRasio);
       const netGearingRasio = rasio(liabilitas_berbunga, ekuitas);
+      const interestCoverageRasio = rasio(laba_usaha, beban_bunga, "x");
+
+      dataResponse.solvabilitas.DER.push(deptToEquityRasio);
       dataResponse.solvabilitas.NGR.push(netGearingRasio);
+      dataResponse.solvabilitas.ICR.push(interestCoverageRasio);
 
       // isi data response profitabilitas
-      const { pendapatan, laba_kotor, laba_usaha, laba_bersih } = laba_rugi;
       const grossProfitMargin = rasio(laba_kotor, pendapatan);
       const operatingProfitMargin = rasio(laba_usaha, pendapatan);
       const netProfitMargin = rasio(laba_bersih, pendapatan);
