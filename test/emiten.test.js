@@ -2,7 +2,7 @@ const request = require("supertest");
 const app = require("../app");
 const randomAlphabert = require("../helper/random_alphabert");
 const kodeEmiten = randomAlphabert(4);
-const { Emiten, Sequelize } = require("../models");
+const { Emiten } = require("../models");
 const send = {
   jumlah_saham: 200000000,
   kode_emiten: kodeEmiten,
