@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jumlah_saham\": 16087156000,\n    \"kode_emiten\": \"POWR\",\n    \"nama_emiten\": \"PT CIKARANG LISTRINDO TBK\"\n}",
+							"raw": "{\n    \"jumlah_saham\": 16087156000,\n    \"kode_emiten\": \"INKP\",\n    \"nama_emiten\": \"PT CIKARANG LISTRINDO TBK\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -113,13 +113,13 @@
 							"formdata": [
 								{
 									"key": "kode_emiten",
-									"value": "AGRO",
+									"value": "POWR",
 									"description": "string (4)",
 									"type": "text"
 								},
 								{
 									"key": "tanggal",
-									"value": "2021-03-31",
+									"value": "2022-03-31",
 									"description": "YYYY-MM-DD",
 									"type": "text"
 								},
@@ -139,7 +139,7 @@
 									"key": "nama_file",
 									"description": "pdf",
 									"type": "file",
-									"src": "/home/lukman/Downloads/AnnualReport2161.pdf"
+									"src": "/home/lukman/Downloads/SIMP_Bilingual_31 Des 2021_Released.pdf"
 								},
 								{
 									"key": "aset",
