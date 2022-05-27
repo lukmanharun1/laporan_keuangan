@@ -65,6 +65,7 @@ const find = async (req, res) => {
               "pendapatan",
               "laba_kotor",
               "laba_usaha",
+              "beban_bunga",
               "laba_bersih",
             ],
             as: "laba_rugi",
@@ -141,6 +142,11 @@ const find = async (req, res) => {
             Q3[i].laba_rugi.laba_usaha -
             Q2[i].laba_rugi.laba_usaha -
             Q1[i].laba_rugi.laba_usaha,
+          beban_bunga:
+            beban_bunga -
+            Q3[i].laba_rugi.beban_bunga -
+            Q2[i].laba_rugi.beban_bunga -
+            Q1[i].laba_rugi.beban_bunga,
           laba_bersih:
             laba_bersih -
             Q3[i].laba_rugi.laba_bersih -
@@ -150,7 +156,6 @@ const find = async (req, res) => {
 
         // susun laporan Q4 bagian arus kas
         const { operasi } = arus_kas;
-
         Q4[i].arus_kas = {
           operasi:
             operasi -
@@ -191,7 +196,13 @@ const find = async (req, res) => {
         },
         {
           model: LabaRugi,
-          attributes: ["pendapatan", "laba_kotor", "laba_usaha", "laba_bersih"],
+          attributes: [
+            "pendapatan",
+            "laba_kotor",
+            "laba_usaha",
+            "beban_bunga",
+            "laba_bersih",
+          ],
           as: "laba_rugi",
         },
         {
