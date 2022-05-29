@@ -4,6 +4,7 @@ const {
   LaporanKeuangan,
   Emiten,
 } = require("../models");
+const cekLaporanTahunan = require("../helper/cek_laporan_tahunan");
 const response = require("../helper/response");
 
 const find = async (req, res) => {
@@ -71,15 +72,25 @@ const find = async (req, res) => {
         );
       }
       // filter laporan keuangan Q1, Q2, Q3, TAHUNAN
-      findLaporanKeuangan.forEach((data) => {
-        if (data.jenis_laporan === "Q1") {
-          Q1.push(data.laba_rugi);
-        } else if (data.jenis_laporan === "Q2") {
-          Q2.push(data.laba_rugi);
-        } else if (data.jenis_laporan === "Q3") {
-          Q3.push(data.laba_rugi);
-        } else if (data.jenis_laporan === "TAHUNAN") {
-          TAHUNAN.push(data);
+      findLaporanKeuangan.forEach((dataLaporan) => {
+        const tahunKuartal = dataLaporan.tanggal.toISOString().split("-")[0];
+        if (dataLaporan.jenis_laporan === "Q1") {
+          // filter lagi jenis laporan Q1 harus ada data laporan TAHUNAN
+          if (cekLaporanTahunan(findLaporanKeuangan, tahunKuartal)) {
+            Q1.push(dataLaporan.laba_rugi);
+          }
+        } else if (dataLaporan.jenis_laporan === "Q2") {
+          // filter lagi jenis laporan Q2 harus ada data laporan TAHUNAN
+          if (cekLaporanTahunan(findLaporanKeuangan, tahunKuartal)) {
+            Q2.push(dataLaporan.laba_rugi);
+          }
+        } else if (dataLaporan.jenis_laporan === "Q3") {
+          // filter lagi jenis laporan Q2 harus ada data laporan TAHUNAN
+          if (cekLaporanTahunan(findLaporanKeuangan, tahunKuartal)) {
+            Q3.push(dataLaporan.laba_rugi);
+          }
+        } else if (dataLaporan.jenis_laporan === "TAHUNAN") {
+          TAHUNAN.push(dataLaporan);
         }
       });
       // susun laporan Q4
