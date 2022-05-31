@@ -44,6 +44,7 @@ const find = async (req, res) => {
           emiten_id,
         },
         attributes: ["tanggal", "jenis_laporan", "harga_saham"],
+        order: [["tanggal", "DESC"]],
         include: [
           {
             model: NeracaKeuangan,
@@ -125,7 +126,8 @@ const find = async (req, res) => {
       // susun laporan Q4 bagian data laba rugi & arus kas
       TAHUNAN.forEach(({ laba_rugi, arus_kas }, i) => {
         // susun laporan Q4 bagian laba rugi
-        const { pendapatan, laba_kotor, laba_usaha, laba_bersih } = laba_rugi;
+        const { pendapatan, laba_kotor, beban_bunga, laba_usaha, laba_bersih } =
+          laba_rugi;
         Q4[i].laba_rugi = {
           pendapatan:
             pendapatan -
@@ -179,6 +181,7 @@ const find = async (req, res) => {
         jenis_laporan,
       },
       attributes: ["tanggal", "harga_saham"],
+      order: [["tanggal", "DESC"]],
       include: [
         {
           model: NeracaKeuangan,
