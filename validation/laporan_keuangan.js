@@ -1,6 +1,14 @@
 const { body, param } = require("express-validator");
 const validasiKodeEmiten = require("./validasi_kode_emiten");
-const find = () => [param("kode_emiten").notEmpty().custom(validasiKodeEmiten)];
+const validasiTanggal = require("./validasi_tanggal");
+
+const find = () => [
+  param("kode_emiten").notEmpty().custom(validasiKodeEmiten),
+  param("tanggal")
+    .notEmpty()
+    .isDate({ format: "YYYY-MM-DD" })
+    .custom(validasiTanggal),
+];
 
 const create = () => [
   // laporan keuangan
@@ -8,25 +16,7 @@ const create = () => [
   body("tanggal")
     .notEmpty()
     .isDate({ format: "YYYY-MM-DD" })
-    .custom((value, { req }) => {
-      if (!value) {
-        throw new Error("tanggal wajib di isi");
-      }
-      const [tahun, bulan, tanggal] = value.split("-");
-      // cek tanggal khusus tanggal 30, 31
-
-      // cek bulan khusus 3 -> Q1, 6 -> Q2, 9 -> Q3, 12 -> TAHUNAN
-      const { jenis_laporan } = req.body;
-      if (
-        (tanggal == 31 && bulan == 3 && jenis_laporan == "Q1") ||
-        (tanggal == 30 && bulan == 6 && jenis_laporan == "Q2") ||
-        (tanggal == 30 && bulan == 9 && jenis_laporan == "Q3") ||
-        (tanggal == 31 && bulan == 12 && jenis_laporan == "TAHUNAN")
-      ) {
-        return true;
-      }
-      throw new Error("Tanggal tidak cocok dengan jenis laporan");
-    }),
+    .custom(validasiTanggal),
   body("jenis_laporan").notEmpty().isIn(["Q1", "Q2", "Q3", "TAHUNAN"]),
   body("harga_saham").notEmpty().isInt(),
 
