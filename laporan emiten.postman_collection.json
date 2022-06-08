@@ -113,7 +113,7 @@
 							"formdata": [
 								{
 									"key": "kode_emiten",
-									"value": "POWR",
+									"value": "PTBA",
 									"description": "string (4)",
 									"type": "text"
 								},
@@ -136,15 +136,9 @@
 									"type": "text"
 								},
 								{
-									"key": "nama_file",
-									"description": "pdf",
-									"type": "file",
-									"src": "/home/lukman/Downloads/SIMP_Bilingual_31 Des 2021_Released.pdf"
-								},
-								{
 									"key": "aset",
 									"value": "1000000",
-									"description": "int",
+									"description": "pdf",
 									"type": "text"
 								},
 								{
@@ -220,6 +214,12 @@
 									"type": "text"
 								},
 								{
+									"key": "beban_bunga",
+									"value": "-2000",
+									"description": "int | < 1",
+									"type": "text"
+								},
+								{
 									"key": "laba_sebelum_pajak",
 									"value": "40000",
 									"description": "int",
@@ -255,6 +255,12 @@
 									"description": "optional | int \njenis_laporan harus TAHUNAN",
 									"type": "text",
 									"disabled": true
+								},
+								{
+									"key": "nama_file",
+									"description": "pdf",
+									"type": "file",
+									"src": "/home/lukman/Downloads/PTBA FS TW 1 2022.pdf"
 								}
 							]
 						},
@@ -290,12 +296,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}laporan-keuangan/AALI",
+							"raw": "{{host}}laporan-keuangan/ASII/2022-06-30",
 							"host": [
 								"{{host}}laporan-keuangan"
 							],
 							"path": [
-								"AALI"
+								"ASII",
+								"2022-06-30"
 							]
 						}
 					},
