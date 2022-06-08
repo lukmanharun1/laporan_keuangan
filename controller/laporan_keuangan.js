@@ -23,31 +23,29 @@ const find = async (req, res) => {
         kode_emiten,
       },
       attributes: [],
-      include: [
-        {
-          model: LaporanKeuangan,
-          where: {
-            tanggal: new Date(tanggal),
-          },
-          attributes: [
-            "nama_file",
-            "jenis_laporan",
-            "tanggal",
-            [
-              Sequelize.fn(
-                "CONCAT",
-                pathUpload,
-                Sequelize.col("jenis_laporan"),
-                "/",
-                `${kode_emiten}/`,
-                Sequelize.col("nama_file")
-              ),
-              "download",
-            ],
-          ],
-          as: "laporan_keuangan",
+      include: {
+        model: LaporanKeuangan,
+        where: {
+          tanggal: new Date(tanggal),
         },
-      ],
+        attributes: [
+          "nama_file",
+          "jenis_laporan",
+          "tanggal",
+          [
+            Sequelize.fn(
+              "CONCAT",
+              pathUpload,
+              Sequelize.col("jenis_laporan"),
+              "/",
+              `${kode_emiten}/`,
+              Sequelize.col("nama_file")
+            ),
+            "download",
+          ],
+        ],
+        as: "laporan_keuangan",
+      },
     });
     if (!findLaporanKeuangan) {
       return response(
@@ -60,7 +58,7 @@ const find = async (req, res) => {
     }
     return response(res, {
       status: "success",
-      data: findLaporanKeuangan.laporan_keuangan,
+      data: findLaporanKeuangan.laporan_keuangan[0],
     });
   } catch (error) {
     return response(
