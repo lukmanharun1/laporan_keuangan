@@ -15,7 +15,7 @@ const { LOCATION_LAPORAN_KEUANGAN, HOST, PORT } = process.env;
 
 const find = async (req, res) => {
   try {
-    const { kode_emiten } = req.params;
+    const { kode_emiten, tanggal } = req.params;
     const replacePublic = LOCATION_LAPORAN_KEUANGAN.split("/")[1];
     const pathUpload = `${HOST}:${PORT}/${replacePublic}/`;
     const findLaporanKeuangan = await Emiten.findOne({
@@ -26,6 +26,9 @@ const find = async (req, res) => {
       include: [
         {
           model: LaporanKeuangan,
+          where: {
+            tanggal: new Date(tanggal),
+          },
           attributes: [
             "nama_file",
             "jenis_laporan",
