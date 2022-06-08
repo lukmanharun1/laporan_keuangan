@@ -7,7 +7,18 @@ const find = () => [
   param("tanggal")
     .notEmpty()
     .isDate({ format: "YYYY-MM-DD" })
-    .custom(validasiTanggal),
+    .custom((value) => {
+      const [tahun, bulan, tanggal] = value.split("-");
+      if (
+        (tanggal == 31 && bulan == 3) ||
+        (tanggal == 30 && bulan == 6) ||
+        (tanggal == 30 && bulan == 9) ||
+        (tanggal == 31 && bulan == 12)
+      ) {
+        return true;
+      }
+      throw new Error("Tanggal tidak valid");
+    }),
 ];
 
 const create = () => [
