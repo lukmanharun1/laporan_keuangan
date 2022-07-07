@@ -1,0 +1,34 @@
+"use strict";
+const constantColumn = require("../constant/constant-column");
+
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable("user", {
+      nama_lengkap: {
+        type: Sequelize.STRING(128),
+        allowNull: false,
+      },
+      email: {
+        type: Sequelize.STRING(128),
+        allowNull: false,
+      },
+      password: {
+        type: Sequelize.STRING(255),
+        allowNull: false,
+      },
+      is_verified_email: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      role: {
+        type: Sequelize.ENUM("admin", "user"),
+        allowNull: false,
+      },
+      ...constantColumn(Sequelize),
+    });
+  },
+
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable("user");
+  },
+};
