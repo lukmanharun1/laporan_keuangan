@@ -69,6 +69,19 @@
     <color:yellow> updated_at: date</color>
     <color:yellow> deleted_at: date</color>
   }
+
+  entity user {
+    <color:yellow> id: <<PK>> <<UUID>></color>
+    ** nama_lengkap: varchar(128) **
+    ** email: varchar(128) **
+    ** password: varchar(255) **
+    ** is_verified_email: boolean **
+    ** role: enum('admin', 'user') **
+    <color:yellow> created_at: date</color>
+    <color:yellow> updated_at: date</color>
+    <color:yellow> deleted_at: date</color>
+  }
+
   ' relationship
   emiten |o--o{ laporan_keuangan
   laporan_keuangan |o--o| neraca_keuangan
