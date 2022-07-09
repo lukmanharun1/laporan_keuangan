@@ -6,6 +6,9 @@ const register = () => [
   body("password").notEmpty().isStrongPassword(),
 ];
 
+const activation = () => [body("token").notEmpty().isJWT()];
+
 module.exports = {
   register,
+  activation,
 };
