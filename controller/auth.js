@@ -8,7 +8,7 @@ const sendEmail = require("../helper/send_email");
 const register = async (req, res) => {
   const { nama_lengkap, email, password } = req.body;
   try {
-    // cai data user berdasarkan email
+    // cari data user berdasarkan email
     const getUser = await User.findOne({
       where: {
         email,
