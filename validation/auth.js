@@ -6,9 +6,15 @@ const register = () => [
   body("password").notEmpty().isStrongPassword(),
 ];
 
+const login = () => [
+  body("email").notEmpty().isEmail(),
+  body("password").notEmpty().isStrongPassword(),
+];
+
 const activation = () => [body("token").notEmpty().isJWT()];
 
 module.exports = {
   register,
   activation,
+  login,
 };
