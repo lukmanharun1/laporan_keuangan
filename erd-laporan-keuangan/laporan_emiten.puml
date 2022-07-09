@@ -75,7 +75,6 @@
     ** nama_lengkap: varchar(128) **
     <color:yellow> email: <<PK>> varchar(128)</color>
     ** password: varchar(255) **
-    ** is_verified_email: boolean **
     ** role: enum('admin', 'user') **
     <color:yellow> created_at: date</color>
     <color:yellow> updated_at: date</color>
