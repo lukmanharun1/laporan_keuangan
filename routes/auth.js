@@ -12,5 +12,6 @@ router.post(
   validate,
   controller.activation
 );
+router.post("/login", validation.login(), validate, controller.login);
 
 module.exports = router;
