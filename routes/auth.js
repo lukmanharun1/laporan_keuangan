@@ -13,5 +13,11 @@ router.post(
   controller.activation
 );
 router.post("/login", validation.login(), validate, controller.login);
+router.post(
+  "/forgot-password",
+  validation.forgotPassword(),
+  validate,
+  controller.forgotPassword
+);
 
 module.exports = router;
