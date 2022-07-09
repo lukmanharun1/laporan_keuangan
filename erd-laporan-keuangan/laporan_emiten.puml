@@ -73,7 +73,7 @@
   entity user {
     <color:yellow> id: <<PK>> <<UUID>></color>
     ** nama_lengkap: varchar(128) **
-    ** email: varchar(128) **
+    <color:yellow> email: <<PK>> varchar(128)</color>
     ** password: varchar(255) **
     ** is_verified_email: boolean **
     ** role: enum('admin', 'user') **
