@@ -9,6 +9,7 @@ const arusKas = require("./arus_kas");
 const dividen = require("./dividen");
 const stockSplit = require("./stock_split");
 const rasio = require("./rasio");
+const auth = require("./auth");
 
 router.use("/laporan-keuangan", laporanKeuangan);
 router.use("/emiten", emiten);
@@ -18,4 +19,5 @@ router.use("/arus-kas", arusKas);
 router.use("/dividen", dividen);
 router.use("/stock-split", stockSplit);
 router.use("/rasio", rasio);
+router.use("/auth", auth);
 module.exports = router;
