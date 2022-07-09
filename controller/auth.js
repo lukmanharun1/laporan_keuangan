@@ -1,9 +1,10 @@
 const { User } = require("../models");
 const response = require("../helper/response");
-const { passwordHash } = require("../helper/password");
+const { passwordHash, verifyPassword } = require("../helper/password");
 const {
   createTokenActivation,
   verifyTokenActivation,
+  createTokenLogin,
 } = require("../helper/jwt");
 const { HOST, PORT, CLIENT_URL } = process.env;
 const sendEmail = require("../helper/send_email");
@@ -94,7 +95,48 @@ const activation = async (req, res) => {
   }
 };
 
+const login = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    // cari data user berdasarkan email
+    const getUser = await User.findOne({
+      where: {
+        email,
+      },
+    });
+    if (!getUser) {
+      throw new Error("Email atau Password salah!");
+    }
+    // verifikasi password
+    const isVerifyPassword = await verifyPassword(password, getUser.password);
+    if (isVerifyPassword) {
+      // buat token untuk login
+      const token = await createTokenLogin({
+        nama_lengkap: getUser.nama_lengkap,
+        email,
+      });
+
+      return response(res, {
+        status: "success",
+        message: "Login Berhasil!",
+        token,
+      });
+    }
+    throw new Error("Email atau Password salah!");
+  } catch (error) {
+    return response(
+      res,
+      {
+        status: "error",
+        message: error.message,
+      },
+      400
+    );
+  }
+};
+
 module.exports = {
   register,
   activation,
+  login,
 };
