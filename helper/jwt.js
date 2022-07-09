@@ -7,6 +7,10 @@ const createTokenActivation = (payload) =>
     resolve(jwt.sign(payload, ACTIVATION_TOKEN_SECRET, { expiresIn: "15m" }))
   );
 
+const verifyTokenActivation = (token) =>
+  new Promise((resolve) => resolve(jwt.verify(token, ACTIVATION_TOKEN_SECRET)));
+
 module.exports = {
   createTokenActivation,
+  verifyTokenActivation,
 };
