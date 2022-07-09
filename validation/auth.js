@@ -13,8 +13,11 @@ const login = () => [
 
 const activation = () => [body("token").notEmpty().isJWT()];
 
+const forgotPassword = () => [body("email").notEmpty().isEmail()];
+
 module.exports = {
   register,
   activation,
   login,
+  forgotPassword,
 };
