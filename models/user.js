@@ -32,10 +32,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(255),
         allowNull: false,
       },
-      is_verified_email: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
-      },
       role: {
         type: DataTypes.ENUM("admin", "user"),
         defaultValue: "user",
