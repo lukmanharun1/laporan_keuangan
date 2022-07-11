@@ -1,10 +1,10 @@
-const bcrypt = require("bcrypt");
+const { hash, compare } = require("bcrypt");
 
 const saltRounds = 10;
-const passwordHash = (password) => bcrypt.hash(password, saltRounds);
+const passwordHash = (password) => hash(password, saltRounds);
 
 const verifyPassword = (password, passwordHash) =>
-  bcrypt.compare(password, passwordHash);
+  compare(password, passwordHash);
 
 module.exports = {
   passwordHash,
