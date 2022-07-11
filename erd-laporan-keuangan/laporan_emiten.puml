@@ -75,6 +75,7 @@
     ** nama_lengkap: varchar(128) **
     <color:yellow> email: <<PK>> varchar(128)</color>
     ** password: varchar(255) **
+    ** role: enum('user', 'admin') **
     <color:yellow> created_at: datetime</color>
     <color:yellow> updated_at: datetime</color>
     <color:yellow> deleted_at: datetime</color>
