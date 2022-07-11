@@ -5,6 +5,7 @@ const {
   createTokenActivation,
   verifyTokenActivation,
   createTokenLogin,
+  createTokenForgotPassword,
 } = require("../helper/jwt");
 const { HOST, PORT, CLIENT_URL } = process.env;
 const sendEmail = require("../helper/send_email");
@@ -36,7 +37,7 @@ const register = async (req, res) => {
       subject: "Email Verification",
       template: "email-verification",
       data: {
-        firstname: nama_lengkap,
+        nama_lengkap,
         email,
         url: `${CLIENT_URL}/auth/activation/${tokenActivation}`,
         src_send_email: `${HOST}:${PORT}/images/send_email.png`,
@@ -109,20 +110,20 @@ const login = async (req, res) => {
     }
     // verifikasi password
     const isVerifyPassword = await verifyPassword(password, getUser.password);
-    if (isVerifyPassword) {
-      // buat token untuk login
-      const token = await createTokenLogin({
-        nama_lengkap: getUser.nama_lengkap,
-        email,
-      });
-
-      return response(res, {
-        status: "success",
-        message: "Login Berhasil!",
-        token,
-      });
+    if (!isVerifyPassword) {
+      throw new Error("Email atau Password salah!");
     }
-    throw new Error("Email atau Password salah!");
+    // buat token untuk login
+    const token = await createTokenLogin({
+      nama_lengkap: getUser.nama_lengkap,
+      email,
+    });
+
+    return response(res, {
+      status: "success",
+      message: "Login Berhasil!",
+      token,
+    });
   } catch (error) {
     return response(
       res,
@@ -135,8 +136,51 @@ const login = async (req, res) => {
   }
 };
 
+const forgotPassword = async (req, res) => {
+  const { email } = req.body;
+  try {
+    // cari data user berdasarkan email
+    const getUser = await User.findOne({
+      where: {
+        email,
+      },
+    });
+    if (!getUser) {
+      throw new Error("Email kamu tidak dapat ditemukan!");
+    }
+    // buat token untuk forgot password
+    const tokenForgotPassword = await createTokenForgotPassword({ email });
+    // send email untuk forgot password
+    const setDataEmail = {
+      to: email,
+      subject: "Forgot Password",
+      template: "forgot-password",
+      data: {
+        nama_lengkap: getUser.nama_lengkap,
+        email,
+        url: `${CLIENT_URL}/auth/reset-password/${tokenForgotPassword}`,
+        src_reset_password: `${HOST}:${PORT}/images/reset_password.png`,
+      },
+    };
+    await sendEmail(setDataEmail);
+    return response(res, {
+      status: "success",
+      message: "Forgot Password Behasil! cek email kamu untuk Reset Password!",
+    });
+  } catch (error) {
+    return response(
+      res,
+      {
+        status: "error",
+        message: error.message,
+      },
+      400
+    );
+  }
+};
 module.exports = {
   register,
   activation,
   login,
+  forgotPassword,
 };
