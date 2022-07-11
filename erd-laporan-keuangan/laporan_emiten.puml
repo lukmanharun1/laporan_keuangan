@@ -13,9 +13,9 @@
     ** liabilitas_jangka_panjang: bigint **
     ** liabilitas_berbunga: bigint **
     ** ekuitas: bigint **
-    <color:yellow> created_at: date</color>
-    <color:yellow> updated_at: date</color>
-    <color:yellow> deleted_at: date</color>
+    <color:yellow> created_at: datetime</color>
+    <color:yellow> updated_at: datetime</color>
+    <color:yellow> deleted_at: datetime</color>
   }
 
   entity laba_rugi {
@@ -26,9 +26,9 @@
     ** beban_bunga: bigint **
     ** laba_sebelum_pajak: bigint **
     ** laba_bersih: bigint **
-    <color:yellow> created_at: date</color>
-    <color:yellow> updated_at: date</color>
-    <color:yellow> deleted_at: date</color>
+    <color:yellow> created_at: datetime</color>
+    <color:yellow> updated_at: datetime</color>
+    <color:yellow> deleted_at: datetime</color>
   }
 
   entity arus_kas {
@@ -36,9 +36,9 @@
     ** operasi: bigint **
     ** investasi: bigint **
     ** pendanaan: bigint **
-    <color:yellow> created_at: date</color>
-    <color:yellow> updated_at: date</color>
-    <color:yellow> deleted_at: date</color>
+    <color:yellow> created_at: datetime</color>
+    <color:yellow> updated_at: datetime</color>
+    <color:yellow> deleted_at: datetime</color>
   }
 
   entity emiten {
@@ -46,17 +46,17 @@
     ** kode_emiten: varchar(4) **
     ** nama_emiten: varchar(255) **
     ** jumlah_saham: bigint **
-    <color:yellow> created_at: date</color>
-    <color:yellow> updated_at: date</color>
-    <color:yellow> deleted_at: date</color>
+    <color:yellow> created_at: datetime</color>
+    <color:yellow> updated_at: datetime</color>
+    <color:yellow> deleted_at: datetime</color>
   }
 
   entity dividen {
     <color:yellow> id: <<PK>> <<UUID>></color>
     ** cash: integer(6) **
-    <color:yellow> created_at: date</color>
-    <color:yellow> updated_at: date</color>
-    <color:yellow> deleted_at: date</color>
+    <color:yellow> created_at: datetime</color>
+    <color:yellow> updated_at: datetime</color>
+    <color:yellow> deleted_at: datetime</color>
   }
   entity laporan_keuangan {
     <color:yellow> id: <<PK>> <<UUID>></color>
@@ -65,9 +65,9 @@
     ** tanggal: date **
     ** harga_saham: integer(6) **
     ** nama_file: varchar(255) **
-    <color:yellow> created_at: date</color>
-    <color:yellow> updated_at: date</color>
-    <color:yellow> deleted_at: date</color>
+    <color:yellow> created_at: datetime</color>
+    <color:yellow> updated_at: datetime</color>
+    <color:yellow> deleted_at: datetime</color>
   }
 
   entity user {
@@ -75,9 +75,9 @@
     ** nama_lengkap: varchar(128) **
     <color:yellow> email: <<PK>> varchar(128)</color>
     ** password: varchar(255) **
-    <color:yellow> created_at: date</color>
-    <color:yellow> updated_at: date</color>
-    <color:yellow> deleted_at: date</color>
+    <color:yellow> created_at: datetime</color>
+    <color:yellow> updated_at: datetime</color>
+    <color:yellow> deleted_at: datetime</color>
   }
 
   ' relationship
