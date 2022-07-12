@@ -19,5 +19,10 @@ router.post(
   validate,
   controller.forgotPassword
 );
-
+router.post(
+  "/reset-password",
+  validate.resetPassword(),
+  validate,
+  controller.resetPassword
+);
 module.exports = router;
