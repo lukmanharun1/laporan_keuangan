@@ -117,6 +117,7 @@ const login = async (req, res) => {
     const token = await createTokenLogin({
       nama_lengkap: getUser.nama_lengkap,
       email,
+      role: getUser.role,
     });
 
     return response(res, {
