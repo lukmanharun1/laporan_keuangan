@@ -21,7 +21,7 @@ router.post(
 );
 router.post(
   "/reset-password",
-  validate.resetPassword(),
+  validation.resetPassword(),
   validate,
   controller.resetPassword
 );
