@@ -432,6 +432,141 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_lengkap\": \"Lukman Harun\",\n    \"email\": \"nandes88.ni@gmail.com\",\n    \"password\": \"Lukman@harun1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}auth/register",
+							"host": [
+								"{{host}}auth"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"nandes88.ni@gmail.com\",\n    \"password\": \"Lukman@harun11\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}auth/login",
+							"host": [
+								"{{host}}auth"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbmRlczg4Lm5pQGdtYWlsLmNvbSIsImlhdCI6MTY1NzYwMDg5MywiZXhwIjoxNjU3NjAxNzkzfQ.emlJhrG_Tx0R_D4QuDYipqwDJbp_Lwm6nkKFP6MRXLE\",\n    \"new_password\": \"Harun@lukman1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}auth/reset-password",
+							"host": [
+								"{{host}}auth"
+							],
+							"path": [
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"nandes88.ni@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}auth/forgot-password",
+							"host": [
+								"{{host}}auth"
+							],
+							"path": [
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "activation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1hX2xlbmdrYXAiOiJMdWttYW4gSGFydW4iLCJlbWFpbCI6Im5hbmRlczg4Lm5pQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJFN4UW9XT1huZFJvdHI5NDdXck13eC5tRVhKUUVYeEc3dnd5TTJRcEg2VGZvUHp3U1Y5V2F5IiwiaWF0IjoxNjU3MzQ5NDc0LCJleHAiOjE2NTczNTAzNzR9.GBRcQpwKKQsHywNh0EMxEqfkgrY3Mye1q5DVzfF5Grk\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}auth/activation",
+							"host": [
+								"{{host}}auth"
+							],
+							"path": [
+								"activation"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
