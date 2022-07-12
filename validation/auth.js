@@ -15,9 +15,15 @@ const activation = () => [body("token").notEmpty().isJWT()];
 
 const forgotPassword = () => [body("email").notEmpty().isEmail()];
 
+const resetPassword = () => [
+  body("token").notEmpty().isJWT(),
+  body("new_password").notEmpty().isStrongPassword(),
+];
+
 module.exports = {
   register,
   activation,
   login,
   forgotPassword,
+  resetPassword,
 };
