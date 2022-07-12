@@ -6,6 +6,7 @@ const {
   verifyTokenActivation,
   createTokenLogin,
   createTokenForgotPassword,
+  verifyTokenForgotPassword,
 } = require("../helper/jwt");
 const { HOST, PORT, CLIENT_URL } = process.env;
 const sendEmail = require("../helper/send_email");
@@ -179,9 +180,48 @@ const forgotPassword = async (req, res) => {
     );
   }
 };
+
+const resetPassword = async (req, res) => {
+  const { token, new_password } = req.body;
+  try {
+    // verifikasi token | buat password hash
+    const [{ email }, password] = await Promise.all([
+      verifyTokenForgotPassword(token),
+      passwordHash(new_password),
+    ]);
+    // update password
+    const updatePassword = await User.update(
+      {
+        password,
+      },
+      {
+        where: {
+          email,
+        },
+      }
+    );
+    if (!updatePassword[0]) {
+      throw new Error("Password Gagal diupdate!");
+    }
+    return response(res, {
+      status: "success",
+      message: "Reset Password Berhasil!",
+    });
+  } catch (error) {
+    return response(
+      res,
+      {
+        status: "error",
+        message: error.message,
+      },
+      400
+    );
+  }
+};
 module.exports = {
   register,
   activation,
   login,
   forgotPassword,
+  resetPassword,
 };
