@@ -37,6 +37,14 @@ const createTokenLogin = (payload) =>
     )
   );
 
+const verifyTokenLogin = (token) =>
+  new Promise((resolve, reject) =>
+    jwt.verify(token, LOGIN_TOKEN_SECRET, (err, decoded) => {
+      if (err) reject(err);
+      resolve(decoded);
+    })
+  );
+
 const createTokenForgotPassword = (payload) =>
   new Promise((resolve, reject) =>
     jwt.sign(
@@ -62,6 +70,7 @@ module.exports = {
   createTokenActivation,
   verifyTokenActivation,
   createTokenLogin,
+  verifyTokenLogin,
   createTokenForgotPassword,
   verifyTokenForgotPassword,
 };
