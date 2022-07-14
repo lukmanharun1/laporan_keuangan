@@ -21,20 +21,21 @@ const authentication = async (req, res, next) => {
   }
 };
 
-const role = (req, res, next, roles = []) => {
-  if (!roles.includes(req.decodeToken.role)) {
-    return response(
-      res,
-      {
-        status: "error",
-        message: "Maaf anda tidak memiliki akses!",
-      },
-      403
-    );
-  }
-  next();
+const role = (roles = []) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.decodeToken.role)) {
+      return response(
+        res,
+        {
+          status: "error",
+          message: "Maaf anda tidak memiliki akses!",
+        },
+        403
+      );
+    }
+    next();
+  };
 };
-
 module.exports = {
   authentication,
   role,
