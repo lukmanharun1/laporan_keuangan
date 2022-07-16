@@ -100,7 +100,7 @@ const activation = async (req, res) => {
         status: "error",
         message: error.message,
       },
-      500
+      400
     );
   }
 };
