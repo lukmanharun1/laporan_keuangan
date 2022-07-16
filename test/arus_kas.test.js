@@ -5,9 +5,22 @@ const cekFile = require("../helper/cek_file");
 const deleteFolder = require("../helper/delete_folder");
 const formatTanggal = require("../helper/format_tanggal");
 const { LOCATION_LAPORAN_KEUANGAN } = process.env;
+const { createTokenLogin } = require("../helper/jwt");
+const payloadUser = {
+  nama_lengkap: "lukman harun",
+  email: "lukman@gmail.com",
+  role: "user",
+};
+const payloadAdmin = {
+  nama_lengkap: "lukman harun",
+  email: "lukman@gmail.com",
+  role: "admin",
+};
 
 describe("GET /arus-kas/:kode_emiten/:jenis_laporan", () => {
   it("should find arus kas success", async () => {
+    const tokenUser = await createTokenLogin(payloadUser);
+    const tokenAdmin = await createTokenLogin(payloadAdmin);
     // create emiten terlebih dahulu
     const jumlah_saham = 200000000;
     const kode_emiten = randomAlphabert(4);
@@ -16,6 +29,7 @@ describe("GET /arus-kas/:kode_emiten/:jenis_laporan", () => {
     await request(app)
       .post("/emiten")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .send({
         jumlah_saham,
         kode_emiten,
@@ -33,6 +47,7 @@ describe("GET /arus-kas/:kode_emiten/:jenis_laporan", () => {
         per_page: 1,
       })
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
 
     // create laporan keuangan
@@ -89,6 +104,7 @@ describe("GET /arus-kas/:kode_emiten/:jenis_laporan", () => {
     const laporanKeuangan = await request(app)
       .post("/laporan-keuangan")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .set("Content-Type", "multipart/form-data")
       .field("tanggal", tanggal)
       .field("kode_emiten", kode_emiten)
@@ -137,6 +153,7 @@ describe("GET /arus-kas/:kode_emiten/:jenis_laporan", () => {
     const arusKas = await request(app)
       .get(`/arus-kas/${kode_emiten}/${jenis_laporan}`)
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
 
     expect(arusKas.body).toEqual(
