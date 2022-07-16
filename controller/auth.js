@@ -45,11 +45,15 @@ const register = async (req, res) => {
       },
     };
     await sendEmail(setDataEmail);
-    return response(res, {
-      status: "success",
-      message:
-        "Registrasi Behasil! cek email kamu untuk aktivasi, memasikan email kamu valid!",
-    });
+    return response(
+      res,
+      {
+        status: "success",
+        message:
+          "Registrasi Behasil! cek email kamu untuk aktivasi, memasikan email kamu valid!",
+      },
+      201
+    );
   } catch (error) {
     return response(
       res,
@@ -81,10 +85,14 @@ const activation = async (req, res) => {
     if (!isCreateUser) {
       throw new Error(`${email} sudah ada dan sudah teraktivasi!`);
     }
-    return response(res, {
-      status: "success",
-      message: "Email kamu berhasil diaktivasi!",
-    });
+    return response(
+      res,
+      {
+        status: "success",
+        message: "Email kamu berhasil diaktivasi!",
+      },
+      201
+    );
   } catch (error) {
     return response(
       res,
@@ -121,11 +129,15 @@ const login = async (req, res) => {
       role: getUser.role,
     });
 
-    return response(res, {
-      status: "success",
-      message: "Login Berhasil!",
-      token,
-    });
+    return response(
+      res,
+      {
+        status: "success",
+        message: "Login Berhasil!",
+        token,
+      },
+      201
+    );
   } catch (error) {
     return response(
       res,
@@ -165,10 +177,15 @@ const forgotPassword = async (req, res) => {
       },
     };
     await sendEmail(setDataEmail);
-    return response(res, {
-      status: "success",
-      message: "Forgot Password Behasil! cek email kamu untuk Reset Password!",
-    });
+    return response(
+      res,
+      {
+        status: "success",
+        message:
+          "Forgot Password Behasil! cek email kamu untuk Reset Password!",
+      },
+      201
+    );
   } catch (error) {
     return response(
       res,
@@ -203,10 +220,14 @@ const resetPassword = async (req, res) => {
     if (!updatePassword[0]) {
       throw new Error("Password Gagal diupdate!");
     }
-    return response(res, {
-      status: "success",
-      message: "Reset Password Berhasil!",
-    });
+    return response(
+      res,
+      {
+        status: "success",
+        message: "Reset Password Berhasil!",
+      },
+      201
+    );
   } catch (error) {
     return response(
       res,
