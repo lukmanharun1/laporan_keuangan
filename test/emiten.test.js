@@ -8,12 +8,25 @@ const send = {
   kode_emiten: kodeEmiten,
   nama_emiten: `PT ${kodeEmiten} AGRO LESTARI TBK`,
 };
+const { createTokenLoginSync } = require("../helper/jwt");
+const payloadUser = {
+  nama_lengkap: "lukman harun",
+  email: "lukman@gmail.com",
+  role: "user",
+};
+const payloadAdmin = {
+  ...payloadUser,
+  role: "admin",
+};
+const tokenUser = createTokenLoginSync(payloadUser);
+const tokenAdmin = createTokenLoginSync(payloadAdmin);
 
 describe("POST /emiten", () => {
   it("should create emiten success", async () => {
     const response = await request(app)
       .post("/emiten")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .send(send)
       .expect(201);
     expect(response.body).toEqual(
@@ -29,6 +42,7 @@ describe("POST /emiten", () => {
     const response = await request(app)
       .post("/emiten")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .send({
         jumlah_saham,
         kode_emiten: "ERROR",
@@ -53,6 +67,7 @@ describe("POST /emiten", () => {
     const response = await request(app)
       .post("/emiten")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .send(send)
       .expect(400);
     expect(response.body).toEqual(
@@ -69,6 +84,7 @@ describe("GET /emiten", () => {
     const response = await request(app)
       .get("/emiten")
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
     expect(response.body).toEqual(
       expect.objectContaining({
@@ -100,6 +116,7 @@ describe("GET /emiten", () => {
         per_page: 1,
       })
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
     expect(response.body).toEqual(
       expect.objectContaining({
@@ -141,6 +158,7 @@ describe("PUT /emiten", () => {
         per_page: 1,
       })
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
 
     // update emiten
@@ -154,6 +172,7 @@ describe("PUT /emiten", () => {
     const updateEmiten = await request(app)
       .put(`/emiten/${id}`)
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .send(update)
       .expect(200);
 
@@ -174,6 +193,7 @@ describe("PUT /emiten", () => {
         per_page: 1,
       })
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
 
     expect(getUpdateEmiten.body).toEqual(
@@ -217,6 +237,7 @@ describe("PUT /emiten", () => {
         per_page: 1,
       })
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
 
     const { id } = getEmiten.body.data.data[0];
@@ -225,6 +246,7 @@ describe("PUT /emiten", () => {
     const response = await request(app)
       .put(`/emiten/${id}`)
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .send({
         kode_emiten: "ERROR",
         jumlah_saham,
