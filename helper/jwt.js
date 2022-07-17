@@ -37,6 +37,9 @@ const createTokenLogin = (payload) =>
     )
   );
 
+const createTokenLoginSync = (payload) =>
+  jwt.sign(payload, LOGIN_TOKEN_SECRET, { expiresIn: "7 days" });
+
 const verifyTokenLogin = (token) =>
   new Promise((resolve, reject) =>
     jwt.verify(token, LOGIN_TOKEN_SECRET, (err, decoded) => {
@@ -70,6 +73,7 @@ module.exports = {
   createTokenActivation,
   verifyTokenActivation,
   createTokenLogin,
+  createTokenLoginSync,
   verifyTokenLogin,
   createTokenForgotPassword,
   verifyTokenForgotPassword,
