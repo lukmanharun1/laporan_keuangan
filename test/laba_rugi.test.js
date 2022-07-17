@@ -5,6 +5,18 @@ const cekFile = require("../helper/cek_file");
 const deleteFolder = require("../helper/delete_folder");
 const formatTanggal = require("../helper/format_tanggal");
 const { LOCATION_LAPORAN_KEUANGAN } = process.env;
+const { createTokenLoginSync } = require("../helper/jwt");
+const payloadUser = {
+  nama_lengkap: "lukman harun",
+  email: "lukman@gmail.com",
+  role: "user",
+};
+const payloadAdmin = {
+  ...payloadUser,
+  role: "admin",
+};
+const tokenUser = createTokenLoginSync(payloadUser);
+const tokenAdmin = createTokenLoginSync(payloadAdmin);
 
 describe("GET /laba-rugi/:kode_emiten/:jenis_laporan", () => {
   it("should find laba rugi success", async () => {
@@ -16,6 +28,7 @@ describe("GET /laba-rugi/:kode_emiten/:jenis_laporan", () => {
     await request(app)
       .post("/emiten")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .send({
         jumlah_saham,
         kode_emiten,
@@ -33,6 +46,7 @@ describe("GET /laba-rugi/:kode_emiten/:jenis_laporan", () => {
         per_page: 1,
       })
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
 
     // create laporan keuangan
@@ -88,6 +102,7 @@ describe("GET /laba-rugi/:kode_emiten/:jenis_laporan", () => {
     const laporanKeuangan = await request(app)
       .post("/laporan-keuangan")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .set("Content-Type", "multipart/form-data")
       .field("tanggal", tanggal)
       .field("kode_emiten", kode_emiten)
@@ -137,6 +152,7 @@ describe("GET /laba-rugi/:kode_emiten/:jenis_laporan", () => {
     const labaRugi = await request(app)
       .get(`/laba-rugi/${kode_emiten}/${jenis_laporan}`)
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
 
     expect(labaRugi.body).toEqual(
