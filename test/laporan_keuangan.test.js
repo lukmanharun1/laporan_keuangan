@@ -7,6 +7,19 @@ const cekFile = require("../helper/cek_file");
 const deleteFolder = require("../helper/delete_folder");
 const kodeEmiten = randomAlphabert(4);
 const { HOST, PORT, LOCATION_LAPORAN_KEUANGAN } = process.env;
+const { createTokenLoginSync } = require("../helper/jwt");
+const payloadUser = {
+  nama_lengkap: "lukman harun",
+  email: "lukman@gmail.com",
+  role: "user",
+};
+const payloadAdmin = {
+  ...payloadUser,
+  role: "admin",
+};
+const tokenUser = createTokenLoginSync(payloadUser);
+const tokenAdmin = createTokenLoginSync(payloadAdmin);
+
 const sendCreateEmiten = {
   jumlah_saham: 200000000,
   kode_emiten: kodeEmiten,
@@ -45,6 +58,7 @@ describe("POST /laporan-keuangan", () => {
     await request(app)
       .post("/emiten")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .send(sendCreateEmiten)
       .expect(201);
 
@@ -58,6 +72,7 @@ describe("POST /laporan-keuangan", () => {
         per_page: 1,
       })
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
 
     // create laporan keuangan
@@ -90,6 +105,7 @@ describe("POST /laporan-keuangan", () => {
     const response = await request(app)
       .post("/laporan-keuangan")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .set("Content-Type", "multipart/form-data")
       .field("tanggal", tanggal)
       .field("kode_emiten", kode_emiten)
@@ -167,6 +183,7 @@ describe("POST /laporan-keuangan", () => {
     const response = await request(app)
       .post("/laporan-keuangan")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .set("Content-Type", "multipart/form-data")
       .field("tanggal", tanggal)
       .field("kode_emiten", kode_emiten)
@@ -217,6 +234,7 @@ describe("GET /laporan-keuangan/:kode_emiten/:tanggal", () => {
     const response = await request(app)
       .get(`/laporan-keuangan/${kode_emiten}/${tanggal}`)
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
     const nama_file = `${kodeEmiten} ${jenis_laporan} ${formatTanggal(
       tanggal
@@ -247,6 +265,7 @@ describe("DELETE /laporan-keuangan", () => {
     const response = await request(app)
       .delete(`/laporan-keuangan/${laporanKeuangan.id}`)
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .expect(200);
     expect(response.body).toEqual(
       expect.objectContaining({
