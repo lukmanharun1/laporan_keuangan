@@ -5,6 +5,18 @@ const formatTanggal = require("../helper/format_tanggal");
 const cekFile = require("../helper/cek_file");
 const deleteFolder = require("../helper/delete_folder");
 const { LOCATION_LAPORAN_KEUANGAN } = process.env;
+const { createTokenLoginSync } = require("../helper/jwt");
+const payloadUser = {
+  nama_lengkap: "lukman harun",
+  email: "lukman@gmail.com",
+  role: "user",
+};
+const payloadAdmin = {
+  ...payloadUser,
+  role: "admin",
+};
+const tokenUser = createTokenLoginSync(payloadUser);
+const tokenAdmin = createTokenLoginSync(payloadAdmin);
 
 const jumlah_saham = 250000000;
 const kode_emiten = randomAlphabert(4);
@@ -117,6 +129,7 @@ describe(`GET /rasio/${kode_emiten}/[Q1, Q2, Q3, Q4, TAHUNAN]`, () => {
     const emiten = await request(app)
       .post("/emiten")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .send({
         jumlah_saham,
         kode_emiten,
@@ -159,6 +172,7 @@ describe(`GET /rasio/${kode_emiten}/[Q1, Q2, Q3, Q4, TAHUNAN]`, () => {
       const laporanKeuangan = await request(app)
         .post("/laporan-keuangan")
         .set("Accept", "application/json")
+        .set("Authorization", tokenAdmin)
         .set("Content-Type", "multipart/form-data")
         .field("tanggal", tanggal)
         .field("kode_emiten", kode_emiten)
@@ -207,6 +221,7 @@ describe(`GET /rasio/${kode_emiten}/[Q1, Q2, Q3, Q4, TAHUNAN]`, () => {
       const rasio = await request(app)
         .get(`/rasio/${kode_emiten}/${jenis_laporan}`)
         .set("Accept", "application/json")
+        .set("Authorization", tokenUser)
         .expect(200);
 
       expect(rasio.body).toEqual(
