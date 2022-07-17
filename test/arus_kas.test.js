@@ -5,22 +5,21 @@ const cekFile = require("../helper/cek_file");
 const deleteFolder = require("../helper/delete_folder");
 const formatTanggal = require("../helper/format_tanggal");
 const { LOCATION_LAPORAN_KEUANGAN } = process.env;
-const { createTokenLogin } = require("../helper/jwt");
+const { createTokenLoginSync } = require("../helper/jwt");
 const payloadUser = {
   nama_lengkap: "lukman harun",
   email: "lukman@gmail.com",
   role: "user",
 };
 const payloadAdmin = {
-  nama_lengkap: "lukman harun",
-  email: "lukman@gmail.com",
+  ...payloadUser,
   role: "admin",
 };
+const tokenUser = createTokenLoginSync(payloadUser);
+const tokenAdmin = createTokenLoginSync(payloadAdmin);
 
 describe("GET /arus-kas/:kode_emiten/:jenis_laporan", () => {
   it("should find arus kas success", async () => {
-    const tokenUser = await createTokenLogin(payloadUser);
-    const tokenAdmin = await createTokenLogin(payloadAdmin);
     // create emiten terlebih dahulu
     const jumlah_saham = 200000000;
     const kode_emiten = randomAlphabert(4);
