@@ -6,6 +6,19 @@ const cekFile = require("../helper/cek_file");
 const deleteFolder = require("../helper/delete_folder");
 const kodeEmiten = randomAlphabert(4);
 const { LOCATION_LAPORAN_KEUANGAN } = process.env;
+const { createTokenLoginSync } = require("../helper/jwt");
+const payloadUser = {
+  nama_lengkap: "lukman harun",
+  email: "lukman@gmail.com",
+  role: "user",
+};
+const payloadAdmin = {
+  ...payloadUser,
+  role: "admin",
+};
+const tokenUser = createTokenLoginSync(payloadUser);
+const tokenAdmin = createTokenLoginSync(payloadAdmin);
+
 const sendCreateEmiten = {
   jumlah_saham: 200000000,
   kode_emiten: kodeEmiten,
@@ -43,6 +56,7 @@ describe("PUT /stock-split", () => {
     await request(app)
       .post("/emiten")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .send(sendCreateEmiten)
       .expect(201);
 
@@ -56,6 +70,7 @@ describe("PUT /stock-split", () => {
         per_page: 1,
       })
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
 
     // create laporan keuangan terlebih dahulu
@@ -86,6 +101,7 @@ describe("PUT /stock-split", () => {
     const laporanKeuangan = await request(app)
       .post("/laporan-keuangan")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .set("Content-Type", "multipart/form-data")
       .field("tanggal", tanggal)
       .field("kode_emiten", kode_emiten)
@@ -135,6 +151,7 @@ describe("PUT /stock-split", () => {
     const stockSplit = await request(app)
       .put(`/stock-split/${kode_emiten}`)
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .send({
         jumlah_saham: sendCreateEmiten.jumlah_saham / split,
         aksi: "stock_split",
@@ -151,6 +168,7 @@ describe("PUT /stock-split", () => {
     const getNeracaKeuangan = await request(app)
       .get(`/neraca-keuangan/${kode_emiten}/${jenis_laporan}`)
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
     expect(getNeracaKeuangan.body).toEqual(
       expect.objectContaining({
@@ -199,6 +217,7 @@ describe("PUT /stock-split", () => {
     await request(app)
       .post("/emiten")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .send(sendCreateEmiten)
       .expect(201);
 
@@ -212,6 +231,7 @@ describe("PUT /stock-split", () => {
         per_page: 1,
       })
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
 
     // create laporan keuangan terlebih dahulu
@@ -242,6 +262,7 @@ describe("PUT /stock-split", () => {
     const laporanKeuangan = await request(app)
       .post("/laporan-keuangan")
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .set("Content-Type", "multipart/form-data")
       .field("tanggal", tanggal)
       .field("kode_emiten", kode_emiten)
@@ -291,6 +312,7 @@ describe("PUT /stock-split", () => {
     const stockSplit = await request(app)
       .put(`/stock-split/${kode_emiten}`)
       .set("Accept", "application/json")
+      .set("Authorization", tokenAdmin)
       .send({
         jumlah_saham: sendCreateEmiten.jumlah_saham * split,
         aksi: "reverse_stock_split",
@@ -307,6 +329,7 @@ describe("PUT /stock-split", () => {
     const getNeracaKeuangan = await request(app)
       .get(`/neraca-keuangan/${kode_emiten}/${jenis_laporan}`)
       .set("Accept", "application/json")
+      .set("Authorization", tokenUser)
       .expect(200);
     expect(getNeracaKeuangan.body).toEqual(
       expect.objectContaining({
