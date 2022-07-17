@@ -12,7 +12,13 @@
 					"name": "create",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"jumlah_saham\": 16087156000,\n    \"kode_emiten\": \"INKP\",\n    \"nama_emiten\": \"PT CIKARANG LISTRINDO TBK\"\n}",
@@ -36,7 +42,13 @@
 					"name": "getAll",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{host}}emiten",
 							"host": [
@@ -76,7 +88,13 @@
 					"name": "update",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "// {\n//     \"kode_emiten\": \"CSRA\",\n//     \"nama_emiten\": \"PT CISADANE SAWIT TBK\",\n//     \"jumlah_saham\": 20000000\n// }",
@@ -107,7 +125,13 @@
 					"name": "create",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -277,7 +301,13 @@
 					"name": "delete",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{host}}laporan-keuangan/ca6c9ec4-386f-4977-9ba9-da29a010fe25",
 							"host": [
@@ -294,7 +324,13 @@
 					"name": "find",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{host}}laporan-keuangan/ASII/2022-06-30",
 							"host": [
@@ -317,7 +353,13 @@
 					"name": "find",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{host}}neraca-keuangan/AALI/TAHUNAN",
 							"host": [
@@ -340,7 +382,13 @@
 					"name": "find",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{host}}laba-rugi/AALI/TAHUNAN",
 							"host": [
@@ -363,15 +411,21 @@
 					"name": "find",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{host}}arus-kas/95e28076-d415-41c1-9e5c-d1449740018h/Q4",
+							"raw": "{{host}}arus-kas/ASII/Q1",
 							"host": [
 								"{{host}}arus-kas"
 							],
 							"path": [
-								"95e28076-d415-41c1-9e5c-d1449740018h",
-								"Q4"
+								"ASII",
+								"Q1"
 							]
 						}
 					},
@@ -386,7 +440,13 @@
 					"name": "find",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_user}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{host}}dividen/16074c60-9316-420f-b970-ba54688d0e31/TAHUNAN",
 							"host": [
@@ -409,7 +469,13 @@
 					"name": "stock split atau reverse stock split",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"jumlah_saham\": 2304131850,\n    // \"aksi\": \"stock_split\",\n    // aksi: \"reverse_stock_split\",\n    \"split\": 5\n}",
@@ -463,13 +529,39 @@
 					"response": []
 				},
 				{
+					"name": "activation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1hX2xlbmdrYXAiOiJMdWttYW4gSGFydW4iLCJlbWFpbCI6Im5hbmRlczg4Lm5pQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJFN4UW9XT1huZFJvdHI5NDdXck13eC5tRVhKUUVYeEc3dnd5TTJRcEg2VGZvUHp3U1Y5V2F5IiwiaWF0IjoxNjU3MzQ5NDc0LCJleHAiOjE2NTczNTAzNzR9.GBRcQpwKKQsHywNh0EMxEqfkgrY3Mye1q5DVzfF5Grx\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}auth/activation",
+							"host": [
+								"{{host}}auth"
+							],
+							"path": [
+								"activation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "login",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"nandes88.ni@gmail.com\",\n    \"password\": \"Lukman@harun11\"\n}",
+							"raw": "{\n    \"email\": \"nandes88.ni@gmail.com\",\n    \"password\": \"Harun@lukman1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -539,32 +631,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "activation",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n   \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1hX2xlbmdrYXAiOiJMdWttYW4gSGFydW4iLCJlbWFpbCI6Im5hbmRlczg4Lm5pQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJFN4UW9XT1huZFJvdHI5NDdXck13eC5tRVhKUUVYeEc3dnd5TTJRcEg2VGZvUHp3U1Y5V2F5IiwiaWF0IjoxNjU3MzQ5NDc0LCJleHAiOjE2NTczNTAzNzR9.GBRcQpwKKQsHywNh0EMxEqfkgrY3Mye1q5DVzfF5Grk\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}auth/activation",
-							"host": [
-								"{{host}}auth"
-							],
-							"path": [
-								"activation"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		}
@@ -593,6 +659,16 @@
 		{
 			"key": "host",
 			"value": "http://localhost:4000/",
+			"type": "string"
+		},
+		{
+			"key": "token_user",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1hX2xlbmdrYXAiOiJMdWttYW4gSGFydW4iLCJlbWFpbCI6Im5hbmRlczg4Lm5pQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjU3NzEwNDQ5LCJleHAiOjE2NTgzMTUyNDl9.F66UZpfTaMcXF8oi7JN2-cL6vc4sCg6WZAktlDp9ZX0",
+			"type": "string"
+		},
+		{
+			"key": "token_admin",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1hX2xlbmdrYXAiOiJMdWttYW4gSGFydW4iLCJlbWFpbCI6Im5hbmRlczg4Lm5pQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJFN4UW9XT1huZFJvdHI5NDdXck13eC5tRVhKUUVYeEc3dnd5TTJRcEg2VGZvUHp3U1Y5V2F5IiwiaWF0IjoxNjU3MzQ5NDc0LCJleHAiOjE2NTczNTAzNzR9.GBRcQpwKKQsHywNh0EMxEqfkgrY3Mye1q5DVzfF5Grk",
 			"type": "string"
 		}
 	]
