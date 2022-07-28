@@ -1,17 +1,19 @@
-'use strict';
-const constantColumn = require('../constant/constant-column');
+"use strict";
+const field = require("../constant/field");
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('dividen', {
-      cash: {
-        type: Sequelize.INTEGER(6),
-        allowNull: false
-      },
-      ...constantColumn(Sequelize)
-    })
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable(
+      "dividen",
+      field(Sequelize, {
+        cash: {
+          type: Sequelize.INTEGER(6),
+          allowNull: false,
+        },
+      })
+    );
   },
 
-  async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('dividen');
-  }
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable("dividen");
+  },
 };
