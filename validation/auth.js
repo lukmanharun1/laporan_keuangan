@@ -1,7 +1,7 @@
 const { body } = require("express-validator");
 
 const register = () => [
-  body("nama_lengkap").notEmpty().isString(),
+  body("nama_lengkap").notEmpty().isString().isLength({ min: 3, max: 128 }),
   body("email").notEmpty().isEmail(),
   body("password").notEmpty().isStrongPassword(),
 ];
