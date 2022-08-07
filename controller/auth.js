@@ -21,7 +21,10 @@ const register = async (req, res) => {
       },
     });
     if (getUser) {
-      throw new Error(`${email} sudah ada`);
+      throw {
+        message: `${email} sudah ada`,
+        statusCode: 403,
+      };
     }
     // buat password hash
     const myPassowrd = await passwordHash(password);
@@ -50,7 +53,7 @@ const register = async (req, res) => {
       {
         status: "success",
         message:
-          "Registrasi Behasil! cek email kamu untuk aktivasi, memasikan email kamu valid!",
+          "Daftar Akun Behasil! cek email kamu untuk aktivasi, memasikan email kamu valid!",
       },
       201
     );
@@ -61,7 +64,7 @@ const register = async (req, res) => {
         status: "error",
         message: error.message,
       },
-      500
+      error.statusCode || 500
     );
   }
 };
