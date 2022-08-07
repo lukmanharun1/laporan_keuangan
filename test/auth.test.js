@@ -23,7 +23,7 @@ describe("POST /auth/register", () => {
       expect.objectContaining({
         status: "success",
         message:
-          "Registrasi Behasil! cek email kamu untuk aktivasi, memasikan email kamu valid!",
+          "Daftar Akun Behasil! cek email kamu untuk aktivasi, memasikan email kamu valid!",
       })
     );
   });
