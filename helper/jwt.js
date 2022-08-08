@@ -10,7 +10,11 @@ const createTokenActivation = (payload) =>
       ACTIVATION_TOKEN_SECRET,
       { expiresIn: "15m" },
       (err, data) => {
-        if (err) reject(err);
+        if (err)
+          reject({
+            message: error,
+            statusCode: 422,
+          });
         resolve(data);
       }
     )
@@ -19,7 +23,11 @@ const createTokenActivation = (payload) =>
 const verifyTokenActivation = (token) =>
   new Promise((resolve, reject) =>
     jwt.verify(token, ACTIVATION_TOKEN_SECRET, (err, decoded) => {
-      if (err) reject(err);
+      if (err)
+        reject({
+          message: error,
+          statusCode: 422,
+        });
       resolve(decoded);
     })
   );
@@ -31,7 +39,11 @@ const createTokenLogin = (payload) =>
       LOGIN_TOKEN_SECRET,
       { expiresIn: "7 days" },
       (err, data) => {
-        if (err) reject(err);
+        if (err)
+          reject({
+            message: error,
+            statusCode: 422,
+          });
         resolve(data);
       }
     )
@@ -43,7 +55,11 @@ const createTokenLoginSync = (payload) =>
 const verifyTokenLogin = (token) =>
   new Promise((resolve, reject) =>
     jwt.verify(token, LOGIN_TOKEN_SECRET, (err, decoded) => {
-      if (err) reject(err);
+      if (err)
+        reject({
+          message: error,
+          statusCode: 422,
+        });
       resolve(decoded);
     })
   );
@@ -55,7 +71,11 @@ const createTokenForgotPassword = (payload) =>
       FORGOT_PASSWORD_SECRET,
       { expiresIn: "15 m" },
       (err, data) => {
-        if (err) reject(err);
+        if (err)
+          reject({
+            message: error,
+            statusCode: 422,
+          });
         resolve(data);
       }
     )
@@ -64,7 +84,11 @@ const createTokenForgotPassword = (payload) =>
 const verifyTokenForgotPassword = (token) =>
   new Promise((resolve, reject) =>
     jwt.verify(token, FORGOT_PASSWORD_SECRET, (err, decoded) => {
-      if (err) reject(err);
+      if (err)
+        reject({
+          message: error,
+          statusCode: 422,
+        });
       resolve(decoded);
     })
   );
