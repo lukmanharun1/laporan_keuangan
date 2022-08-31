@@ -4,6 +4,7 @@ const router = express.Router();
 const controller = require("../controller/auth");
 const validate = require("../middleware/validate");
 const validation = require("../validation/auth");
+const { authentication } = require("../middleware/auth");
 
 router.post("/register", validation.register(), validate, controller.register);
 router.post(
@@ -25,4 +26,7 @@ router.post(
   validate,
   controller.resetPassword
 );
+
+router.post("/verify-token", authentication, controller.verifyToken);
+
 module.exports = router;
