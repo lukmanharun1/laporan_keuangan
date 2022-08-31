@@ -3,6 +3,7 @@ const app = require("../app");
 const {
   createTokenActivation,
   createTokenForgotPassword,
+  createTokenLogin,
 } = require("../helper/jwt");
 const { passwordHash } = require("../helper/password");
 const randomAlphabert = require("../helper/random_alphabert");
@@ -48,7 +49,7 @@ describe("POST /auth/activation", () => {
     const createActivation = await request(app)
       .post("/auth/activation")
       .set("Accept", "application/json")
-      .send({ token })
+      .set("Authorization", token)
       .expect(201);
 
     expect(createActivation.body).toEqual(
@@ -61,12 +62,12 @@ describe("POST /auth/activation", () => {
     const createdActivation = await request(app)
       .post("/auth/activation")
       .set("Accept", "application/json")
-      .send({ token })
-      .expect(400);
+      .set("Authorization", token)
+      .expect(200);
 
     expect(createdActivation.body).toEqual(
       expect.objectContaining({
-        status: "error",
+        status: "success",
         message: `${data.email} sudah ada dan sudah teraktivasi!`,
       })
     );
@@ -82,13 +83,16 @@ describe("POST /auth/activation", () => {
     const resInvalidSignature = await request(app)
       .post("/auth/activation")
       .set("Accept", "application/json")
-      .send({ token })
-      .expect(400);
+      .set("Authorization", token)
+      .expect(422);
 
     expect(resInvalidSignature.body).toEqual(
       expect.objectContaining({
         status: "error",
-        message: "invalid signature",
+        message: {
+          name: "JsonWebTokenError",
+          message: "invalid signature",
+        },
       })
     );
   });
@@ -195,7 +199,8 @@ describe("POST /auth/reset-password", () => {
     const response = await request(app)
       .post("/auth/reset-password")
       .set("Accept", "application/json")
-      .send({ token, new_password })
+      .set("Authorization", token)
+      .send({ new_password })
       .expect(201);
 
     expect(response.body).toEqual(
@@ -220,13 +225,16 @@ describe("POST /auth/reset-password", () => {
     const resInvalidSignature = await request(app)
       .post("/auth/reset-password")
       .set("Accept", "application/json")
-      .send({ token: tokenTidakValid, new_password })
+      .set("Authorization", tokenTidakValid)
+      .send({ new_password })
       .expect(400);
-
     expect(resInvalidSignature.body).toEqual(
       expect.objectContaining({
         status: "error",
-        message: "invalid signature",
+        message: {
+          name: "JsonWebTokenError",
+          message: "invalid signature",
+        },
       })
     );
 
@@ -236,7 +244,8 @@ describe("POST /auth/reset-password", () => {
     const response = await request(app)
       .post("/auth/reset-password")
       .set("Accept", "application/json")
-      .send({ token: tokenValid, new_password })
+      .set("Authorization", tokenValid)
+      .send({ new_password })
       .expect(400);
 
     expect(response.body).toEqual(
@@ -245,5 +254,29 @@ describe("POST /auth/reset-password", () => {
         message: "Password Gagal diupdate!",
       })
     );
+  });
+});
+
+describe("POST /auth/verify-token", () => {
+  it("should verify token success", async () => {
+    const token = await createTokenLogin({
+      nama_lengkap: data.nama_lengkap,
+      email: data.email,
+    });
+    const response = await request(app)
+      .post("/auth/verify-token")
+      .set("Authorization", token)
+      .expect(200);
+
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        status: "success",
+        message: "Token jwt valid!",
+      })
+    );
+  });
+
+  it("should verify token failed", async () => {
+    await request(app).post("/auth/verify-token").expect(400);
   });
 });
