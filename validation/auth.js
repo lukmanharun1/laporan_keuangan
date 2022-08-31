@@ -1,23 +1,23 @@
-const { body } = require("express-validator");
+const { body, header } = require("express-validator");
 
 const register = () => [
-  body("nama_lengkap").notEmpty().isString().isLength({ min: 3, max: 128 }),
-  body("email").notEmpty().isEmail(),
-  body("password").notEmpty().isStrongPassword(),
+  body("nama_lengkap").isString().isLength({ min: 3, max: 128 }),
+  body("email").isEmail(),
+  body("password").isStrongPassword(),
 ];
 
 const login = () => [
-  body("email").notEmpty().isEmail(),
-  body("password").notEmpty().isStrongPassword(),
+  body("email").isEmail(),
+  body("password").isStrongPassword(),
 ];
 
-const activation = () => [body("token").notEmpty().isJWT()];
+const activation = () => [header("Authorization").isJWT()];
 
-const forgotPassword = () => [body("email").notEmpty().isEmail()];
+const forgotPassword = () => [body("email").isEmail()];
 
 const resetPassword = () => [
-  body("token").notEmpty().isJWT(),
-  body("new_password").notEmpty().isStrongPassword(),
+  header("Authorization").isJWT(),
+  body("new_password").isStrongPassword(),
 ];
 
 module.exports = {
