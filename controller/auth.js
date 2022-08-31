@@ -70,7 +70,7 @@ const register = async (req, res) => {
 };
 
 const activation = async (req, res) => {
-  const { token } = req.body;
+  const token = req.headers.authorization;
   try {
     const { nama_lengkap, email, password } = await verifyTokenActivation(
       token
@@ -85,8 +85,12 @@ const activation = async (req, res) => {
         password,
       },
     });
+
     if (!isCreateUser) {
-      throw new Error(`${email} sudah ada dan sudah teraktivasi!`);
+      return response(res, {
+        status: "success",
+        message: `${email} sudah ada dan sudah teraktivasi!`,
+      });
     }
     return response(
       res,
@@ -103,7 +107,7 @@ const activation = async (req, res) => {
         status: "error",
         message: error.message,
       },
-      400
+      error.statusCode || 500
     );
   }
 };
@@ -202,7 +206,8 @@ const forgotPassword = async (req, res) => {
 };
 
 const resetPassword = async (req, res) => {
-  const { token, new_password } = req.body;
+  const token = req.headers.authorization;
+  const { new_password } = req.body;
   try {
     // verifikasi token | buat password hash
     const [{ email }, password] = await Promise.all([
@@ -242,10 +247,19 @@ const resetPassword = async (req, res) => {
     );
   }
 };
+
+const verifyToken = (req, res) => {
+  return response(res, {
+    status: "success",
+    message: "Token jwt valid!",
+  });
+};
+
 module.exports = {
   register,
   activation,
   login,
   forgotPassword,
   resetPassword,
+  verifyToken,
 };
