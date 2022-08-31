@@ -4,11 +4,13 @@ const authentication = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
     if (!token) {
-      throw new Error("token tidak ditemukan!");
+      throw {
+        message: "token tidak ditemukan!",
+      };
     }
     const decodeToken = await verifyTokenLogin(token);
     req.decodeToken = decodeToken;
-    next();
+    return next();
   } catch (error) {
     return response(
       res,
@@ -33,7 +35,7 @@ const role = (roles = []) => {
         403
       );
     }
-    next();
+    return next();
   };
 };
 module.exports = {
