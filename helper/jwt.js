@@ -12,7 +12,7 @@ const createTokenActivation = (payload) =>
       (err, data) => {
         if (err)
           reject({
-            message: error,
+            message: err,
             statusCode: 422,
           });
         resolve(data);
@@ -25,7 +25,7 @@ const verifyTokenActivation = (token) =>
     jwt.verify(token, ACTIVATION_TOKEN_SECRET, (err, decoded) => {
       if (err)
         reject({
-          message: error,
+          message: err,
           statusCode: 422,
         });
       resolve(decoded);
@@ -41,7 +41,7 @@ const createTokenLogin = (payload) =>
       (err, data) => {
         if (err)
           reject({
-            message: error,
+            message: err,
             statusCode: 422,
           });
         resolve(data);
@@ -57,7 +57,7 @@ const verifyTokenLogin = (token) =>
     jwt.verify(token, LOGIN_TOKEN_SECRET, (err, decoded) => {
       if (err)
         reject({
-          message: error,
+          message: err,
           statusCode: 422,
         });
       resolve(decoded);
@@ -73,7 +73,7 @@ const createTokenForgotPassword = (payload) =>
       (err, data) => {
         if (err)
           reject({
-            message: error,
+            message: err,
             statusCode: 422,
           });
         resolve(data);
@@ -86,7 +86,7 @@ const verifyTokenForgotPassword = (token) =>
     jwt.verify(token, FORGOT_PASSWORD_SECRET, (err, decoded) => {
       if (err)
         reject({
-          message: error,
+          message: err,
           statusCode: 422,
         });
       resolve(decoded);
