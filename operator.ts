@@ -31,7 +31,7 @@ async function hitungTotal(operator: Operator, question: string = 'Masukkan angk
     while (true) {
         let angka: string = await input(question)
         if (angka === 'y') {
-            total = 0;
+            total = convertNumber(await input('Masukkan angka terlebih dahulu '));
             console.log('ok')
             break;
         }
