@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "5f13b763-0b0f-4cf5-bb85-6c7cac8921e7",
+		"_postman_id": "6c45dbc6-6073-43a8-91a7-c2abff319f93",
 		"name": "laporan emiten",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23186276"
 	},
 	"item": [
 		{
@@ -561,7 +562,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"nandes88.ni@gmail.com\",\n    \"password\": \"Harun@lukman1\"\n}",
+							"raw": "{\n    \"email\": \"lukman@admin.com\",\n    \"password\": \"Lukman@admin1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -668,7 +669,7 @@
 		},
 		{
 			"key": "token_admin",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1hX2xlbmdrYXAiOiJMdWttYW4gSGFydW4iLCJlbWFpbCI6Im5hbmRlczg4Lm5pQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJFN4UW9XT1huZFJvdHI5NDdXck13eC5tRVhKUUVYeEc3dnd5TTJRcEg2VGZvUHp3U1Y5V2F5IiwiaWF0IjoxNjU3MzQ5NDc0LCJleHAiOjE2NTczNTAzNzR9.GBRcQpwKKQsHywNh0EMxEqfkgrY3Mye1q5DVzfF5Grk",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1hX2xlbmdrYXAiOiJMdWttYW4gaGFydW4iLCJlbWFpbCI6Imx1a21hbkBhZG1pbi5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NzI1NTc3MjYsImV4cCI6MTY3MzE2MjUyNn0.R--2LeFr6V-pGAf0Vwh6YfBQDnp2IxXQFbmB4tKziR4",
 			"type": "string"
 		}
 	]
