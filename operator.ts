@@ -1,5 +1,5 @@
 import readline from 'readline'
-import process, { stdin, stdout as output } from 'process';
+import { stdin, stdout as output } from 'process';
 
 const rl = readline.createInterface({ input: stdin, output });
 
@@ -8,20 +8,7 @@ let total: number = 0;
 (async () => {
     total = convertNumber(await input('Masukkan angka terlebih dahulu '))
     while (true) {
-        console.log('1. penjumlahan');
-        console.log('2. pengurangan');
-        console.log('0. keluar');
-
-        const nomor: number = parseInt(await input('Pilih nomor '))
-        if (nomor === 1) {
-            await hitungTotal('+')
-        } else if (nomor === 2) {
-            await hitungTotal('-')
-        }
-        else {
-            console.log('Terima kasih')
-            process.exit(nomor)
-        }
+        await hitungTotal('+')
     }
 })()
 
