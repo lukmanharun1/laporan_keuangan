@@ -6,7 +6,7 @@ module.exports = {
       "dividen",
       field(Sequelize, {
         cash: {
-          type: Sequelize.INTEGER(6),
+          type: Sequelize.DECIMAL(6, 2),
           allowNull: false,
         },
       })
