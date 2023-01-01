@@ -59,7 +59,7 @@ const create = () => [
   body("pendanaan").notEmpty().isInt(),
 
   // dividen
-  body("cash").optional().isInt(),
+  body("cash").optional().isDecimal(),
 ];
 
 const destroy = () => [param("id").notEmpty().isUUID()];
